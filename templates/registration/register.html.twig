@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Création d'un compte{% endblock %}
 
 {% block body %}
   {% for flashError in app.flashes('verify_email_error') %}
     <div class="alert alert-danger" role="alert">{{ flashError }}</div>
   {% endfor %}
   <br>
-    <div class="container col-4">
-        <h1 class="text-center">Créer votre compte utilisateur</h1>
+    <div class="container col-4 ">
+        <h1 class="text-center" style="text-transform: uppercase;">Créer votre compte utilisateur</h1>
         {{ form_start(registrationForm) }}
             <label>Pseudo</label>
             <div class="input-group flex-nowrap">
@@ -28,9 +28,9 @@
     </div>
     <br>
     <div class="conteneur">
-        <div id="thermeCon" class="form-check">
+        <div class="form-check aligne-centre">
             {{ form_widget(registrationForm.agreeTerms,{'attr':{'class':'form-check-input'}})}}
-            <label id="thermeLabel" class="form-check-label">Accepter les thermes d'utilisation</label>
+            <label id="thermeLabel" class="form-check-label"><i class="bi bi-journal-text"></i>Accepter les thermes d'utilisation</label>
         <div>
         <button id="btnEnregistrer" type="submit" class="btn btn-success ">Créer <i class="bi bi-arrow-right"></i></button>
     </div

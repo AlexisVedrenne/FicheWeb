@@ -5,7 +5,7 @@
     align-content: center;
 }
 
-#thermeCon {
+.aligne-centre {
     display: flex!important;
     align-items: center;
 }
@@ -17,4 +17,9 @@
 
 #btnEnregistrer {
     margin-left: 100px;
+}
+
+#ckcLogin {
+    margin-left: 10px;
+    margin-right: 5px;
 }
