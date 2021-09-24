@@ -15,12 +15,6 @@ class CategorieType extends AbstractType
     {
         $builder
             ->add('libelle',TextType::class)
-            ->add('lesCategories',EntityType::class,[
-                'class'=>Categorie::class,
-                'choice_label'=>'libelle',
-                'expanded' => true,
-                'multiple' => true,
-            ])
         ;
     }
 
