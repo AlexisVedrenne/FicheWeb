@@ -16,9 +16,6 @@ class AppController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/",name="home")
-     */
     public function home(){
 
         return $this->render('app/index.html.twig');
