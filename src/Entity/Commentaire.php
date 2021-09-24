@@ -32,6 +32,11 @@ class Commentaire
      */
     private $laFiche;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="lesCommentaires")
+     */
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class Commentaire
     public function setLaFiche(?Fiche $laFiche): self
     {
         $this->laFiche = $laFiche;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

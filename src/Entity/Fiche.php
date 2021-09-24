@@ -44,6 +44,11 @@ class Fiche
      */
     private $lesCommentaires;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="lesFiches")
+     */
+    private $user;
+
     public function __construct()
     {
         $this->lesCategories = new ArrayCollection();
@@ -145,6 +150,18 @@ class Fiche
                 $lesCommentaire->setLaFiche(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
