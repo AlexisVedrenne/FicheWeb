@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Toutes les categories{% endblock %}
+
+{% block body %}
+    {% for cat in lesCategories %}
+        <h1> {{cat.libelle}}</h1>
+    {% endfor %}
+{% endblock %}
