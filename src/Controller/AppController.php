@@ -32,6 +32,7 @@ class AppController extends AbstractController
         $manager->persist($user);
         $manager->flush();
 
+        //Cette ligne dirige vers la fonction qui ensuite deconnecter l'utilisateur du site
         return $this->redirectToRoute('app_logout');
     }
 }

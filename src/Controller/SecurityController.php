@@ -44,12 +44,11 @@ class SecurityController extends AbstractController
     /**
      * @Route("/logout", name="app_logout")
      * 
-     * Cette fonctione permet de se deconnecter du site
+     * Cette fonctione permet de se deconnecter du site/deconnecter un utilisateur
      * @return void
      */
     public function logout()
     {
-        //Ces lignes de code permet de dire que l'utilisateur est bien hors ligne en bade de donnée
  
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
