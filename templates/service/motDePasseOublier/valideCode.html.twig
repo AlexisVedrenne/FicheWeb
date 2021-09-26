@@ -5,9 +5,11 @@
     <div class="conteneur lg aligne-centre">
         {{ form_start(form) }}
             <h4>Veuillez entrée le code que vous avez reçu par email :</h4>
+            <h6>Pensez à regarder toute les catégories de votre boite mail<br>
+            Parfois le mail peut se mettre ailleur (promotion,spam...)</h6>
             <br>
             {% set digit = code %}
-            {% for i in 0..digit %}
+            {% for i in 1..digit %}
                 <input id="digit-{{ i }}" name="digit-{{ i }}" class="digit form-control" type="number" min="0" max="9" required>
             {% endfor %}
             <br>
