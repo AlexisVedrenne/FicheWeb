@@ -46,14 +46,14 @@ class ServiceController extends AbstractController
             $xml->writeElement('code',$code);
             $xml->endElement();
             $xml->flush();
-            return $this->redirectToRoute('service_firewall');
+            return $this->redirectToRoute('service_firewall',array('mail'=>$request->request->get('mail')));
         }
     }
 
     /**
-     * @Route("/fireWall",name="firewall")
+     * @Route("/fireWall/{mail}",name="firewall")
      */
-    public function fireWallMdp(Request $request){
+    public function fireWallMdp(Request $request,string $mail){
         $code=utf8_decode(simplexml_load_file("varableglobal.xml")->{"code"});
         var_dump($code);
         $longeur=8;
@@ -74,8 +74,8 @@ class ServiceController extends AbstractController
     }
 
 
-    
-    public function motDePasseOublier(UserRepository $repo, int $id,int $code,Request $request, UserPasswordEncoderInterface $passwordEncoder){
-        $user=$repo->find($id);
+
+    public function motDePasseOublier(UserRepository $repo, string $mail,Request $request, UserPasswordEncoderInterface $passwordEncoder){
+        $user=$repo->findOneBy(array('email'=>$mail));
     }
 }
