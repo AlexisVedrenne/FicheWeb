@@ -10,9 +10,11 @@ use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Controller\AppController;
+use App\Form\UserType;
 use App\Form\ValideCodeType;
 use App\Service\Mail;
 use XMLWriter;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
      * @Route("/service", name="service_")
@@ -66,6 +68,12 @@ class ServiceController extends AbstractController
             }
              
             if($submitCode==$code){
+                $xml=new XMLWriter();
+                $xml->openUri("varableglobal.xml");
+                $xml->startElement('mdp');
+                $xml->writeElement('code',$code);
+                $xml->endElement();
+                $xml->flush();
                 return $this->redirectToRoute('service_mdp');
             }
             
@@ -75,7 +83,20 @@ class ServiceController extends AbstractController
 
 
 
-    public function motDePasseOublier(UserRepository $repo, string $mail,Request $request, UserPasswordEncoderInterface $passwordEncoder){
-        $user=$repo->findOneBy(array('email'=>$mail));
+    /**
+     * @Route("/changementmdp",name="mdp")
+     */
+    public function motDePasseOublier(UserRepository $repo,Request $request,EntityManagerInterface $manager, UserPasswordEncoderInterface $passwordEncoder){
+        $user=$repo->findOneBy(array('email'=>utf8_decode(simplexml_load_file("varableglobal.xml")->{"code"})));
+        $form=$this->createForm(UserType::class,$user);
+        $form->handleRequest($request);
+        if($form->isSubmitted()&&$form->isValid()){
+            $user->setPassword($passwordEncoder->encodePassword($user,$user->getPassword()));
+            $manager->persist($user);
+            $manager->flush();
+            return $this->redirectToRoute('app_login');
+        }
+
+        return $this->render('service/motDePasseOublier/changementmdp.html.twig',['form'=>$form->createView()]);
     }
 }
