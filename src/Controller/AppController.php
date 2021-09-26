@@ -35,4 +35,9 @@ class AppController extends AbstractController
         //Cette ligne dirige vers la fonction qui ensuite deconnecter l'utilisateur du site
         return $this->redirectToRoute('app_logout');
     }
+
+    public static function codeGen($longueur){
+        $number= "0123456789";
+        return substr(str_shuffle(str_repeat($number, $longueur)), 0, $longueur);
+    }
 }

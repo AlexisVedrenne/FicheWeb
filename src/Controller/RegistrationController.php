@@ -38,7 +38,6 @@ class RegistrationController extends AbstractController
             );
             //On définit le statut de connexion de l'utilisateur à vrai
             //Car une fois le compte créer on est automatiquement connecter
-            $user->setPseudo("Vévé");
             $user->setStatutConnexion(false);
             //On inscript la date à la laquel l'utilisateur à créer son compte
             //Ici c'est la date actuel
@@ -47,9 +46,7 @@ class RegistrationController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
-            Mail::envoie($user,"Bienvenue !","Félicitation la création de votre compte à été un succès\n
-            Vous pouvez des maintenant accèder à votre espace client, ainsi qu'a toutes les fiches de notre site\n
-            ","<h1>Cordialement l'équipe FicheWeb</h1>");
+            Mail::bienvenue($user);
 
             return $this->redirectToRoute('app_login');
         }

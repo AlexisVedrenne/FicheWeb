@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <br>
+    <div class="conteneur lg aligne-centre">
+        {{ form_start(form) }}
+            <h4>Veuillez entrée le code que vous avez reçu par email :</h4>
+            <br>
+            {% set digit = code %}
+            {% for i in 0..digit %}
+                <input id="digit-{{ i }}" name="digit-{{ i }}" class="digit form-control" type="number" min="0" max="9" required>
+            {% endfor %}
+            <br>
+            <br>
+            <div class="conteneur aligne-centre">
+                {{ form_widget(form.confirmer) }}
+            <div>
+    </div>
+        {{ form_end(form) }}
+    
+{% endblock %}
