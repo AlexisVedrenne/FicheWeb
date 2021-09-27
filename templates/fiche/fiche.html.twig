@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Une fiche ! {% endblock %}
+
+{% block body %}
+    <h1>{{ fiche.nom }}</h1>
+    <!-- Pour afficher la date -->
+    <h1>{{ fiche.dateCreation|date('d-m-Y') }}</h1>
+    <h1>{{ fiche.note }}</h1>
+{% endblock %}
