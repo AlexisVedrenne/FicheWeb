@@ -47,17 +47,21 @@ class ServiceController extends AbstractController
             $code=AppController::codeGen($longeur); //génération du code d'authentification
             $tempCode= AppController::codeGen(4); //génération du code de nommage
             Mail::mdpOublier($request->request->get('mail'),$code); //Envoyer du code d'authentification par mail
-            file_put_contents('temp/temp'.($tempCode*2).'.xml','<app><mdp><code></code><mail></mail></mdp></app>');
-            $xml=simplexml_load_file('temp/temp'.($tempCode*2).'.xml');
-            $xml->mdp[0]->code=$code;
-            $xml->mdp[0]->mail=$request->request->get('mail');
-            $xml->asXML('temp/temp'.($tempCode*2).'.xml');
+            file_put_contents('temp/temp'.($tempCode*2).'.xml','<app><mdp><code></code><mail></mail></mdp></app>'); //création du fichier temporaire
+            $xml=simplexml_load_file('temp/temp'.($tempCode*2).'.xml'); //Lecture du fichier 
+            $xml->mdp[0]->code=$code; //Enregistrement du code d'authentification
+            $xml->mdp[0]->mail=$request->request->get('mail');//Enregistrement du mail
+            $xml->asXML('temp/temp'.($tempCode*2).'.xml'); //Enregistrement du fichier
             return $this->redirectToRoute('service_firewall',array('temp'=>$tempCode));
         }
     }
 
     /**
      * @Route("/fireWall/{temp}",name="firewall")
+     * Cette fonction sert de "firewall" au changement de mot de passe. Cette page permet d'entrée le mot de passe qui
+     * à été envoyer par email. Et vérirife si le code correpond.
+     * 
+     * @return void
      */
     public function fireWallMdp(Request $request,$temp){
         $code=utf8_decode(simplexml_load_file('temp/temp'.($temp*2).'.xml')->mdp[0]->code);
@@ -83,6 +87,7 @@ class ServiceController extends AbstractController
 
     /**
      * @Route("/changementmdp/{temp}",name="mdp")
+     * Cette fonction permet de changer le mot de passe et supprime le fichier temporaire qui à été créer.
      */
     public function motDePasseOublier($temp,UserRepository $repo,Request $request,EntityManagerInterface $manager, UserPasswordEncoderInterface $passwordEncoder){
         $user=$repo->findOneBy(array('email'=>utf8_decode(simplexml_load_file('temp/temp'.($temp*2).'.xml')->mdp[0]->mail)));
