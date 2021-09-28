@@ -31,6 +31,11 @@ class ServiceController extends AbstractController
 
     /**
      * @Route("/motDePasseOublier",name="demande")
+     * Cette fonction permet de générer la demmande de mot de passe.
+     * Une fois l'adresse mail renseigner, la fonction va générer un code qui 
+     * servivra d'authentification et sera envoyer par mail. Elle va également créer un fichier temporaire
+     * puis générer un deuxième codes qui va service à nommer le fichier temporaire. Qui lui contiendra le code
+     * d'authentification et l'email de l'utilisateur.
      */
     public function dmdMdp(Request $request){ 
         
@@ -39,14 +44,14 @@ class ServiceController extends AbstractController
         }
         else{
             $longeur= 8;
-            $code=AppController::codeGen($longeur);
-            $tempCode= AppController::codeGen(4);
-            Mail::mdpOublier($request->request->get('mail'),$code);
-            file_put_contents('temp/temp'.$tempCode.'.xml','<app><mdp><code></code><mail></mail></mdp></app>');
-            $xml=simplexml_load_file('temp/temp'.$tempCode.'.xml');
+            $code=AppController::codeGen($longeur); //génération du code d'authentification
+            $tempCode= AppController::codeGen(4); //génération du code de nommage
+            Mail::mdpOublier($request->request->get('mail'),$code); //Envoyer du code d'authentification par mail
+            file_put_contents('temp/temp'.($tempCode*2).'.xml','<app><mdp><code></code><mail></mail></mdp></app>');
+            $xml=simplexml_load_file('temp/temp'.($tempCode*2).'.xml');
             $xml->mdp[0]->code=$code;
             $xml->mdp[0]->mail=$request->request->get('mail');
-            $xml->asXML('temp/temp'.$tempCode.'.xml');
+            $xml->asXML('temp/temp'.($tempCode*2).'.xml');
             return $this->redirectToRoute('service_firewall',array('temp'=>$tempCode));
         }
     }
@@ -55,8 +60,7 @@ class ServiceController extends AbstractController
      * @Route("/fireWall/{temp}",name="firewall")
      */
     public function fireWallMdp(Request $request,$temp){
-        $code=utf8_decode(simplexml_load_file('temp/temp'.$temp.'.xml')->mdp[0]->code);
-        var_dump($code);
+        $code=utf8_decode(simplexml_load_file('temp/temp'.($temp*2).'.xml')->mdp[0]->code);
         $longeur=8;
         $form=$this->createForm(ValideCodeType::class);
         $form->handleRequest($request);
@@ -81,14 +85,14 @@ class ServiceController extends AbstractController
      * @Route("/changementmdp/{temp}",name="mdp")
      */
     public function motDePasseOublier($temp,UserRepository $repo,Request $request,EntityManagerInterface $manager, UserPasswordEncoderInterface $passwordEncoder){
-        $user=$repo->findOneBy(array('email'=>utf8_decode(simplexml_load_file('temp/temp'.$temp.'.xml')->mdp[0]->mail)));
+        $user=$repo->findOneBy(array('email'=>utf8_decode(simplexml_load_file('temp/temp'.($temp*2).'.xml')->mdp[0]->mail)));
         $form=$this->createForm(UserType::class,$user);
         $form->handleRequest($request);
         if($form->isSubmitted()&&$form->isValid()){
             $user->setPassword($passwordEncoder->encodePassword($user,$user->getPassword()));
             $manager->persist($user);
             $manager->flush();
-            unlink('temp/temp'.$temp.'.xml');
+            unlink('temp/temp'.($temp*2).'.xml');
             return $this->redirectToRoute('app_login');
         }
 
