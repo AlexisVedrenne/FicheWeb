@@ -4,7 +4,8 @@
 {% block title %}Ajouter une fiche{% endblock %}
 
 {% block body %}
-    <h1> Ajouter une fiche</h1>
+<div class='card text-center'>
+    <h1 class=""> Ajouter une fiche</h1>
     {{ form_start(form)}}
     <div class="container">
     {{form_label(form.nom, 'titre de la fiche') }}
@@ -18,5 +19,5 @@
     {{form_end(form)}}
     <button type="submit" class='btn btn-success'> Ajouter </button>
     </div>
-
+</div>
 {% endblock %}
