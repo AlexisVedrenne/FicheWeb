@@ -26,6 +26,13 @@ class Categorie
 
     /**
      * @ORM\ManyToMany(targetEntity=Fiche::class, inversedBy="lesCategories")
+     * @ORM\JoinTable(
+     *              name="CategorieparFiche",
+     *              joinColumns={@ORM\JoinColumn(name="idcategorie",referencedColumnName="id")},
+     *              inverseJoinColumns={@ORM\JoinColumn(name="idfiche",referencedColumnName="id")}
+     *              )
+     * 
+     * }
      */
     private $lesFiches;
 

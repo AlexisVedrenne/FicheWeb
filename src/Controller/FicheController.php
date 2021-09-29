@@ -36,7 +36,7 @@ class FicheController extends AbstractController
         $form=$this->createForm(FicheType::class,$fiche);
         $form->handleRequest($request);
         if($form->isSubmitted() and $form->isValid()){
-            $fiche->setDateCreation(new DateTime('m-d-Y h:i:s a'));
+            $fiche->setDateCreation(new DateTime("NOW"));
             $fiche->setUser($this->getUser());
             $manager->persist($fiche);
             $manager->flush();
