@@ -1,0 +1,20 @@
+body{
+    background-color: rgb(2, 255, 2);
+}
+.titre{
+    color: blue;
+}
+.consultation-header{
+    background-color: black;
+}
+
+div.container-fluid{
+    background-color: tomato;
+    border: 2px solid blue;
+}
+
+li{
+    text-decoration: none;
+    text-decoration-style: none;
+}
+

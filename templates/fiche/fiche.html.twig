@@ -1,10 +1,95 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+            <link rel="stylesheets" href="{{asset('css\styles.css')}}">
+{% endblock %}
+
 {% block title %} Une fiche ! {% endblock %}
 
 {% block body %}
-    <h1>{{ fiche.nom }}</h1>
-    <!-- Pour afficher la date -->
-    <h1>{{ fiche.dateCreation|date('d-m-Y') }}</h1>
-    <h1>{{ fiche.note }}</h1>
+    <style>
+        body{
+            /*background:linear-gradient(147deg, #a399b2 0%, #4d4855 74%);*/
+            /*background: linear-gradient(147deg, #f9fcff 0%, #dee4ea 74%);*/
+            /*background: linear-gradient(150deg, #2b4162 0%, #12100e 74%);*/
+
+            
+
+
+            background-attachment:fixed;
+            background-size:cover;
+            
+        }
+        h1{
+            color:white;
+        }
+        .consultation-header{
+            /*background: linear-gradient(315deg, #c2b6b6 0%, #576574 74%);*/
+            background: linear-gradient(0deg,#000,#404040);
+            
+            height: 100px;
+            padding: 20px;
+        }
+        .titre{
+            font-size: 40px;
+        }
+        .resultat{
+            text-align:center;
+            /*border:1px solid white;*/
+            margin-top:50px;
+            margin-left:200px;
+            margin-right:200px;
+            height:650px;
+            /*background:linear-gradient(147deg, #a399b2 0%, #4d4855 74%);*/
+            /*background: linear-gradient(147deg, #f9fcff 0%, #dee4ea 74%);*/
+            background: linear-gradient(315deg, #c2b6b6 0%, #576574 74%);
+            box-shadow: -30px 30px 20px rgba( 240, 255, 255, 1 );
+        }
+        .shadow{
+            position: relative;
+            margin:100px 100px;
+            height: 500px;
+            background: linear-gradient(0deg,#000,#262626);
+        }
+        .shadow:before, .shadow:after{
+            content: '';
+            position: absolute;
+            top:-2px;
+            left:-2px;
+            background: linear-gradient(45deg,#fb0094,#0000ff,#00ff00,#ffff00,#ff0000
+            ,#fb0094,#0000ff,#00ff00,#ffff00,#ff0000);
+            background-size:400%;
+            width:calc(100% + 4px);
+            height:calc(100% + 4px);
+            z-index: -1;
+            animation: animate 20s linear infinite;
+        }
+        .shadow:after{
+            filter: blur(20px);
+        }
+        @keyframes animate{
+            0%{
+                background-position: 0 0;
+            }
+            50%{
+                background-position: 300% 0;
+            }
+            100%{
+                background-position: 0 0;
+            }
+        }
+       
+
+    </style>
+    <div class ="consultation-header"> 
+        <h1 class="titre"> <center> Consultation </center> </h1>
+    </div>
+    
+    
+    <div class="shadow">
+        
+    </div>
+     <br><br><br>
+    
 {% endblock %}
