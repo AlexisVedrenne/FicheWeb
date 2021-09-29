@@ -20,18 +20,20 @@ class Categorie
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=30)
+     * @ORM\Column(type="string", length=50)
      */
-    private $libelle;
+    private $nom;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Fiche::class, inversedBy="lesCategories")
+     * @ORM\OneToMany(targetEntity=Fiche::class, mappedBy="laCategorie", orphanRemoval=true)
      */
-    private $lesFiches;
+    private $fiches;
+
 
     public function __construct()
     {
         $this->lesFiches = new ArrayCollection();
+        $this->fiches = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -39,14 +41,14 @@ class Categorie
         return $this->id;
     }
 
-    public function getLibelle(): ?string
+    public function getNom(): ?string
     {
-        return $this->libelle;
+        return $this->nom;
     }
 
-    public function setLibelle(string $libelle): self
+    public function setNom(string $nom): self
     {
-        $this->libelle = $libelle;
+        $this->nom = $nom;
 
         return $this;
     }
@@ -54,24 +56,33 @@ class Categorie
     /**
      * @return Collection|Fiche[]
      */
-    public function getLesFiches(): Collection
+    public function getFiches(): Collection
     {
-        return $this->lesFiches;
+        return $this->fiches;
     }
 
-    public function addLesFich(Fiche $lesFich): self
+    public function addFiche(Fiche $fich): self
     {
-        if (!$this->lesFiches->contains($lesFich)) {
-            $this->lesFiches[] = $lesFich;
+        if (!$this->fiches->contains($fich)) {
+            $this->fiches[] = $fich;
+            $fich->setLaCategorie($this);
         }
 
         return $this;
     }
 
-    public function removeLesFich(Fiche $lesFich): self
+    public function removeFiche(Fiche $fich): self
     {
-        $this->lesFiches->removeElement($lesFich);
+        if ($this->fiches->removeElement($fich)) {
+            // set the owning side to null (unless already changed)
+            if ($fich->getLaCategorie() === $this) {
+                $fich->setLaCategorie(null);
+            }
+        }
 
         return $this;
     }
+
+   
+  
 }

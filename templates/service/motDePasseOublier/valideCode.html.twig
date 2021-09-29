@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <br>
+    
+        {{ form_start(form) }}
+        <div class="container">
+            <h4 class="text-center">Veuillez entrée le code que vous avez reçu par email :</h4>
+            <h6 class="text-center">Pensez à regarder toute les catégories de votre boite mail<br>
+            Parfois le mail peut se mettre ailleur (promotion,spam...)</h6>
+            <br>
+            <div class="row">
+                <div class="ms-4">
+                    {% set digit = code %}
+                    {% for i in 1..digit %}
+                        <input id="digit-{{ i }}" name="digit-{{ i }}" class="col-1 d-flex justify-content-center digit form-control" type="number" min="0" max="9" required>
+                    {% endfor %}
+                </div>
+            </div>
+            <br>
+            <div class="conteneur aligne-centre">
+                {{ form_widget(form.confirmer) }}
+            <div>
+        </div>
+        {{ form_end(form) }}
+    
+{% endblock %}
