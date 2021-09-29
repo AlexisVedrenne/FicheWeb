@@ -19,8 +19,8 @@ class FicheType extends AbstractType
             ->add('lesCategories',EntityType::class,[
                 'class'=>Categorie::class,
                 'choice_label'=>'libelle',
-                'expanded'=>true,
-                'multiple'=>true,
+                'expanded'=>false,
+                'multiple'=>false,
 
             ])  
            
