@@ -2,35 +2,26 @@
 
 namespace App\Form;
 
-use App\Entity\Fiche;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\Categorie;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use App\Entity\Categorie;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
-class FicheType extends AbstractType
+class CategorieType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom',TextType::class)
-            ->add('laCategorie',EntityType::class,[
-                'class'=>Categorie::class,
-                'choice_label'=>'nom',
-                'expanded'=>false,
-                'multiple'=>false,
-
-            ])  
-           
+            ->add('libelle',TextType::class)
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Fiche::class,
+            'data_class' => Categorie::class,
         ]);
     }
 }

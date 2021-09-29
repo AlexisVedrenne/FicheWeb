@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création d'un compte{% endblock %}
+
+{% block javascripts %} <script type="text/javascript" src="{{ asset("js/inscription.js") }}"></script> {% endblock %}
+
+{% block body %}
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+ 
+    <div class="container col-4 ">
+        <h1 class="text-center" style="text-transform: uppercase;">Créer votre compte utilisateur</h1>
+        {{ form_start(registrationForm) }}
+            <label>Pseudo</label>
+            <div class="input-group flex-nowrap">
+                <span class="input-group-text" id="addon-wrapping"><i class="bi bi-person-circle"></i></span>
+                {{ form_widget(registrationForm.pseudo,{'attr':{'class':'form-control','placeholder':'Entrée votre pseudo...'}})}}
+            </div>
+
+            <label>Adresse eMail</label>
+            <div class="input-group flex-nowrap">
+                <span class="input-group-text" id="addon-wrapping"><i class="bi bi-envelope"></i></span>
+                {{ form_widget(registrationForm.email,{'attr':{'class':'form-control','placeholder':'Entrée votre adresse mail...'}})}}
+            </div>
+
+            <label>Mot de passe</label>
+            <div class="input-group flex-nowrap">
+                <span class="input-group-text" id="addon-wrapping"><i class="bi bi-key"></i></span>
+                {{ form_widget(registrationForm.plainPassword,{'attr':{'class':'form-control','placeholder':'Entrée votre mot de passe...'}})}}
+            </div>
+            
+            <label>Confimer le mot de passe</label>
+            <div class="input-group flex-nowrap">
+                <span class="input-group-text" id="addon-wrapping"><i class="bi bi-key"></i></span>
+                <input placeholder="Confimer le mot de passe..." class="form-control" type="password" name="confirm_password" id="confirm_password"  onkeyup='check();' required /> 
+            </div> 
+            <div class="text-center" id='message'></div>                         
+    </div>
+    <br>
+    <div class="conteneur">
+        <div class="form-check aligne-centre">
+            {{ form_widget(registrationForm.agreeTerms,{'attr':{'class':'form-check-input'}})}}
+            <label id="thermeLabel" class="form-check-label"><i class="bi bi-journal-text"></i>Accepter les thermes d'utilisation</label>
+            <div>
+                <button id="btnEnregistrer" type="submit" class="btn btn-success " disabled>Créer <i class="bi bi-arrow-right"></i></button>
+            </div
+        
+
+        {{ form_end(registrationForm) }}
+{% endblock %}
