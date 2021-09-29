@@ -30,6 +30,11 @@ class Fiche
      */
     private $laCategorie;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Commentaire::class, inversedBy="fiches")
+     */
+    private $commentaire;
+
 
 
     public function __construct()
@@ -62,6 +67,18 @@ class Fiche
     public function setLaCategorie(?Categorie $laCategorie): self
     {
         $this->laCategorie = $laCategorie;
+
+        return $this;
+    }
+
+    public function getCommentaire(): ?Commentaire
+    {
+        return $this->commentaire;
+    }
+
+    public function setCommentaire(?Commentaire $commentaire): self
+    {
+        $this->commentaire = $commentaire;
 
         return $this;
     }
