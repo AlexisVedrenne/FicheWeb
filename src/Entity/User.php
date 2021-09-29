@@ -53,15 +53,9 @@ class User implements UserInterface
      */
     private $dateInscription;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Fiche::class, mappedBy="user")
-     */
-    private $lesFiches;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="user")
-     */
-    private $lesCommentaires;
+    
+    
 
     public function __construct()
     {
@@ -183,63 +177,5 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * @return Collection|Fiche[]
-     */
-    public function getLesFiches(): Collection
-    {
-        return $this->lesFiches;
-    }
-
-    public function addLesFich(Fiche $lesFich): self
-    {
-        if (!$this->lesFiches->contains($lesFich)) {
-            $this->lesFiches[] = $lesFich;
-            $lesFich->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeLesFich(Fiche $lesFich): self
-    {
-        if ($this->lesFiches->removeElement($lesFich)) {
-            // set the owning side to null (unless already changed)
-            if ($lesFich->getUser() === $this) {
-                $lesFich->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Commentaire[]
-     */
-    public function getLesCommentaires(): Collection
-    {
-        return $this->lesCommentaires;
-    }
-
-    public function addLesCommentaire(Commentaire $lesCommentaire): self
-    {
-        if (!$this->lesCommentaires->contains($lesCommentaire)) {
-            $this->lesCommentaires[] = $lesCommentaire;
-            $lesCommentaire->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeLesCommentaire(Commentaire $lesCommentaire): self
-    {
-        if ($this->lesCommentaires->removeElement($lesCommentaire)) {
-            // set the owning side to null (unless already changed)
-            if ($lesCommentaire->getUser() === $this) {
-                $lesCommentaire->setUser(null);
-            }
-        }
-
-        return $this;
-    }
+    
 }

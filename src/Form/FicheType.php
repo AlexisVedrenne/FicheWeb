@@ -16,11 +16,11 @@ class FicheType extends AbstractType
     {
         $builder
             ->add('nom',TextType::class)
-            ->add('lesCategories',EntityType::class,[
+            ->add('laCategorie',EntityType::class,[
                 'class'=>Categorie::class,
-                'choice_label'=>'libelle',
-                'expanded'=>true,
-                'multiple'=>true,
+                'choice_label'=>'nom',
+                'expanded'=>false,
+                'multiple'=>false,
 
             ])  
            

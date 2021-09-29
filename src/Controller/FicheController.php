@@ -36,11 +36,12 @@ class FicheController extends AbstractController
         $form=$this->createForm(FicheType::class,$fiche);
         $form->handleRequest($request);
         if($form->isSubmitted() and $form->isValid()){
-            $fiche->setDateCreation(new DateTime("NOW"));
-            $fiche->setUser($this->getUser());
+
+
             $manager->persist($fiche);
             $manager->flush();
-            return $this->redirectToRoute('fiche_add');
+            //var_dump($fiche);
+            // return $this->redirectToRoute('fiche_add');
 
         }
         return $this->render('fiche/ajouter.html.twig',['form'=>$form->createView()]);
