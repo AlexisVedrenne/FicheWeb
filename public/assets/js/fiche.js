@@ -5,34 +5,33 @@ function getMedia(nb){
 }
 
 function addMedia(nb,contenue){
-    div=document.getElementById('contenue-'+contenue).children["media-"+nb];
-    div.appendChild(document.createElement('div')).setAttribute("id","iLien-"+nb);
+    div=document.getElementById('iRub-'+contenue).children["media-"+nb];
+    div.appendChild(document.createElement("h5")).setAttribute("id","hmd-"+nb);
+    div.children["hmd-"+nb].innerText="Media "+nb;
     div.appendChild(document.createElement('div')).setAttribute("id","iType-"+nb);
-    
+    div.appendChild(document.createElement('div')).setAttribute("id","iLien-"+nb);
+    div.classList.add("row");
     lien=div.children["iLien-"+nb];
     type=div.children["iType-"+nb];
-    
     lien.appendChild(document.createElement("input")).setAttribute("id","lien-"+nb);
     type.appendChild(document.createElement("input")).setAttribute("id","type-"+nb);
     console.log(lien);   
 
+    ajtLien(lien.children["lien-"+nb],nb);
+    ajtType(type.children["type-"+nb]);
+
 }
 
-function ajtLien(input){
-    input.setAttribute("name","lien-"+nbContenue);
+function ajtLien(input,nb){
+    input.setAttribute("name","lien-"+nb);
     input.setAttribute("type","text");
+    input.setAttribute("placeholder","Ajoutez un lien ici...");
     input.classList.add ("mb-2");
     input.classList.add ("mt-2");
     input.classList.add ("form-control");
 
 }
-function getLien(nb){
-    return document.getElementById("lien-"+nb);
-}
 
-function getType(nb){
-    return document.getElementById('type-'+nb);
-}
 
 function ajtAttrDiv() {
     document.getElementById('media-'+nbContenue).classList.add("row");
@@ -41,9 +40,10 @@ function ajtAttrDiv() {
     
 }
 
-function ajtType(input){
-    input.setAttribute("name","type-"+nbContenue);
+function ajtType(input,nb){
+    input.setAttribute("name","type-"+nb);
     input.setAttribute("type","text");
+    input.setAttribute("placeholder","Selectionez un type...");
     input.classList.add ("form-control");
 }
 
@@ -60,7 +60,18 @@ function addContenue(element){
     element.appendChild(document.createElement("div")).setAttribute("id","contenue-"+nbContenue);
     //Récupération de notre div contenue-nb dans une variable
     div = document.getElementById("contenue-"+nbContenue);
-    div.appendChild(document.createElement("button")).setAttribute("id","btnMd-"+nbContenue);
+    div.appendChild(document.createElement("div")).setAttribute("id","ctnhead-"+nbContenue);
+    div.children["ctnhead-"+nbContenue].classList.add("row");
+    div.children["ctnhead-"+nbContenue].classList.add("col-12");
+    div.children["ctnhead-"+nbContenue].appendChild(document.createElement("div")).setAttribute("id","titre-"+nbContenue);
+    div.children["ctnhead-"+nbContenue].children["titre-"+nbContenue].classList.add("col-3");
+    div.children["ctnhead-"+nbContenue].children["titre-"+nbContenue].classList.add("offset-3");
+    div.children["ctnhead-"+nbContenue].children["titre-"+nbContenue].classList.add("ml-5")
+    div.children["ctnhead-"+nbContenue].children["titre-"+nbContenue].appendChild(document.createElement("a")).setAttribute("id","btnMd-"+nbContenue);
+    div.children["ctnhead-"+nbContenue].children["titre-"+nbContenue].children["btnMd-"+nbContenue].classList.add("btn");
+    div.children["ctnhead-"+nbContenue].children["titre-"+nbContenue].children["btnMd-"+nbContenue].classList.add("btn-secondary");
+    div.children["ctnhead-"+nbContenue].children["titre-"+nbContenue].children["btnMd-"+nbContenue].classList.add("t")
+    div.children["ctnhead-"+nbContenue].children["titre-"+nbContenue].children["btnMd-"+nbContenue].innerHTML="<i class='bi bi-plus-circle-fill'></i>";
     div.appendChild(document.createElement("input")).setAttribute("id","nbMedia-"+nbContenue);
     document.getElementById("btnMd-"+nbContenue).setAttribute("value",""+nbContenue);
     document.getElementById("nbMedia-"+nbContenue).setAttribute("value","0");
@@ -69,10 +80,14 @@ function addContenue(element){
         nbMedia=document.getElementById("nbMedia-"+this.value).value;
         nbMedia++;
         document.getElementById("nbMedia-"+this.value).value=nbMedia
-        document.getElementById("contenue-"+this.value).appendChild(document.createElement("div")).setAttribute("id","media-"+nbMedia);
+        document.getElementById("contenue-"+this.value).children["iRub-"+this.value].appendChild(document.createElement("div")).setAttribute("id","media-"+nbMedia);
         addMedia(nbMedia,this.value);
     });
     //Création d'une nouvelle div dans notre div contenue-nb
+
+    div.children["ctnhead-"+nbContenue].appendChild(document.createElement("h5")).setAttribute("id","hrub-"+nbContenue)
+    div.children["ctnhead-"+nbContenue].children["hrub-"+nbContenue].innerText="Contenue "+nbContenue;
+    div.children["ctnhead-"+nbContenue].children["hrub-"+nbContenue].classList.add("col-5");
     div.appendChild(document.createElement("div")).setAttribute("id","iRub-"+nbContenue);
     //Création d'une nouvelle div dans notre div contenue-nb
     div.appendChild(document.createElement("div")).setAttribute("id","iDes-"+nbContenue);
@@ -86,6 +101,7 @@ function addContenue(element){
 function ajtAttrRub(input){
     input.setAttribute("name","rub-"+nbContenue);
     input.setAttribute("type","text");
+    input.setAttribute("placeholder","Entrez un titre à votre contenue...");
     input.classList.add("mb-2");
     input.classList.add("mt-2");
     input.classList.add("form-control");
@@ -103,6 +119,7 @@ function ajtAtrrDes(input){
     input.setAttribute("name","des-"+nbContenue);
     input.setAttribute("type","text");
     input.setAttribute("rows","15");
+    input.setAttribute("placeholder","Ajoutez ici une description...");
     input.classList.add("mb-2");
     input.classList.add("mt-2");
     input.classList.add("form-control");

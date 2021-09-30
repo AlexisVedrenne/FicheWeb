@@ -3,6 +3,8 @@
 
 {% block title %}Ajouter une fiche{% endblock %}
 
+{% block javascripts %} <script type="text/javascript" src="{{ asset("js/fiche.js") }}"></script>{% endblock %}
+
 {% block body %}
 <div class='card text-center'>
     <h1 class=""> Ajouter une fiche</h1>
@@ -17,7 +19,9 @@
     <br>
 
     {{form_end(form)}}
-    <button type="submit" class='btn btn-success'> Ajouter </button>
-    </div>
+    <a class="btn btn-secondary" id="btnCtn">Ajouter un contenue</a>
+
+    <div class="container" id="contenue"></div>
+   
 </div>
 {% endblock %}
