@@ -1,5 +1,53 @@
-
 var nbContenue=0;
+
+function getMedia(nb){
+    return document.getElementById('media-'+nb);
+}
+
+function addMedia(nb,contenue){
+    div=document.getElementById('contenue-'+contenue).children["media-"+nb];
+    div.appendChild(document.createElement('div')).setAttribute("id","iLien-"+nb);
+    div.appendChild(document.createElement('div')).setAttribute("id","iType-"+nb);
+    
+    lien=div.children["iLien-"+nb];
+    type=div.children["iType-"+nb];
+    
+    lien.appendChild(document.createElement("input")).setAttribute("id","lien-"+nb);
+    type.appendChild(document.createElement("input")).setAttribute("id","type-"+nb);
+    console.log(lien);   
+
+}
+
+function ajtLien(input){
+    input.setAttribute("name","lien-"+nbContenue);
+    input.setAttribute("type","text");
+    input.classList.add ("mb-2");
+    input.classList.add ("mt-2");
+    input.classList.add ("form-control");
+
+}
+function getLien(nb){
+    return document.getElementById("lien-"+nb);
+}
+
+function getType(nb){
+    return document.getElementById('type-'+nb);
+}
+
+function ajtAttrDiv() {
+    document.getElementById('media-'+nbContenue).classList.add("row");
+    document.getElementById('iLien-'+nbContenue).classList.add('col-sm-5');
+    
+    
+}
+
+function ajtType(input){
+    input.setAttribute("name","type-"+nbContenue);
+    input.setAttribute("type","text");
+    input.classList.add ("form-control");
+}
+
+
 
 function getContenue(){
     return document.getElementById('contenue');
@@ -12,6 +60,18 @@ function addContenue(element){
     element.appendChild(document.createElement("div")).setAttribute("id","contenue-"+nbContenue);
     //Récupération de notre div contenue-nb dans une variable
     div = document.getElementById("contenue-"+nbContenue);
+    div.appendChild(document.createElement("button")).setAttribute("id","btnMd-"+nbContenue);
+    div.appendChild(document.createElement("input")).setAttribute("id","nbMedia-"+nbContenue);
+    document.getElementById("btnMd-"+nbContenue).setAttribute("value",""+nbContenue);
+    document.getElementById("nbMedia-"+nbContenue).setAttribute("value","0");
+    document.getElementById("nbMedia-"+nbContenue).setAttribute("hidden","true");
+    document.getElementById('btnMd-'+nbContenue).addEventListener('click',function(){
+        nbMedia=document.getElementById("nbMedia-"+this.value).value;
+        nbMedia++;
+        document.getElementById("nbMedia-"+this.value).value=nbMedia
+        document.getElementById("contenue-"+this.value).appendChild(document.createElement("div")).setAttribute("id","media-"+nbMedia);
+        addMedia(nbMedia,this.value);
+    });
     //Création d'une nouvelle div dans notre div contenue-nb
     div.appendChild(document.createElement("div")).setAttribute("id","iRub-"+nbContenue);
     //Création d'une nouvelle div dans notre div contenue-nb
@@ -63,61 +123,9 @@ document.getElementById('btnCtn').addEventListener('click',function(){
     ajtAttrDiv();
     console.log(nbContenue);
 });
-var nbMedia=0;
-function getMedia(){
-    return document.getElementById('media');
-}
-
-function addMedia(element){
-    nbMedia++;
-    element.appendChild(document.createElement("div")).setAttribute("id","media-"+nbMedia);
-    div=document.getElementById('media-'+nbMedia);
-    div.appendChild(document.createElement('div')).setAttribute("id","iLien-"+nbMedia);
-    div.appendChild(document.createElement('div')).setAttribute("id","iType-"+nbMedia);
-    
-    
-    
-    document.getElementById('iLien-'+nbMedia).appendChild(document.createElement("input")).setAttribute("id","lien-"+nbMedia);
-    document.getElementById('iType-'+nbMedia).appendChild(document.createElement("input")).setAttribute("id","type-"+nbMedia);
-    
-
-}
-
-function ajtLien(input){
-    input.setAttribute("name","lien-"+nbMedia);
-    input.setAttribute("type","text");
-    input.classList.add ("mb-2");
-    input.classList.add ("mt-2");
-    input.classList.add ("form-control");
-
-}
-function getLien(nb){
-    return document.getElementById("lien-"+nb);
-}
-
-function getType(nb){
-    return document.getElementById('type-'+nb);
-}
-
-function ajtAttrDiv() {
-    document.getElementById('media-'+nbMedia).classList.add("row");
-    document.getElementById('iLien-'+nbMedia).classList.add('col-sm-5');
-    
-    
-}
-
-function ajtType(input){
-    input.setAttribute("name","type-"+nbMedia);
-    input.setAttribute("type","text");
-    input.classList.add ("form-control");
-}
 
 
-document.getElementById('btnMd').addEventListener('click',function(){
-    addMedia(getMedia());
-    ajtLien(getLien(nbMedia));
-    ajtType(getType(nbMedia));
-    ajtAttrDiv();
-    console.log(nbMedia);
-});
+
+
+
 
