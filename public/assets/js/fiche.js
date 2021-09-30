@@ -67,18 +67,20 @@ function addContenue(element){
     div.children["ctnhead-"+nbContenue].children["titre-"+nbContenue].classList.add("col-3");
     div.children["ctnhead-"+nbContenue].children["titre-"+nbContenue].classList.add("offset-3");
     div.children["ctnhead-"+nbContenue].children["titre-"+nbContenue].classList.add("ml-5")
-    div.children["ctnhead-"+nbContenue].children["titre-"+nbContenue].appendChild(document.createElement("a")).setAttribute("id","btnMd-"+nbContenue);
+    div.children["ctnhead-"+nbContenue].children["titre-"+nbContenue].appendChild(document.createElement("button")).setAttribute("id","btnMd-"+nbContenue);
     div.children["ctnhead-"+nbContenue].children["titre-"+nbContenue].children["btnMd-"+nbContenue].classList.add("btn");
     div.children["ctnhead-"+nbContenue].children["titre-"+nbContenue].children["btnMd-"+nbContenue].classList.add("btn-secondary");
-    div.children["ctnhead-"+nbContenue].children["titre-"+nbContenue].children["btnMd-"+nbContenue].classList.add("t")
     div.children["ctnhead-"+nbContenue].children["titre-"+nbContenue].children["btnMd-"+nbContenue].innerHTML="<i class='bi bi-plus-circle-fill'></i>";
+    div.children["ctnhead-"+nbContenue].children["titre-"+nbContenue].children["btnMd-"+nbContenue].setAttribute("type","button");
     div.appendChild(document.createElement("input")).setAttribute("id","nbMedia-"+nbContenue);
-    document.getElementById("btnMd-"+nbContenue).setAttribute("value",""+nbContenue);
-    document.getElementById("nbMedia-"+nbContenue).setAttribute("value","0");
-    document.getElementById("nbMedia-"+nbContenue).setAttribute("hidden","true");
-    document.getElementById('btnMd-'+nbContenue).addEventListener('click',function(){
+    div.children["ctnhead-"+nbContenue].children["titre-"+nbContenue].children["btnMd-"+nbContenue].setAttribute("value",""+nbContenue);
+    div.children["nbMedia-"+nbContenue].setAttribute("value","0");
+    div.children["nbMedia-"+nbContenue].setAttribute("hidden","true");
+    div.children["ctnhead-"+nbContenue].children["titre-"+nbContenue].children["btnMd-"+nbContenue].addEventListener('click',function(){
+        console.log(this);
         nbMedia=document.getElementById("nbMedia-"+this.value).value;
         nbMedia++;
+        console.log(nbMedia);
         document.getElementById("nbMedia-"+this.value).value=nbMedia
         document.getElementById("contenue-"+this.value).children["iRub-"+this.value].appendChild(document.createElement("div")).setAttribute("id","media-"+nbMedia);
         addMedia(nbMedia,this.value);
