@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Modifier une fiche{% endblock %}
+
+{% block body %}
+<div class='card text-center'>
+    <h1 class=""> Modifier une fiche</h1>
+    {{ form_start(form)}}
+    <div class="container">
+    {{form_label(form.nom, 'titre de la fiche') }}
+    {{form_widget(form.nom, {'attr':{'placeholder':"Titre de la fiche ",'class':"form-control"}}) }}
+    
+    {{form_label(form.nom, 'Les Catégories') }}
+    {{form_widget(form.laCategorie, {'attr':{'placeholder':"Catégorie ",'class':"form-select"}}) }}
+    
+    <br>
+
+    {{form_end(form)}}
+    <button type="submit" class='btn btn-success'> Modifier </button>
+    </div>
+</div>
+{% endblock %}
