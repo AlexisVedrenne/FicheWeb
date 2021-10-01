@@ -64,4 +64,14 @@ class FicheController extends AbstractController
         return $this->render('fiche/ajouter.html.twig',['form'=>$form->createView()]);
 
     }
+
+
+    /**
+     * @Route("/tous",name="tous")
+     */
+    public function getAll(FicheRepository $repo){
+        $lesFiches=$repo->findAll();
+
+        return $this->render('fiche/allFiches.html.twig',['lesFiches'=>$lesFiches]);
+    }
 }
