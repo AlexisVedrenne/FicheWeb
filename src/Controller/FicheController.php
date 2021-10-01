@@ -37,9 +37,9 @@ class FicheController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted() and $form->isValid()){
 
-
-            $manager->persist($fiche);
-            $manager->flush();
+            var_dump($request->request);
+            // $manager->persist($fiche);
+            // $manager->flush();
             //var_dump($fiche);
             // return $this->redirectToRoute('fiche_add');
 

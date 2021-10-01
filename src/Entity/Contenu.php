@@ -23,11 +23,6 @@ class Contenu
     private $rubrique;
 
     /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $media;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private $description;
@@ -54,17 +49,6 @@ class Contenu
         return $this;
     }
 
-    public function getMedia(): ?string
-    {
-        return $this->media;
-    }
-
-    public function setMedia(string $media): self
-    {
-        $this->media = $media;
-
-        return $this;
-    }
 
     public function getDescription(): ?string
     {

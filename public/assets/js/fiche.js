@@ -15,15 +15,15 @@ function addMedia(nb,contenue){
     type=div.children["iType-"+nb];
     lien.appendChild(document.createElement("input")).setAttribute("id","lien-"+nb);
     type.appendChild(document.createElement("input")).setAttribute("id","type-"+nb);
-    console.log(lien);   
-
-    ajtLien(lien.children["lien-"+nb],nb);
-    ajtType(type.children["type-"+nb]);
+    ajtLien(lien.children["lien-"+nb],nb,contenue);
+    ajtType(type.children["type-"+nb],nb,contenue);
+    console.log(lien);
+    console.log(type);
 
 }
 
-function ajtLien(input,nb){
-    input.setAttribute("name","lien-"+nb);
+function ajtLien(input,nb,contenue){
+    input.setAttribute("name","lien-"+nb+"-"+contenue);
     input.setAttribute("type","text");
     input.setAttribute("placeholder","Ajoutez un lien ici...");
     input.classList.add ("mb-2");
@@ -40,8 +40,8 @@ function ajtAttrDiv() {
     
 }
 
-function ajtType(input,nb){
-    input.setAttribute("name","type-"+nb);
+function ajtType(input,nb,contenue){
+    input.setAttribute("name","type-"+nb+"-"+contenue);
     input.setAttribute("type","text");
     input.setAttribute("placeholder","Selectionez un type...");
     input.classList.add ("form-control");
