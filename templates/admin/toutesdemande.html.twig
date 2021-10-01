@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <div class="container">
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th colspan="2">Numéro</th>
+                <th colspan="2">Catégorie</th>
+                <th colspan="2">Objet</th>
+                <th colspan="2">Utilisateur</th>
+            </tr>
+        </thead><tbody>
+        <tr>
+        {% for demande in demandes %}
+
+            <td>{{ demande.id }}</td>
+            <td>{{ demande.categorie.nom }}</td>
+            <td>{{ demande.objet }}</td>
+            <td>{{ demande.user.pseudo }}</td>
+            
+
+        {% endfor %}
+         </tr>
+    </tbody>
+    </table>
+    </div>
+
+{% endblock %}

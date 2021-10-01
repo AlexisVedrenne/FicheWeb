@@ -10,7 +10,7 @@
     <h1 class=""> Ajouter une fiche</h1>
     {{ form_start(form)}}
     <div class="container">
-    {{form_label(form.nom, 'titre de la fiche') }}
+    {{form_label(form.nom, 'Titre de la fiche') }}
     {{form_widget(form.nom, {'attr':{'placeholder':"Titre de la fiche ",'class':"form-control"}}) }}
     
     {{form_label(form.nom, 'Les Catégories') }}
@@ -19,7 +19,7 @@
     <br>
     <button class="btn btn-success" type="submit">Créer la fiche</button>
     {{form_end(form)}}
-    <a class="btn btn-secondary" id="btnCtn">Ajouter un contenue</a>
+    <a class="btn btn-secondary" id="btnCtn">Ajouter un contenu</a>
 
     <input name="nbContenue" style="width:50px !important;" id="nbContenue" class="btn btn-warning" value="0" readonly></input>
 

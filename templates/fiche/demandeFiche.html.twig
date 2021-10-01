@@ -3,7 +3,19 @@
 {% block body %}
     {{form_start(form)}}
 
-        <button class="btn btn-success">Envoyer</button>
+        <div class="container col-md-5">
+            <div class="row">
+                {{form_label(form.objet, "Entrer l'objet de votre demande") }}
+                {{form_widget(form.objet, {'attr':{'placeholder':"Entrez l'objet...",'class':"form-control mb-2"}}) }}
+                {{form_label(form.categorie, "Choisir une catégorie de fiche") }}
+                {{form_widget(form.categorie, {'attr':{'placeholder':"Choisir une catégorie",'class':"form-control mb-2"}}) }}
+            </div>
+            <div class="row">
+                {{form_label(form.message, "Décrire ici votre demande") }}
+                {{form_widget(form.message, {'attr':{'placeholder':"Décrire la demande...",'class':"form-control","rows":"15"}}) }}
+            </div>
+            <div class="mt-2 row"><button class="btn btn-success">Envoyer</button></div>
+        </div>
 
     {{form_end(form)}}
 {% endblock %}
