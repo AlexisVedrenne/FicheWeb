@@ -26,20 +26,7 @@ class FicheController extends AbstractController
         ]);
     }
 
-     /**
-     * @Route("/all",name="all")
-     * Undocumented function
-     *
-     * @param FicheRepository $repo
-     * @return void
-     */
-
-    public function getAll(FicheRepository $repo){
-        $lesFiches=$repo->findAll();
-
-        return $this->render('fiche/allFiches.html.twig',['lesFiches'=>$lesFiches]);
-    }
-
+    
 
 
     /**
