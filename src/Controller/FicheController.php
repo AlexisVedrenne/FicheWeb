@@ -26,7 +26,6 @@ class FicheController extends AbstractController
         ]);
     }
 
-<<<<<<< HEAD
      /**
      * @Route("/all",name="all")
      * Undocumented function
@@ -41,9 +40,8 @@ class FicheController extends AbstractController
         return $this->render('fiche/allFiches.html.twig',['lesFiches'=>$lesFiches]);
     }
 
-}
 
-=======
+
     /**
      * @Route("/ajout",name="add")
      * 
@@ -66,4 +64,3 @@ class FicheController extends AbstractController
 
     }
 }
->>>>>>> dev
