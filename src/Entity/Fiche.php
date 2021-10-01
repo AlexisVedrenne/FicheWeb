@@ -25,7 +25,7 @@ class Fiche
     private $nom;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="fiches",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="fiches")
      * @ORM\JoinColumn(nullable=false)
      */
     private $laCategorie;
