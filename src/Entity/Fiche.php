@@ -30,11 +30,22 @@ class Fiche
      */
     private $laCategorie;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Commentaire::class, inversedBy="fiches")
+     */
+    private $commentaire;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Contenu::class, mappedBy="Fiche",cascade={"persist"})
+     */
+    private $contenus;
+
 
 
     public function __construct()
     {
         $this->categories = new ArrayCollection();
+        $this->contenus = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -62,6 +73,48 @@ class Fiche
     public function setLaCategorie(?Categorie $laCategorie): self
     {
         $this->laCategorie = $laCategorie;
+
+        return $this;
+    }
+
+    public function getCommentaire(): ?Commentaire
+    {
+        return $this->commentaire;
+    }
+
+    public function setCommentaire(?Commentaire $commentaire): self
+    {
+        $this->commentaire = $commentaire;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Contenu[]
+     */
+    public function getContenus(): Collection
+    {
+        return $this->contenus;
+    }
+
+    public function addContenu(Contenu $contenu): self
+    {
+        if (!$this->contenus->contains($contenu)) {
+            $this->contenus[] = $contenu;
+            $contenu->setFiche($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContenu(Contenu $contenu): self
+    {
+        if ($this->contenus->removeElement($contenu)) {
+            // set the owning side to null (unless already changed)
+            if ($contenu->getFiche() === $this) {
+                $contenu->setFiche(null);
+            }
+        }
 
         return $this;
     }

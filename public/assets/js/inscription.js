@@ -9,3 +9,4 @@ var check = function() {
         document.getElementById('message').innerHTML = 'Le mot de passe ne correspond pas !';
     }
 }
+
