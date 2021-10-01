@@ -58,6 +58,11 @@ class User implements UserInterface
      */
     private $Commentaire;
 
+    /**
+     * @ORM\OneToMany(targetEntity=DemandeFiche::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $demandeFiches;
+
 
     
     
@@ -67,6 +72,7 @@ class User implements UserInterface
         $this->lesFiches = new ArrayCollection();
         $this->lesCommentaires = new ArrayCollection();
         $this->Commentaire = new ArrayCollection();
+        $this->demandeFiches = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -207,6 +213,36 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($commentaire->getUser() === $this) {
                 $commentaire->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|DemandeFiche[]
+     */
+    public function getDemandeFiches(): Collection
+    {
+        return $this->demandeFiches;
+    }
+
+    public function addDemandeFich(DemandeFiche $demandeFich): self
+    {
+        if (!$this->demandeFiches->contains($demandeFich)) {
+            $this->demandeFiches[] = $demandeFich;
+            $demandeFich->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDemandeFich(DemandeFiche $demandeFich): self
+    {
+        if ($this->demandeFiches->removeElement($demandeFich)) {
+            // set the owning side to null (unless already changed)
+            if ($demandeFich->getUser() === $this) {
+                $demandeFich->setUser(null);
             }
         }
 
