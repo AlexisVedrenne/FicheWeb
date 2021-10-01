@@ -6,24 +6,48 @@
 
     <table class="table table-striped">
         <thead>
-            <tr>
-                <th colspan="2">Numéro</th>
-                <th colspan="2">Catégorie</th>
-                <th colspan="2">Objet</th>
-                <th colspan="2">Utilisateur</th>
+            <tr class="text-center">
+                <th>Numéro</th>
+                <th>Catégorie</th>
+                <th>Objet</th>
+                <th>Utilisateur</th>
             </tr>
         </thead><tbody>
-        <tr>
+        
         {% for demande in demandes %}
 
+           <tr class="text-center">
             <td>{{ demande.id }}</td>
             <td>{{ demande.categorie.nom }}</td>
             <td>{{ demande.objet }}</td>
             <td>{{ demande.user.pseudo }}</td>
-            
+            <td><!-- Button trigger modal -->
+<div class="col-4"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Ouvrir</button></div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Demmande N°{{ demande.id }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h4>Demannde envoyer par {{demande.user.pseudo}}</h4><br>
+       <h5> Objet de la demande : {{demande.objet}}</h5><br>
+        <p>{{ demande.message }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        <button type="button" class="btn btn-primary">Valider la demande et créer la fiche</button>
+      </div>
+    </div>
+  </div>
+</div></td>
+            </tr>
 
         {% endfor %}
-         </tr>
+         
     </tbody>
     </table>
     </div>
