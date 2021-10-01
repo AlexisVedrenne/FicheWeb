@@ -28,10 +28,11 @@ class Media
     private $type;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Contenue::class, inversedBy="lesmedias")
+     * @ORM\ManyToOne(targetEntity=Contenu::class, inversedBy="lesMedias",cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
-    private $contenue;
+    private $contenu;
+
 
     public function getId(): ?int
     {
@@ -62,15 +63,16 @@ class Media
         return $this;
     }
 
-    public function getContenue(): ?Contenue
+    public function getContenu(): ?Contenu
     {
-        return $this->contenue;
+        return $this->contenu;
     }
 
-    public function setContenue(?Contenue $contenue): self
+    public function setContenu(?Contenu $contenu): self
     {
-        $this->contenue = $contenue;
+        $this->contenu = $contenu;
 
         return $this;
     }
+
 }

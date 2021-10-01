@@ -36,13 +36,14 @@ class FicheController extends AbstractController
         $form=$this->createForm(FicheType::class,$fiche);
         $form->handleRequest($request);
         if($form->isSubmitted() and $form->isValid()){
+            $nbContenue=intval($request->request->get('nbContenue'));
+            for($i=0;$i<$nbContenue;){
+                $i++;
+               $fiche->addContenu(AppController::traitementCtn($fiche,$request->request,$i,intVal($request->request->get('nbMedia-'.$i))));
+            }
 
-            var_dump($request->request);
-            // $manager->persist($fiche);
-            // $manager->flush();
-            //var_dump($fiche);
-            // return $this->redirectToRoute('fiche_add');
-
+            $manager->persist($fiche);
+            $manager->flush();
         }
         return $this->render('fiche/ajouter.html.twig',['form'=>$form->createView()]);
 

@@ -25,7 +25,7 @@ class Fiche
     private $nom;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="fiches")
+     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="fiches",cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $laCategorie;
@@ -36,7 +36,7 @@ class Fiche
     private $commentaire;
 
     /**
-     * @ORM\OneToMany(targetEntity=Contenu::class, mappedBy="Fiche")
+     * @ORM\OneToMany(targetEntity=Contenu::class, mappedBy="Fiche",cascade={"persist"})
      */
     private $contenus;
 
