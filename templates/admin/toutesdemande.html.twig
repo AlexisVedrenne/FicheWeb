@@ -22,10 +22,10 @@
             <td>{{ demande.objet }}</td>
             <td>{{ demande.user.pseudo }}</td>
             <td><!-- Button trigger modal -->
-<div class="col-4"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Ouvrir</button></div>
+<div class="col-4"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{ demande.id }}">Ouvrir</button></div>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal{{ demande.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -33,7 +33,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <h4>Demannde envoyer par {{demande.user.pseudo}}</h4><br>
+        <h4>Demande envoyer par {{demande.user.pseudo}}</h4><br>
        <h5> Objet de la demande : {{demande.objet}}</h5><br>
         <p>{{ demande.message }}</p>
       </div>
