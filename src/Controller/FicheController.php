@@ -15,6 +15,7 @@ use DateTime;
 use DateTimeInterface;
 use App\Form\DemandeFicheType;
 use App\Service\Mail;
+use App\Repository\DemandeFicheRepository;
 /**
 * @Route("/fiche", name="fiche_")
 */
@@ -29,10 +30,11 @@ class FicheController extends AbstractController
     }
 
     /**
-     * @Route("/ajout",name="add")
+     * @Route("/ajout/{id}",name="add")
      */
-    public function addFiche(Request $request, EntityManagerInterface $manager )
+    public function addFiche(int $id,DemandeFicheRepository $repo,Request $request, EntityManagerInterface $manager )
     {
+        $demande=$repo->find($id);
         $fiche= new Fiche();
         $form=$this->createForm(FicheType::class,$fiche);
         $form->handleRequest($request);
@@ -44,7 +46,9 @@ class FicheController extends AbstractController
             }
 
             $manager->persist($fiche);
+            $manager->remove($demande);
             $manager->flush();
+            return $this->redirectToRoute('admin_demandes');
         }
         return $this->render('fiche/ajouter.html.twig',['form'=>$form->createView()]);
 
