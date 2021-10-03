@@ -100,5 +100,35 @@ Class Mail{
     $response = Mail::getClient()->post(Resources::$Email, ['body' => $body]);
     return $response->success();
   }
+
+  static public function demandeFiche(User $user,string $objet,string $message,string $categorie){
+    $body = [
+      'Messages' => [
+      [
+          'From' => [
+            'Email' => "service@ficheweb.fr",
+            'Name' => "Service Fiche Web"
+          ],
+          'To' => [
+            [
+              'Email' => $user->getEmail(),
+              'Name' => $user->getPseudo()
+            ]
+          ],
+          'Subject' => "[FicheWeb Suppot] Demande de nouvelle fiche : ".$objet,
+          'TextPart' => "Support",
+          'HTMLPart' => "<h1>Demande de nouvelle fiche</h1>
+          <p>Une fiche de catégorie :<h5>".$categorie."</h5><br>
+            La demmande est :". $message ."
+          </p>
+          <h4>L'équipe FicheWeb</h4>
+          <h6>Veuillez ne pas répondre à ce mail générer automatiquement</h6>",
+          'CustomID' => "AppGettingStartedTest"
+        ]
+      ]
+    ];
+    $response = Mail::getClient()->post(Resources::$Email, ['body' => $body]);
+    return $response->success();
+  }
 }
 ?>
