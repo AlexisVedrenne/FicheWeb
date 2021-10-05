@@ -20,41 +20,33 @@ class Fiche
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=30)
+     * @ORM\Column(type="string", length=50)
      */
     private $nom;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="fiches")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $dateCreation;
+    private $laCategorie;
 
     /**
-     * @ORM\Column(type="decimal", precision=4, scale=1, nullable=true)
+     * @ORM\ManyToOne(targetEntity=Commentaire::class, inversedBy="fiches")
      */
-    private $note;
+    private $commentaire;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Categorie::class, mappedBy="lesFiches")
+     * @ORM\OneToMany(targetEntity=Contenu::class, mappedBy="Fiche",cascade={"persist"})
      */
-    private $lesCategories;
+    private $contenus;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="laFiche")
-     */
-    private $lesCommentaires;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="lesFiches")
-     */
-    private $user;
 
     public function __construct()
     {
-        $this->lesCategories = new ArrayCollection();
-        $this->lesCommentaires = new ArrayCollection();
+        $this->categories = new ArrayCollection();
+        $this->contenus = new ArrayCollection();
     }
-
 
     public function getId(): ?int
     {
@@ -73,97 +65,59 @@ class Fiche
         return $this;
     }
 
-    public function getDateCreation(): ?\DateTimeInterface
+    public function getLaCategorie(): ?Categorie
     {
-        return $this->dateCreation;
+        return $this->laCategorie;
     }
 
-    public function setDateCreation(\DateTimeInterface $dateCreation): self
+    public function setLaCategorie(?Categorie $laCategorie): self
     {
-        $this->dateCreation = $dateCreation;
+        $this->laCategorie = $laCategorie;
 
         return $this;
     }
 
-    public function getNote(): ?string
+    public function getCommentaire(): ?Commentaire
     {
-        return $this->note;
+        return $this->commentaire;
     }
 
-    public function setNote(?string $note): self
+    public function setCommentaire(?Commentaire $commentaire): self
     {
-        $this->note = $note;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Categorie[]
-     */
-    public function getLesCategories(): Collection
-    {
-        return $this->lesCategories;
-    }
-
-    public function addLesCategory(Categorie $lesCategory): self
-    {
-        if (!$this->lesCategories->contains($lesCategory)) {
-            $this->lesCategories[] = $lesCategory;
-            $lesCategory->addLesFich($this);
-        }
-
-        return $this;
-    }
-
-    public function removeLesCategory(Categorie $lesCategory): self
-    {
-        if ($this->lesCategories->removeElement($lesCategory)) {
-            $lesCategory->removeLesFich($this);
-        }
+        $this->commentaire = $commentaire;
 
         return $this;
     }
 
     /**
-     * @return Collection|Commentaire[]
+     * @return Collection|Contenu[]
      */
-    public function getLesCommentaires(): Collection
+    public function getContenus(): Collection
     {
-        return $this->lesCommentaires;
+        return $this->contenus;
     }
 
-    public function addLesCommentaire(Commentaire $lesCommentaire): self
+    public function addContenu(Contenu $contenu): self
     {
-        if (!$this->lesCommentaires->contains($lesCommentaire)) {
-            $this->lesCommentaires[] = $lesCommentaire;
-            $lesCommentaire->setLaFiche($this);
+        if (!$this->contenus->contains($contenu)) {
+            $this->contenus[] = $contenu;
+            $contenu->setFiche($this);
         }
 
         return $this;
     }
 
-    public function removeLesCommentaire(Commentaire $lesCommentaire): self
+    public function removeContenu(Contenu $contenu): self
     {
-        if ($this->lesCommentaires->removeElement($lesCommentaire)) {
+        if ($this->contenus->removeElement($contenu)) {
             // set the owning side to null (unless already changed)
-            if ($lesCommentaire->getLaFiche() === $this) {
-                $lesCommentaire->setLaFiche(null);
+            if ($contenu->getFiche() === $this) {
+                $contenu->setFiche(null);
             }
         }
 
         return $this;
     }
 
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
+  
 }

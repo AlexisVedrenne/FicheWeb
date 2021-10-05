@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CommentaireRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -18,24 +20,29 @@ class Commentaire
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $texte;
 
     /**
-     * @ORM\Column(type="decimal", precision=4, scale=1, nullable=true)
+     * @ORM\Column(type="float", nullable=true)
      */
     private $note;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Fiche::class, inversedBy="lesCommentaires")
+     * @ORM\OneToMany(targetEntity=Fiche::class, mappedBy="commentaire")
      */
-    private $laFiche;
+    private $fiches;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="lesCommentaires")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="Commentaire")
      */
     private $user;
+
+    public function __construct()
+    {
+        $this->fiches = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -47,33 +54,51 @@ class Commentaire
         return $this->texte;
     }
 
-    public function setTexte(string $texte): self
+    public function setTexte(?string $texte): self
     {
         $this->texte = $texte;
 
         return $this;
     }
 
-    public function getNote(): ?string
+    public function getNote(): ?float
     {
         return $this->note;
     }
 
-    public function setNote(?string $note): self
+    public function setNote(?float $note): self
     {
         $this->note = $note;
 
         return $this;
     }
 
-    public function getLaFiche(): ?Fiche
+    /**
+     * @return Collection|Fiche[]
+     */
+    public function getFiches(): Collection
     {
-        return $this->laFiche;
+        return $this->fiches;
     }
 
-    public function setLaFiche(?Fiche $laFiche): self
+    public function addFich(Fiche $fich): self
     {
-        $this->laFiche = $laFiche;
+        if (!$this->fiches->contains($fich)) {
+            $this->fiches[] = $fich;
+            $fich->setCommentaire($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFich(Fiche $fich): self
+    {
+        if ($this->fiches->removeElement($fich)) {
+            // set the owning side to null (unless already changed)
+            if ($fich->getCommentaire() === $this) {
+                $fich->setCommentaire(null);
+            }
+        }
 
         return $this;
     }
