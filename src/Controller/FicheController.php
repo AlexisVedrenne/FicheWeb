@@ -55,6 +55,8 @@ class FicheController extends AbstractController
             }
             return $this->render('fiche/ajouter.html.twig',['form'=>$form->createView()]);
 
+        }
+
     /**
      * @Route("/ajout/{id}",name="add")
      */
@@ -75,8 +77,9 @@ class FicheController extends AbstractController
             $manager->remove($demande);
             $manager->flush();
             return $this->redirectToRoute('admin_demandes');
-        }
+        }  
 
+    }
         
        
 
@@ -127,6 +130,7 @@ class FicheController extends AbstractController
                 return $this->render('fiche/modifier.html.twig',array('form'=> $form->createView()));
             
             ;
+        }
 
     }
         
@@ -146,7 +150,6 @@ class FicheController extends AbstractController
             Mail::demandeFiche($demande->getUser(),$demande->getObjet(),$demande->getMessage(),$demande->getCategorie()->getNom());
             return $this->redirectToRoute('home');
         }
-        
 
         return $this->render('fiche/demandeFiche.html.twig',['form'=>$form->createView()]);
 
