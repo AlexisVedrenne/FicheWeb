@@ -36,7 +36,7 @@ class Fiche
     private $commentaire;
 
     /**
-     * @ORM\OneToMany(targetEntity=Contenu::class, mappedBy="Fiche")
+     * @ORM\OneToMany(targetEntity=Contenu::class, mappedBy="Fiche",cascade={"persist"})
      */
     private $contenus;
 
