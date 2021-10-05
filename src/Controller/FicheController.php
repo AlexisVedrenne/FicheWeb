@@ -68,6 +68,7 @@ class FicheController extends AbstractController
             Mail::demandeFiche($demande->getUser(),$demande->getObjet(),$demande->getMessage(),$demande->getCategorie()->getNom());
             return $this->redirectToRoute('home');
         }
+        
 
         return $this->render('fiche/demandeFiche.html.twig',['form'=>$form->createView()]);
 
