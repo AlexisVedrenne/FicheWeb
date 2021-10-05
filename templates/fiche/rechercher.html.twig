@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Rechercher une fiche{% endblock %}
+
+{% block body %}
+<div class='card text-center'>
+    <h1 class=""> Rechercher une fiche</h1>
+    {{ form_start(form)}}
+    {{form_label(form.nom, 'titre de la fiche') }}
+    {{form_widget(form.nom, {'attr':{'placeholder':"Titre de la fiche ",'class':"form-control"}}) }}
+    {{form_end(form)}}
+    <button class="btn btn-success" type="submit"> Rechercher</button>
+    
+    {% if app.request.method == "POST" %}
+
+        {
+            
+            
+    
+        <div class="container">s
+            
+            {% if valeurs | length == 0%}
+                <h4> Aucun résulat pour votre recherche. </h4>
+                <a href="">Suggestion</a>
+                
+            
+            {% else %}
+                <h3 class="mt-3"> Vos résultas de recherche : </h3>
+                
+                {% for valeur in valeurs %}
+                    <div class="mt-3 p-3 bg-light border rounded">
+                        <h6 class="text-dark"> {{ valeur.nom }}</h6>
+                        
+                    </div>
+
+                {% endfor %}
+             {% endif %}
+    
+        
+
+
+   
+    
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
