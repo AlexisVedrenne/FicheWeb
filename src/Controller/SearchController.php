@@ -28,6 +28,7 @@ class SearchController extends AbstractController {
          $valeurs=$request->request->get('form')['nom'];
          $repo->findBy(array('nom'=>$valeurs));
          
+         return $this->redirectToRoute('fiche_all');
          
         
 
