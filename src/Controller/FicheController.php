@@ -16,7 +16,9 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use App\Entity\Categorie;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-
+use App\Form\DemandeFicheType;
+use App\Service\Mail;
+use App\Repository\DemandeFicheRepository;
 /**
 * @Route("/fiche", name="fiche_")
 */
@@ -30,38 +32,33 @@ class FicheController extends AbstractController
             ]);
         }
 
-        /**
-         * @Route("/ajout",name="add")
-         * 
-         */
-        public function addFiche(Request $request, EntityManagerInterface $manager )
-        {
-            
-            $fiche= new Fiche();
-            $form=$this->createForm(FicheType::class,$fiche);
-            $form->handleRequest($request);
-            if($form->isSubmitted() and $form->isValid()){
-
-
-                $manager->persist($fiche);
-                $manager->flush();
-                //var_dump($fiche);
-                // return $this->redirectToRoute('fiche_add');
-
+    /**
+     * @Route("/ajout/{id}",name="add")
+     */
+    public function addFiche(int $id,DemandeFicheRepository $repo,Request $request, EntityManagerInterface $manager )
+    {
+        $demande=$repo->find($id);
+        $fiche= new Fiche();
+        $form=$this->createForm(FicheType::class,$fiche);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $nbContenue=intval($request->request->get('nbContenue'));
+            for($i=0;$i<$nbContenue;){
+                $i++;
+               $fiche->addContenu(AppController::traitementCtn($fiche,$request->request,$i,intVal($request->request->get('nbMedia-'.$i))));
             }
-            return $this->render('fiche/ajouter.html.twig',['form'=>$form->createView()]);
 
-        }
+            $manager->persist($fiche);
+            $manager->remove($demande);
+            $manager->flush();
+            return $this->redirectToRoute('admin_demandes');
+        }  
 
+        return $this->render('fiche/ajouter.html.twig',['form'=>$form->createView()]);
+
+    }
+    
         
-       
-
-
-
-
-
-
-
 
         /**
          * @Route("/edit/{id}", name="edit")
@@ -103,9 +100,36 @@ class FicheController extends AbstractController
                 return $this->render('fiche/modifier.html.twig',array('form'=> $form->createView()));
             
             ;
+        }
+    
 
+<<<<<<< HEAD
     }
         
 
+=======
+    
+        
+
+
+    /**
+     * @Route("/demande",name="demande")
+     */
+    public function demandeFiche(Request $request,EntityManagerInterface $manager){
+        $demande = new DemandeFiche();
+        $form=$this->createForm(DemandeFicheType::class,$demande);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $demande->setUser($this->getUser());
+            $manager->persist($demande);
+            $manager->flush();
+            Mail::demandeFiche($demande->getUser(),$demande->getObjet(),$demande->getMessage(),$demande->getCategorie()->getNom());
+            return $this->redirectToRoute('home');
+        }
+
+        return $this->render('fiche/demandeFiche.html.twig',['form'=>$form->createView()]);
+
+    }
+>>>>>>> origin/AlexisAjoutContenue
 }
 
