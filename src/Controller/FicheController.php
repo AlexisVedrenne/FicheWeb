@@ -103,11 +103,6 @@ class FicheController extends AbstractController
         }
     
 
-<<<<<<< HEAD
-    }
-        
-
-=======
     
         
 
@@ -130,6 +125,5 @@ class FicheController extends AbstractController
         return $this->render('fiche/demandeFiche.html.twig',['form'=>$form->createView()]);
 
     }
->>>>>>> origin/AlexisAjoutContenue
 }
 
