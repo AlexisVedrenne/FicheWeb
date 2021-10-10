@@ -56,7 +56,7 @@ class FicheController extends AbstractController
             return $this->redirectToRoute('admin_demandes');
         }  
 
-        
+        return $this->render('fiche/ajouter.html.twig',['form'=>$form->createView()]);
 
     }
     
