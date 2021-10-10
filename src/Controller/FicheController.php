@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\DemandeFiche;
 use App\Repository\FicheRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,6 +17,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use App\Entity\Categorie;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
 use App\Form\DemandeFicheType;
 use App\Service\Mail;
 use App\Repository\DemandeFicheRepository;
