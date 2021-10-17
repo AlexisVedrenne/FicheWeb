@@ -14,7 +14,7 @@ use App\Entity\Fiche;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use App\Entity\Categorie;
-
+use App\Repository\CommentaireRepository;
 use App\Form\DemandeFicheType;
 use App\Service\Mail;
 use App\Repository\DemandeFicheRepository;
@@ -39,10 +39,10 @@ class FicheController extends AbstractController
     * @param [type] $id
     * @return void
     */
-    public function getFiche(FicheRepository $repo,$id){
+    public function getFiche(FicheRepository $repo,$id,CommentaireRepository $cmtRepo){
         $fiche = $repo->find($id);
-    
-        return $this->render('fiche/fiche.html.twig',['fiche'=>$fiche]);
+        $lesCommenaitres=$cmtRepo->getCommFiche($id);
+        return $this->render('fiche/fiche.html.twig',['fiche'=>$fiche,'lesCommentaires'=>$lesCommenaitres]);
     }    
         
     /**

@@ -47,4 +47,11 @@ class CommentaireRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function getCommFiche($id){
+        $dql='SELECT c.texte, u.pseudo FROM App\Entity\Commentaire c inner join App\Entity\User u inner join App\Entity\Fiche f
+         where c.user = u.id and f.id='. $id;
+        $lesCommentaires=$this->getEntityManager()->createQuery($dql)->execute();
+        return $lesCommentaires;
+    }
 }
