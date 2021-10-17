@@ -13,8 +13,8 @@
             /*background:linear-gradient(147deg, #a399b2 0%, #4d4855 74%);*/
             /*background: linear-gradient(147deg, #f9fcff 0%, #dee4ea 74%);*/
             /*background: linear-gradient(150deg, #2b4162 0%, #12100e 74%);*/
-
-            
+            background-color:black;
+            /*background: linear-gradient(147deg, #4d4855 0%, #000000 74%);*/
 
 
             background-attachment:fixed;
@@ -66,7 +66,7 @@
             animation: animate 20s linear infinite;
         }
         .shadow:after{
-            filter: blur(20px);
+            filter: blur(50px);
         }
         @keyframes animate{
             0%{
@@ -79,7 +79,17 @@
                 background-position: 0 0;
             }
         }
-       
+        .titre-box{
+            text-align:center;
+            color:white;
+            font-size:40px;
+            position : relative
+        }
+        .description{
+            color:white;
+            padding:100px;
+            font-size:30px;
+        }
 
     </style>
     <div class ="consultation-header"> 
@@ -88,8 +98,17 @@
     
     
     <div class="shadow">
-        
+        <p class="titre-box">{{ fiche.nom}}</p>
+        <div class="description-box">
+            <p class="description">
+            Le HyperText Markup Language, généralement abrégé HTML ou dans sa dernière version HTML5,
+            est le langage de balisage conçu pour représenter les pages web. 
+            Ce langage permet : d’écrire de l’hypertexte, 
+            d’où son nom, de structurer sémantiquement la page, de mettre en forme le contenu, 
+            de créer des formulaires de saisie,
+            </p>
+        </div> 
     </div>
-     <br><br><br>
+    <br><br><br>
     
 {% endblock %}
