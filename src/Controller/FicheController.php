@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\DemandeFiche;
+use App\Repository\FicheRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,7 +24,27 @@ use App\Repository\DemandeFicheRepository;
 class FicheController extends AbstractController
 {
     
+    public function index(): Response
+    {
+        return $this->render('fiche/index.html.twig', [
+            'controller_name' => 'FicheController',
+        ]);
+    }
 
+    /**
+    * @Route("/{id}",name="fiche")
+    * Undocumented function
+    *
+    * @param FicheRepository $repo
+    * @param [type] $id
+    * @return void
+    */
+    public function getFiche(FicheRepository $repo,$id){
+        $fiche = $repo->find($id);
+    
+        return $this->render('fiche/fiche.html.twig',['fiche'=>$fiche]);
+    }    
+        
     /**
      * @Route("/ajout/{id}",name="add")
      */

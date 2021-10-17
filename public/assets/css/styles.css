@@ -1,3 +1,7 @@
+
+    /*body{
+        background-color: black;
+    }*/
     .row{
         display: flex !important;
     }
@@ -47,4 +51,3 @@
     .ajustForm{
         height: 500px;
     }
-

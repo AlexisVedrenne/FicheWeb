@@ -2,6 +2,197 @@
 
 {% block title %}FicheWeb{% endblock %}
 
-{% block body %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link href="{{ asset('css/stylesAccueil.css') }}" type="text/css" rel="stylesheet">
+{% endblock %}    
 
+{% block body %}
+    <style>
+        body{
+            /*background:url('{{ asset("images/back3.jpg!d") }}');*/
+            /*background: black;
+            background-attachment:fixed;
+            background-size:cover;*/
+        }
+    </style>
+    
+    <style>
+    .bloc1 .clip.clip1{
+        background: url('assets/images/image1.jpg');
+        background-size: cover;
+    }
+    .bloc1 .clip.clip2{
+        background: url('assets/images/connaissance.jpg');
+        background-size: cover;
+    }
+    .bloc1 .clip.clip3{
+        background: url('assets/images/presentation.jpg');
+        background-size: cover;
+    }
+    .home-right{
+        background: url('assets/images/back-hero1.jpg');
+        width: 60%;
+        height: 100%;
+        background-attachment:fixed;
+        background-repeat:no-repeat;
+        background-size:cover;
+    }
+    </style>
+
+    <!-- HERO -->
+    <div id="home" class="hero">
+        <div class="home-left">
+            <h2 class="home-titre">FICHE WEB</h2>
+            <p class="home-p">Web connaissance</p>
+            <p class="home-p">Consulter nos tutoriels afin d'acquérir de nouvelles compétences</p>
+            <p class="home-p">Tout les jours !</p>
+            <div class="btn-hero">
+                <a href="#" class="btn-home b1">Connexion</a>
+                <a href="#" class="btn-home b2">Inscription</a>
+            </div>
+        </div>
+        <div class="home-right"></div>
+    </div>
+
+
+    <!-- DIAPO CLIP -->
+    <div class ="contenu">
+    <div class="bloc1">
+        <div class="clip clip1">
+            <div class ="content1">
+                <h2>Volonté</h2>
+                <p>la volonté d’apprendre (et pas seulement de savoir : 
+                passer du désir de savoir au désir d’apprendre n’est pas si aisé)</p>
+            </div>
+        </div>
+        <div class="clip clip2">
+            <div class ="content1">
+                <h2>Envie</h2>
+                <p>l’envie d’apprendre (le désir et la motivation
+                qui poussent à se mettre en mouvement et à faire des efforts)</p>
+            </div>
+        </div>
+        <div class="clip clip3">
+            <div class ="content1">
+                <h2>Représentation</h2>
+                <p>la représentation claire de l’objectif à atteindre 
+                (la capacité à se projeter et à s’imaginer comment sera utilisé le savoir, 
+                quel projet ou quel besoin il servira)</p>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+    <style>
+        div.bloc2{
+            /*background: linear-gradient(147deg, #f9fcff 0%, #dee4ea 20%);*/
+            background:url('assets/images/banniere2.jpg');
+            color:white;
+            text-align:center;
+            padding:10px; 
+            background-attachment:fixed;
+            
+        }
+    </style>
+    <!-- BLOC AVEC LES FICHES --> 
+    <div class="bloc2">
+        <h1>LES FICHES</h1>
+        <div class="container">
+        <div class="box">
+            <div class="content">
+                <h2>01</h2>
+                <h3>HTML</h3>
+                <p>Le HyperText Markup Language, généralement abrégé HTML ou dans sa dernière version HTML5,
+                est le langage de balisage conçu pour représenter les pages web. 
+                Ce langage permet : d’écrire de l’hypertexte, 
+                </p>
+                <a href="#">En savoir plus</a>
+            </div>
+        </div>
+    
+        <div class="box">
+            <div class="content">
+                <h2>02</h2>
+                <h3>Service Two</h3>
+                <p>Le HyperText Markup Language, généralement abrégé HTML ou dans sa dernière version HTML5,
+                est le langage de balisage conçu pour représenter les pages web. 
+                Ce langage permet : d’écrire de l’hypertexte, 
+                </p>
+                <a href="#">En savoir plus</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="content">
+                <h2>03</h2>
+                <h3>Service Three</h3>
+                <p>Le HyperText Markup Language, généralement abrégé HTML ou dans sa dernière version HTML5,
+                est le langage de balisage conçu pour représenter les pages web. 
+                Ce langage permet : d’écrire de l’hypertexte, 
+                </p>
+                <a href="#">En savoir plus</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="content">
+                <h2>04</h2>
+                <h3>Service Four</h3>
+                <p>Le HyperText Markup Language, généralement abrégé HTML ou dans sa dernière version HTML5,
+                est le langage de balisage conçu pour représenter les pages web. 
+                Ce langage permet : d’écrire de l’hypertexte, 
+                </p>
+                <a href="#">En savoir plus</a>
+            </div>
+        </div> 
+        
+    </div> 
+    </div>
+
+    
 {% endblock %}
+
+{% block footer %}
+        <!-- FOOTER -->
+        <div class="footer">
+            <div class="sec aboutus">
+                <h2>A propos de nous</h2>
+                <p> Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée
+                à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer
+                le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, 
+                on utilise un texte en faux latin, le Lorem ipsum ou Lipsum.</p>
+
+                <ul class="sci">
+                    <li><a href="#"><i class="bi bi-facebook"></i></a></li>
+                    <li><a href="#"><i class="bi bi-instagram"></i></a></li>
+                    <li><a href="#"><i class="bi bi-twitter"></i></a></li>
+                    <li><a href="#"><i class="bi bi-youtube"></i></a></li>
+                </ul>
+            </div> 
+            <div class="sec quickLinks">
+                <h2>Liens rapide</h2>
+                <ul>
+                    <li><a href="#">A propos</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Politique de confidentialité</a></li>
+                    <li><a href="#">Aide</a></li>
+                    <li><a href="#">Termes et Conditions</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div> 
+            <div class="sec contact">
+                <h2>Contact info</h2>
+                <ul class="info">
+                    <li>
+                        <span><i class="bi bi-envelope"></i></span>
+                        <p><a href="mailto:service@ficheweb.fr">service@ficheweb.fr</a></p>
+                    </li>
+                </ul> 
+            </div> 
+        </div>
+        <div class="copyrightText">
+            <p class="Copyright"> Copyright © 2021. Tous droits réservés</p>
+        </div>     
+{% endblock %} 
