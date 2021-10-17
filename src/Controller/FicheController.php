@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\DemandeFiche;
-use App\Repository\FicheRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -11,12 +10,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Form\FicheType;
 use App\Entity\Fiche;
-use DateTime;
-use DateTimeInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use App\Entity\Categorie;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use App\Form\DemandeFicheType;
 use App\Service\Mail;
@@ -27,12 +23,6 @@ use App\Repository\DemandeFicheRepository;
 class FicheController extends AbstractController
 {
     
-        public function index(): Response
-        {
-            return $this->render('fiche/index.html.twig', [
-                'controller_name' => 'FicheController',
-            ]);
-        }
 
     /**
      * @Route("/ajout/{id}",name="add")

@@ -20,14 +20,9 @@ class Commentaire
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $texte;
-
-    /**
-     * @ORM\Column(type="float", nullable=true)
-     */
-    private $note;
 
     /**
      * @ORM\OneToMany(targetEntity=Fiche::class, mappedBy="commentaire")
@@ -61,17 +56,7 @@ class Commentaire
         return $this;
     }
 
-    public function getNote(): ?float
-    {
-        return $this->note;
-    }
 
-    public function setNote(?float $note): self
-    {
-        $this->note = $note;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Fiche[]
@@ -81,7 +66,7 @@ class Commentaire
         return $this->fiches;
     }
 
-    public function addFich(Fiche $fich): self
+    public function addFiche(Fiche $fich): self
     {
         if (!$this->fiches->contains($fich)) {
             $this->fiches[] = $fich;
@@ -91,7 +76,7 @@ class Commentaire
         return $this;
     }
 
-    public function removeFich(Fiche $fich): self
+    public function removeFiche(Fiche $fich): self
     {
         if ($this->fiches->removeElement($fich)) {
             // set the owning side to null (unless already changed)
