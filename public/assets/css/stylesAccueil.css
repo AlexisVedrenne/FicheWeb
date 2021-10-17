@@ -129,6 +129,28 @@ body{
 
 
 
+/* ------------------------------------------- BLOC SERVICES ------------------------------------------------- */
+
+.bloc-services{
+    display: flex;
+}
+.fiche-icon{
+    font-size: 50px;
+    border: 2px solid black;
+}
+.solution-icon{
+    font-size: 50px;
+    border: 2px solid black;
+}
+.competence-icon{
+    font-size: 50px;
+    border: 2px solid black;
+}
+
+/* ------------------------------------------- FIN BLOC SERVICES ------------------------------------------------- */
+
+
+
 /* ------------------------------------------- DIAPO CLIP ------------------------------------------------- */
 
 .contenu{
@@ -189,11 +211,11 @@ body{
 
 
 /* ------------------------------------------- LES TITRES H1 ------------------------------------------------- */
-h1{
+.bloc2-grand-titre{
     position: relative;
     margin-top: 100px;
 }
-h1::before{
+.bloc2-grand-titre::before{
     content: '';
     position: absolute;
     bottom: -7px;
@@ -202,7 +224,7 @@ h1::before{
     background: #1F39DD;
 }
 @media screen and (max-width:900px){
-    h1::before{
+    .bloc2-grand-titre::before{
         width: 150px;
     }
 }
@@ -297,7 +319,7 @@ h1::before{
     
     opacity:0.9;
 }
-.box .content h2{
+.box .content .bloc2-num{
     position: absolute;
     top:-60px;
     right:20px;
@@ -307,12 +329,12 @@ h1::before{
     color: rgba(255,255,255,.05);
     transition: 0.1s;
 }
-.box:hover .content h2{
+.box:hover .content .bloc2-num{
     top:-100px;
     color: #505050;
     z-index:-1;
 }
-.box .content h3{
+.box .content .bloc2-titre{
     margin: 0 0 10px;
     padding:0;
     font-size: 24px;
@@ -320,13 +342,13 @@ h1::before{
     color: #fff;
 
 }
-.box .content p{
+.box .content .bloc2-p{
     margin: 0;
     padding: 0;
     color: #fff;
     font-size: 16px;
 }
-.box .content a{
+.box .content .bloc2-lien{
     position: relative;
     margin: 20px 0 0;
     padding: 10px 20px;
@@ -339,12 +361,12 @@ h1::before{
     opacity: 0;
     visibility: hidden;
 }
-.box:hover .content a{ 
+.box:hover .content .bloc2-lien{ 
     transform: translateY(0);
     opacity: 1;
     visibility: visible;
 }
-.box .content a:hover{ 
+.box .content .bloc2-lien:hover{ 
     color: #000;
     background: #fff;
 }
@@ -354,7 +376,7 @@ h1::before{
 
 
 /* ------------------------------------------- FOOTER ------------------------------------------------- */
-footer{
+#footer-main{
     position:relative;
     width:100%;
     height:auto;
@@ -366,25 +388,25 @@ footer{
     flex-wrap:wrap;
     opacity: 0.9;
 }
-.footer{
+.footer-contenu{
     display:flex;
     flex-wrap:wrap;
     flex-direction: row;
     justify-content: space-between;
 }
-.footer .sec{
+.footer-contenu .sec{
     margin-right: 30px;
 }
-.footer .sec.aboutus{
+.footer-contenu .sec.aboutus{
     width:40%
 }
-.footer h2{
+.footer-contenu .footer-titre{
     position: relative;
     color: #fff;
     font-weight: 500;
     margin-bottom: 15px;
 }
-.footer h2:before{
+.footer-contenu .footer-titre:before{
     content: '';
     position: absolute;
     bottom: -7px;
@@ -393,7 +415,7 @@ footer{
     height: 4px;
     background: #1F39DD;
 }
-.footer p{
+.footer-contenu .footer-p{
     color: #999;
     font-size:20px
 }
@@ -402,10 +424,10 @@ footer{
     display:flex;
 
 }
-.sci li{
+.sci .sci-li{
     list-style: none;
 }
-.sci li a{
+.sci .sci-li .sci-lien{
     display: inline-block;
     width:40px;
     height:40px;
@@ -418,10 +440,10 @@ footer{
     border-radius:4px;
     font-size:20px;
 }
-.sci li a:hover{
+.sci .sci-li .sci-lien:hover{
     background: #1F39DD;
 }
-.sci li a .bi{
+.sci .sci-li .sci-lien .bi{
     color: #fff;
     font-size:20px;
 } 
@@ -429,20 +451,20 @@ footer{
     position:relative;
     width:25%;
 }
-.quickLinks ul{
+.quickLinks .sec{
     padding:0;
 }
-.quickLinks ul li{
+.quickLinks .sec .sec-li{
     list-style:none;
 }
-.quickLinks ul li a{
+.quickLinks .sec .sec-li .sec-lien{
     color: #999;
     text-decoration:none;
     margin-bottom:10px;
     display: inline-block;
     font-size:20px;
 }
-.quickLinks ul li a:hover{
+.quickLinks .sec .sec-li .sec-lien:hover{
     color:#fff;
 }
 .contact{
@@ -453,24 +475,24 @@ footer{
     position: relative;
     padding:0;
 }
-.contact .info li{
+.contact .info .contact-li{
     display:flex;
     margin-bottom: 16px;
 }
-.contact .info li span:nth-child(1){
+.contact .info .contact-li .contact-span:nth-child(1){
     color: #fff;
     font-size: 20px;
     margin-right: 10px;
 }
-.contact .info li span{
+.contact .info .contact-li .contact-span{
     color: #999;
 }
-.contact .info li a{
+.contact .info .contact-li .email{
     color: #999;
     text-decoration:none;
     font-size:20px;
 }
-.contact .info li a:hover{
+.contact .info .contact-li .email:hover{
     color: #fff;
 }
 .copyrightText{
@@ -483,17 +505,17 @@ footer{
 }
 
 @media (max-width: 991px){
-    footer{
+    #footer-main{
         padding:40px;
     }
-    footer .footer{
+    #footer-main .footer-contenu{
         flex-direction:column;
     }
-    footer .footer .sec{
+    #footer-main .footer-contenu .sec{
         margin-right:0;
         margin-bottom: 40px;
     }
-    footer .footer .sec.aboutus, .quickLinks, .contact{
+    #footer-main .footer-contenu .sec.aboutus, .quickLinks, .contact{
         width:100%;
     }
     .copyrightText{
