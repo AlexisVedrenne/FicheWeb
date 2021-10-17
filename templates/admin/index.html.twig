@@ -1,27 +1,51 @@
 {% extends 'base.html.twig' %}
 
-
-{% block title %}Hello AdminController!{% endblock %}
-
 {% block body %}
 
-{% if is_granted("ROLE_ADMIN") %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    {% if app.user and (app.user.roles["ROLE"])=="ROLE_ADMIN" %}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <div class="container">
+        <div class="row">    
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Les demandes de fiche</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Dernière demande : {{last['pseudo']}} </h6>
+                    <p class="card-text">{{last['message']}}...</p>
+                    <a href="/admin/demandes" class="card-link">Voir toutes les demandes</a>
+                </div>     
+            </div>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>     
+            </div>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>     
+            </div>
+        </div>
+    </div>
+    {% else %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/irodf/Documents/Projet/FicheWeb/src/Controller/AdminController.php'|file_link(0) }}">src/Controller/AdminController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/irodf/Documents/Projet/FicheWeb/templates/admin/index.html.twig'|file_link(0) }}">templates/admin/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <br>
+    <h1 class="text-center">Vous n'etes pas connecter ou vous n'avez pas la permission d'accèder à cette page</h1>
 
-{% endif %}
+    {% endif %}
+
+
 {% endblock %}
+
+
+
+
 
 

@@ -17,15 +17,12 @@ class AdminController extends AbstractController
 
 
     /**
-     * @Route("/index",name="index")
+     * @Route("/acceuil",name="index")
      */
-    public function index(): Response
+    public function index(DemandeFicheRepository $repo): Response
     {
-
-        var_dump($this->getUser()->getRoles());
-        return $this->render('admin/index.html.twig', [
-            'controller_name' => 'AdminController',
-        ]);
+        $last=$repo->getLastDemande();
+        return $this->render('admin/index.html.twig',['last'=>$last]);
     }
 
 
