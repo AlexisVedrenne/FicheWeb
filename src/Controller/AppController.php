@@ -40,4 +40,26 @@ class AppController extends AbstractController
         $number= "0123456789";
         return substr(str_shuffle(str_repeat($number, $longueur)), 0, $longueur);
     }
+<<<<<<< HEAD
+=======
+
+
+    public static function traitementCtn(Fiche $fiche,$request,int $nbContenue, int $nbMedia){
+        $contenue=new Contenu();
+        $contenue->setRubrique($request->get("rub-".$nbContenue));
+        $contenue->setDescription($request->get("des-".$nbContenue));
+        $contenue->setFiche($fiche);
+        for($i=0;$i<$nbMedia;){
+            $i++;
+            $media=new Media();
+            $media->setLien($request->get("lien-".$i."-".$nbContenue));
+            $media->setType($request->get("type-".$i."-".$nbContenue));
+            $contenue->addLesMedia($media);
+        }
+
+        return $contenue;
+    }
+
+    
+>>>>>>> AlexisGestionCommentaire
 }

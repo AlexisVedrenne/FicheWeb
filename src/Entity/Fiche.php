@@ -30,15 +30,20 @@ class Fiche
      */
     private $laCategorie;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Commentaire::class, inversedBy="fiches")
-     */
-    private $commentaire;
 
     /**
-     * @ORM\OneToMany(targetEntity=Contenu::class, mappedBy="Fiche")
+     * @ORM\OneToMany(targetEntity=Contenu::class, mappedBy="Fiche",cascade={"persist","remove"})
      */
     private $contenus;
+
+    /**
+<<<<<<< HEAD
+     * @ORM\OneToMany(targetEntity=Contenu::class, mappedBy="Fiche")
+=======
+     * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="fiche")
+>>>>>>> AlexisGestionCommentaire
+     */
+    private $commentaires;
 
 
 
@@ -46,6 +51,7 @@ class Fiche
     {
         $this->categories = new ArrayCollection();
         $this->contenus = new ArrayCollection();
+        $this->commentaires = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -77,17 +83,6 @@ class Fiche
         return $this;
     }
 
-    public function getCommentaire(): ?Commentaire
-    {
-        return $this->commentaire;
-    }
-
-    public function setCommentaire(?Commentaire $commentaire): self
-    {
-        $this->commentaire = $commentaire;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Contenu[]
@@ -113,6 +108,36 @@ class Fiche
             // set the owning side to null (unless already changed)
             if ($contenu->getFiche() === $this) {
                 $contenu->setFiche(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Commentaire[]
+     */
+    public function getCommentaires(): Collection
+    {
+        return $this->commentaires;
+    }
+
+    public function addCommentaire(Commentaire $commentaire): self
+    {
+        if (!$this->commentaires->contains($commentaire)) {
+            $this->commentaires[] = $commentaire;
+            $commentaire->setFiche($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentaire(Commentaire $commentaire): self
+    {
+        if ($this->commentaires->removeElement($commentaire)) {
+            // set the owning side to null (unless already changed)
+            if ($commentaire->getFiche() === $this) {
+                $commentaire->setFiche(null);
             }
         }
 

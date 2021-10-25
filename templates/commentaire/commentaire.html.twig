@@ -1,0 +1,12 @@
+{{ form_start(form) }}
+<input name="ficheId" value="{{ ficheId }}" hidden></input>
+<div class="container">
+    <div class="row">
+        <div class="col-1"><h5 class="text-center mt-1">{{app.user.pseudo}}</h5></div>
+        <div class="col-5">{{ form_widget(form.message,{'attr':{'class':'form-control'}}) }}</div>
+        <div class="col-3">{{ form_widget(form.Commenter,{'attr':{'class':'btn btn-secondary'}}) }}</div>  
+    </div>
+
+</div>
+
+{{form_end(form)}}

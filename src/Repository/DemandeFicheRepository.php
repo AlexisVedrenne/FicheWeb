@@ -47,4 +47,19 @@ class DemandeFicheRepository extends ServiceEntityRepository
         ;
     }
     */
+
+
+    public function getLastDemande(){
+        $dql="SELECT d.message,u.pseudo FROM App\Entity\DemandeFiche d inner join App\Entity\User u where d.user = u.id ORDER BY d.id DESC";
+        $lesDemandes= $this->getEntityManager()->createQuery($dql)->execute();
+        if($lesDemandes !=null){
+            $lesDemandes[0]['message']=substr($lesDemandes[0]['message'],0,120);
+            return $lesDemandes[0];
+        }
+        else{
+            $lesDemandes[0]['pseudo']="Aucun";
+            $lesDemandes[0]['message']="Aucune demande disponible";
+            return $lesDemandes[0];
+        }
+    }
 }

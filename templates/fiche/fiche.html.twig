@@ -8,107 +8,19 @@
 {% block title %} Une fiche ! {% endblock %}
 
 {% block body %}
-    <style>
-        body{
-            /*background:linear-gradient(147deg, #a399b2 0%, #4d4855 74%);*/
-            /*background: linear-gradient(147deg, #f9fcff 0%, #dee4ea 74%);*/
-            /*background: linear-gradient(150deg, #2b4162 0%, #12100e 74%);*/
-            background-color:black;
-            /*background: linear-gradient(147deg, #4d4855 0%, #000000 74%);*/
-
-
-            background-attachment:fixed;
-            background-size:cover;
-            
-        }
-        h1{
-            color:white;
-        }
-        .consultation-header{
-            /*background: linear-gradient(315deg, #c2b6b6 0%, #576574 74%);*/
-            background: linear-gradient(0deg,#000,#404040);
-            
-            height: 100px;
-            padding: 20px;
-        }
-        .titre{
-            font-size: 40px;
-        }
-        .resultat{
-            text-align:center;
-            /*border:1px solid white;*/
-            margin-top:50px;
-            margin-left:200px;
-            margin-right:200px;
-            height:650px;
-            /*background:linear-gradient(147deg, #a399b2 0%, #4d4855 74%);*/
-            /*background: linear-gradient(147deg, #f9fcff 0%, #dee4ea 74%);*/
-            background: linear-gradient(315deg, #c2b6b6 0%, #576574 74%);
-            box-shadow: -30px 30px 20px rgba( 240, 255, 255, 1 );
-        }
-        .shadow{
-            position: relative;
-            margin:100px 100px;
-            height: 500px;
-            background: linear-gradient(0deg,#000,#262626);
-        }
-        .shadow:before, .shadow:after{
-            content: '';
-            position: absolute;
-            top:-2px;
-            left:-2px;
-            background: linear-gradient(45deg,#fb0094,#0000ff,#00ff00,#ffff00,#ff0000
-            ,#fb0094,#0000ff,#00ff00,#ffff00,#ff0000);
-            background-size:400%;
-            width:calc(100% + 4px);
-            height:calc(100% + 4px);
-            z-index: -1;
-            animation: animate 20s linear infinite;
-        }
-        .shadow:after{
-            filter: blur(50px);
-        }
-        @keyframes animate{
-            0%{
-                background-position: 0 0;
-            }
-            50%{
-                background-position: 300% 0;
-            }
-            100%{
-                background-position: 0 0;
-            }
-        }
-        .titre-box{
-            text-align:center;
-            color:white;
-            font-size:40px;
-            position : relative
-        }
-        .description{
-            color:white;
-            padding:100px;
-            font-size:30px;
-        }
-
-    </style>
-    <div class ="consultation-header"> 
-        <h1 class="titre"> <center> Consultation </center> </h1>
+    <div class="container">
+        <div class="row">{{ render(controller('App\\Controller\\CommentaireController::AddCommentaire',{'ficheId':fiche.id})) }}</div>
+        <hr>
+        {% for comm in lesCommentaires %}
+            {% if comm.isValid == true %}
+            <div class=" table row">
+                <div class="col-1"><h6 class="text-center callout-info">{{ comm.user.pseudo }}</h6></div>
+                <div class="col-5"><p>  {{ comm.texte }}</p></div>
+            </div>
+            <div class="row col-1"><a href="#" class="link-secondary">répondre</a></div>
+            <hr>
+            <br>
+            {% endif %}
+        {% endfor %}
     </div>
-    
-    
-    <div class="shadow">
-        <p class="titre-box">{{ fiche.nom}}</p>
-        <div class="description-box">
-            <p class="description">
-            Le HyperText Markup Language, généralement abrégé HTML ou dans sa dernière version HTML5,
-            est le langage de balisage conçu pour représenter les pages web. 
-            Ce langage permet : d’écrire de l’hypertexte, 
-            d’où son nom, de structurer sémantiquement la page, de mettre en forme le contenu, 
-            de créer des formulaires de saisie,
-            </p>
-        </div> 
-    </div>
-    <br><br><br>
-    
 {% endblock %}

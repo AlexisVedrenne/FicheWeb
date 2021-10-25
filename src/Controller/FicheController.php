@@ -11,13 +11,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Form\FicheType;
 use App\Entity\Fiche;
-use DateTime;
-use DateTimeInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use App\Entity\Categorie;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-
+use App\Repository\CommentaireRepository;
 use App\Form\DemandeFicheType;
 use App\Service\Mail;
 use App\Repository\DemandeFicheRepository;
@@ -27,30 +24,38 @@ use App\Repository\DemandeFicheRepository;
 class FicheController extends AbstractController
 {
     
-        public function index(): Response
-        {
-            return $this->render('fiche/index.html.twig', [
-                'controller_name' => 'FicheController',
-            ]);
-        }
+    public function index(): Response
+    {
+        return $this->render('fiche/index.html.twig', [
+            'controller_name' => 'FicheController',
+        ]);
+    }
 
     /**
+<<<<<<< HEAD
     * @Route("/{id}",name="fiche")
+=======
+    * @Route("/voir/{id}",name="voir")
+>>>>>>> AlexisGestionCommentaire
     * Undocumented function
     *
     * @param FicheRepository $repo
     * @param [type] $id
     * @return void
     */
-    public function getFiche(FicheRepository $repo,$id){
+    public function getFiche(FicheRepository $repo,int $id,CommentaireRepository $cmtRepo){
         $fiche = $repo->find($id);
-    
-        return $this->render('fiche/fiche.html.twig',['fiche'=>$fiche]);
+        $lesCommenaitres=$fiche->getCommentaires();
+        return $this->render('fiche/fiche.html.twig',['fiche'=>$fiche,'lesCommentaires'=>$lesCommenaitres]);
     }    
         
     /**
+<<<<<<< HEAD
      * @Route("/ajout",name="add")
      * 
+=======
+     * @Route("/ajout/{id}",name="add")
+>>>>>>> AlexisGestionCommentaire
      */
     public function addFiche(int $id,DemandeFicheRepository $repo,Request $request, EntityManagerInterface $manager )
     {
@@ -77,52 +82,48 @@ class FicheController extends AbstractController
     
         
 
-        /**
-         * @Route("/edit/{id}", name="edit")
-         * c'est une fonction qui permet de modifier une fiche (nom/catégorie)
-         */
-        public function editFiche(Request $request, $id){
-            $fiche=$this->getDoctrine()->getRepository(Fiche::class);
-            $fiche=$fiche->find($id);
-        
-            //message d'erruer au cas ou l'id n'existe pas
-        if (!$fiche) {
-            throw $this->createNotFoundException(
-                "il n'ya pas de fiche avec cet id" . $id);
-        
-        }
-                //affichage du formulaire
-        $form=$this->createFormBuilder($fiche)
-                ->add('nom',TextType::class)
-                ->add('laCategorie',EntityType::class,[
-                    'class'=>Categorie::class,
-                    'choice_label'=>'nom',
-                    'expanded'=>false,
-                    'multiple'=>false,
-
-                ])  
-
-                ->getForm();
-                $form->handleRequest($request);
-                // récupération des donnés et modifcation
-                if ($form->isSubmitted()) {
-                    $em=$this->getDoctrine()->getManager();
-                    $fiche=$form->getData();
-                    $em->flush();
-                //redirection vers la page d'accueil (juste temporaire)
-                    return $this->redirectToRoute('home');
-                    # code...
-                }
-            
-                return $this->render('fiche/modifier.html.twig',array('form'=> $form->createView()));
-            
-            ;
-        }
+    /**
+     * @Route("/edit/{id}", name="edit")
+     * c'est une fonction qui permet de modifier une fiche (nom/catégorie)
+     */
+    public function editFiche(Request $request, $id){
+        $fiche=$this->getDoctrine()->getRepository(Fiche::class);
+        $fiche=$fiche->find($id);
     
-
+        //message d'erruer au cas ou l'id n'existe pas
+    if (!$fiche) {
+        throw $this->createNotFoundException(
+            "il n'ya pas de fiche avec l'id " . $id);
     
-        
+    }
+            //affichage du formulaire
+    $form=$this->createFormBuilder($fiche)
+            ->add('nom',TextType::class)
+            ->add('laCategorie',EntityType::class,[
+                'class'=>Categorie::class,
+                'choice_label'=>'nom',
+                'expanded'=>false,
+                'multiple'=>false,
 
+            ])  
+
+            ->getForm();
+            $form->handleRequest($request);
+            // récupération des donnés et modifcation
+            if ($form->isSubmitted()) {
+                $em=$this->getDoctrine()->getManager();
+                $fiche=$form->getData();
+                $em->flush();
+            //redirection vers la page d'accueil (juste temporaire)
+                return $this->redirectToRoute('home');
+                # code...
+            }
+        
+            return $this->render('fiche/modifier.html.twig',array('form'=> $form->createView()));
+        
+        ;
+    }
+    
 
     /**
      * @Route("/demande",name="demande")
