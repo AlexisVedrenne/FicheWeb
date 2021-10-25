@@ -8,6 +8,7 @@
 			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 			<link href="{{ asset('css/styles.css') }}" type="text/css" rel="stylesheet">
+			<link href="{{ asset('css/stylesAccueil.css') }}" type="text/css" rel="stylesheet">
 		{% endblock %}
 
 	</head>
@@ -47,45 +48,49 @@
 		{% endblock %}
 	</body>
 	<footer>
-		<!-- FOOTER -->
-        <div class="footer">
-            <div class="sec aboutus">
-                <h2>A propos de nous</h2>
-                <p> Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée
-                à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer
-                le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, 
-                on utilise un texte en faux latin, le Lorem ipsum ou Lipsum.</p>
+		{% block footer %}
+        	<!-- FOOTER -->
+			<div id="footer-main">
+				<div class="footer-contenu">
+					<div class="sec aboutus">
+						<h2 class="footer-titre">A propos de nous</h2>
+						<p class="footer-p"> Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée
+						à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer
+						le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, 
+						on utilise un texte en faux latin, le Lorem ipsum ou Lipsum.</p>
 
-                <ul class="sci">
-                    <li><a href="#"><i class="bi bi-facebook"></i></a></li>
-                    <li><a href="#"><i class="bi bi-instagram"></i></a></li>
-                    <li><a href="#"><i class="bi bi-twitter"></i></a></li>
-                    <li><a href="#"><i class="bi bi-youtube"></i></a></li>
-                </ul>
-            </div> 
-            <div class="sec quickLinks">
-                <h2>Liens rapide</h2>
-                <ul>
-                    <li><a href="#">A propos</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Politique de confidentialité</a></li>
-                    <li><a href="#">Aide</a></li>
-                    <li><a href="#">Termes et Conditions</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </div> 
-            <div class="sec contact">
-                <h2>Contact info</h2>
-                <ul class="info">
-                    <li>
-                        <span><i class="bi bi-envelope"></i></span>
-                        <p><a href="mailto:service@ficheweb.fr">service@ficheweb.fr</a></p>
-                    </li>
-                </ul> 
-            </div> 
-        </div>
-        <div class="copyrightText">
-            <p class="Copyright"> Copyright © 2021. Tous droits réservés</p>
-        </div>     	
+						<ul class="sci">
+							<li class="sci-li"><a href="#" class="sci-lien"><i class="bi bi-facebook"></i></a></li>
+							<li class="sci-li"><a href="#" class="sci-lien"><i class="bi bi-instagram"></i></a></li>
+							<li class="sci-li"><a href="#" class="sci-lien"><i class="bi bi-twitter"></i></a></li>
+							<li class="sci-li"><a href="#" class="sci-lien"><i class="bi bi-youtube"></i></a></li>
+						</ul>
+					</div> 
+					<div class="sec quickLinks">
+						<h2 class="footer-titre">Liens rapide</h2>
+						<ul class="sec">
+							<li class="sec-li"><a href="#" class="sec-lien">A propos</a></li>
+							<li class="sec-li"><a href="#" class="sec-lien">FAQ</a></li>
+							<li class="sec-li"><a href="#" class="sec-lien">Politique de confidentialité</a></li>
+							<li class="sec-li"><a href="#" class="sec-lien">Aide</a></li>
+							<li class="sec-li"><a href="#" class="sec-lien">Termes et Conditions</a></li>
+							<li class="sec-li"><a href="#" class="sec-lien">Contact</a></li>
+						</ul>
+					</div> 
+					<div class="sec contact">
+						<h2 class="footer-titre">Contact info</h2>
+						<ul class="info">
+							<li class="contact-li">
+								<span class="contact-span"><i class="bi bi-envelope"></i></span>
+								<p class="footer-p"><a href="mailto:service@ficheweb.fr" class="email">service@ficheweb.fr</a></p>
+							</li>
+						</ul> 
+					</div> 
+				</div>
+				<div class="copyrightText">
+					<p class="Copyright"> Copyright © 2021. Tous droits réservés</p>
+				</div>  
+			</div>	   
+		{% endblock %} 
 	</footer>
 </html>
