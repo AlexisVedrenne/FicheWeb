@@ -37,11 +37,7 @@ class Fiche
     private $contenus;
 
     /**
-<<<<<<< HEAD
-     * @ORM\OneToMany(targetEntity=Contenu::class, mappedBy="Fiche")
-=======
      * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="fiche")
->>>>>>> AlexisGestionCommentaire
      */
     private $commentaires;
 
