@@ -35,9 +35,6 @@ class FicheController extends AbstractController
         }
 
     /**
-<<<<<<< HEAD
-     * @Route("/ajout/{id}",name="add")
-=======
     * @Route("/{id}",name="fiche")
     * Undocumented function
     *
@@ -54,7 +51,6 @@ class FicheController extends AbstractController
     /**
      * @Route("/ajout",name="add")
      * 
->>>>>>> FrancisConsultation/Page
      */
     public function addFiche(int $id,DemandeFicheRepository $repo,Request $request, EntityManagerInterface $manager )
     {
