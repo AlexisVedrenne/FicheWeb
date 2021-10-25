@@ -280,7 +280,7 @@ body{
 
 
 /* ------------------------------------------- BLOC DES FICHES ------------------------------------------------- */
-.container{
+.bloc-contenu{
     display:flex;
     position: relative;
     width:90%;
@@ -294,7 +294,7 @@ body{
     align-items: center;
     border-radius: 10px;
 }
-.container .box{
+.bloc-contenu .box{
     position: relative;
     height:400px;
     background: #060c21;
@@ -303,7 +303,7 @@ body{
     align-items:center; 
     margin: 20px;
 }
-.container .box:before{
+.bloc-contenu .box:before{
     content: '';
     position: absolute;
     top: -2px;
@@ -314,39 +314,39 @@ body{
     transform: skew(2deg, 2deg);
     z-index: -1;
 }
-.container .box:nth-child(1):before
+.bloc-contenu .box:nth-child(1):before
 {
     background: linear-gradient(315deg, #e94619, #f6d9a9);
 }
-.container .box:nth-child(2):before
+.bloc-contenu .box:nth-child(2):before
 {
     background: linear-gradient(315deg, #89ff00, #00bcd4);
 }
-.container .box:nth-child(3):before
+.bloc-contenu .box:nth-child(3):before
 {
     background: linear-gradient(315deg, #e91e63, #5d02ff);
 }
-.container .box:nth-child(4):before
+.bloc-contenu .box:nth-child(4):before
 {
     background: linear-gradient(315deg, #ff0000, #ffc107);
 }
-.container .box:nth-child(5):before
+.bloc-contenu .box:nth-child(5):before
 {
     background: linear-gradient(315deg, #ff0000, #ffc107);
 }
-.container .box:nth-child(6):before
+.bloc-contenu .box:nth-child(6):before
 {
     background: linear-gradient(315deg, #e91e63, #5d02ff);
 }
-.container .box:nth-child(7):before
+.bloc-contenu .box:nth-child(7):before
 {
     background: linear-gradient(315deg, #89ff00, #00bcd4);
 }
-.container .box:nth-child(8):before
+.bloc-contenu .box:nth-child(8):before
 {
     background: linear-gradient(315deg, #e94619, #f6d9a9);
 }
-.container .box:after{
+.bloc-contenu .box:after{
     content: '';
     position: absolute;
     top: 0;
