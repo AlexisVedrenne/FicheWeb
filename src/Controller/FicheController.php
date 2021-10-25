@@ -32,11 +32,7 @@ class FicheController extends AbstractController
     }
 
     /**
-<<<<<<< HEAD
-    * @Route("/{id}",name="fiche")
-=======
     * @Route("/voir/{id}",name="voir")
->>>>>>> AlexisGestionCommentaire
     * Undocumented function
     *
     * @param FicheRepository $repo
@@ -50,12 +46,7 @@ class FicheController extends AbstractController
     }    
         
     /**
-<<<<<<< HEAD
-     * @Route("/ajout",name="add")
-     * 
-=======
      * @Route("/ajout/{id}",name="add")
->>>>>>> AlexisGestionCommentaire
      */
     public function addFiche(int $id,DemandeFicheRepository $repo,Request $request, EntityManagerInterface $manager )
     {

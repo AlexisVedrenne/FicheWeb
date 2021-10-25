@@ -40,8 +40,6 @@ class AppController extends AbstractController
         $number= "0123456789";
         return substr(str_shuffle(str_repeat($number, $longueur)), 0, $longueur);
     }
-<<<<<<< HEAD
-=======
 
 
     public static function traitementCtn(Fiche $fiche,$request,int $nbContenue, int $nbMedia){
@@ -61,5 +59,4 @@ class AppController extends AbstractController
     }
 
     
->>>>>>> AlexisGestionCommentaire
 }
