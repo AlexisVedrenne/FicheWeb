@@ -1,0 +1,35 @@
+.bannierre-titre{
+    font-size: 60px;
+    color: white;
+    margin: 0;
+    width: 300px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+}
+.bloc-consultation{
+    display: flex;
+    height: 800px;
+}
+.bloc-titre-c{
+    text-align: center;
+    margin: 40px;
+    background: black;
+    color: white;
+    opacity: 0.8;
+}
+.paragraphe-c{
+    padding: 40px;
+}
+.bloc-left{
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(147deg, #f9fcff 0%, #dee4ea 74%);
+}
+.bloc2-right{
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(147deg, #f9fcff 0%, #dee4ea 74%);
+}
+
+    
