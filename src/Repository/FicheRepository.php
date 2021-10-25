@@ -48,7 +48,10 @@ class FicheRepository extends ServiceEntityRepository
     }
     */
 
-    
+    public function getCommFiche($idComm){
+        $dql='SELECT f.id from App\Entity\Fiche f WHERE f.commentaire='.$idComm;
+        return $this->getEntityManager()->createQuery($dql)->execute()[0];
+    }
     
 
     

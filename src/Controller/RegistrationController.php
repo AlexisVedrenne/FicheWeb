@@ -15,7 +15,7 @@ use App\Service\Mail;
 class RegistrationController extends AbstractController
 {
     /**
-     * @Route("/enregistrer", name="app_register")
+     * @Route("/inscription", name="app_register")
      * 
      * Fonction générer automatiquement par symfony qui permet la création d'un nouvel utilisateur
      * @return Void

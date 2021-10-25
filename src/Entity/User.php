@@ -54,7 +54,7 @@ class User implements UserInterface
     private $dateInscription;
 
     /**
-     * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="user")
+     * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="user",cascade={"remove"})
      */
     private $Commentaire;
 

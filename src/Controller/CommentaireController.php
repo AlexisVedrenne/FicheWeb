@@ -27,11 +27,12 @@ class CommentaireController extends AbstractController
         $fiche=$repo->find($request->request->get('ficheId'));
         $commentaire->setUser($this->getUser());
         $commentaire->setTexte($request->request->get('form')['message']);
-        $commentaire->addFiche($fiche);
+        $commentaire->setIsValid(false);
+        $commentaire->setFiche($fiche);
         $manager->persist($commentaire);
         $manager->flush();
 
-        return new RedirectResponse('/fiche/'.$request->request->get('ficheId') );
+        return new RedirectResponse('/fiche/voir/'.$request->request->get('ficheId') );
     }
 
     public function AddCommentaire($ficheId) {
@@ -42,4 +43,5 @@ class CommentaireController extends AbstractController
                 ->getForm();
         return $this->render('commentaire/commentaire.html.twig',['form'=>$form->createView(),'ficheId'=>$ficheId]);
     }
+
 }

@@ -12,13 +12,15 @@
         <div class="row">{{ render(controller('App\\Controller\\CommentaireController::AddCommentaire',{'ficheId':fiche.id})) }}</div>
         <hr>
         {% for comm in lesCommentaires %}
+            {% if comm.isValid == true %}
             <div class=" table row">
-                <div class="col-1"><h6 class="text-center callout-info">{{ comm['pseudo'] }}</h6></div>
-                <div class="col-5"><p>  {{ comm['texte'] }}</p></div>
+                <div class="col-1"><h6 class="text-center callout-info">{{ comm.user.pseudo }}</h6></div>
+                <div class="col-5"><p>  {{ comm.texte }}</p></div>
             </div>
-            <div class="row col-1"><a class="btn">répondre</a></div>
+            <div class="row col-1"><a href="#" class="link-secondary">répondre</a></div>
             <hr>
             <br>
+            {% endif %}
         {% endfor %}
     </div>
 {% endblock %}

@@ -2,11 +2,13 @@
 
 namespace App\Controller;
 
+use App\Repository\CommentaireRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Repository\DemandeFicheRepository;
+use App\Repository\FicheRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
@@ -41,11 +43,43 @@ class AdminController extends AbstractController
      * @Route("/suppDemande/{id}",name="suppDemande")
      */
     public function deleteDemande(int $id,DemandeFicheRepository $repo,EntityManagerInterface $manager){
-        $id=intval($id);
         $demande=$repo->find($id);
         $manager->remove($demande);
         $manager->flush();
         return $this->redirectToRoute('admin_demandes');
+    }
+
+
+    /**
+     * @Route("/commentaires",name="commentaires")
+     */
+    public function getCommentaire(CommentaireRepository $repo){
+        $lesCommantaires=$repo->getCommNonValid();
+        return $this->render('admin/commValid.html.twig',['lesCommentaires'=>$lesCommantaires]);
+    }
+
+
+    /**
+     * @Route("/suppCommentaire/{id}",name="suppCommentaire")
+     */
+    public function deleteCommentaire(int $id,CommentaireRepository $repo,EntityManagerInterface $manager,FicheRepository $fRepo){
+        $commentaire=$repo->find($id);
+        $commentaire->setUser(null);
+        $commentaire->setFiche(null);
+        $manager->remove($commentaire);
+        $manager->flush();
+        return $this->redirectToRoute('admin_commentaires');
+    }
+
+    /**
+     * @Route("/validCommentaire/{id}",name="validCommentaire")
+     */
+    public function validCommentaire(int $id,CommentaireRepository $repo,EntityManagerInterface $manager){
+        $commentaire=$repo->find($id);
+        $commentaire->setIsValid(true);
+        $manager->persist($commentaire);
+        $manager->flush();
+        return $this->redirectToRoute('admin_commentaires');
     }
 
 }

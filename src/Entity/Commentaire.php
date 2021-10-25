@@ -24,15 +24,23 @@ class Commentaire
      */
     private $texte;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Fiche::class, mappedBy="commentaire")
-     */
-    private $fiches;
+
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="Commentaire")
      */
     private $user;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isValid;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Fiche::class, inversedBy="commentaires")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $fiche;
 
     public function __construct()
     {
@@ -66,27 +74,7 @@ class Commentaire
         return $this->fiches;
     }
 
-    public function addFiche(Fiche $fich): self
-    {
-        if (!$this->fiches->contains($fich)) {
-            $this->fiches[] = $fich;
-            $fich->setCommentaire($this);
-        }
 
-        return $this;
-    }
-
-    public function removeFiche(Fiche $fich): self
-    {
-        if ($this->fiches->removeElement($fich)) {
-            // set the owning side to null (unless already changed)
-            if ($fich->getCommentaire() === $this) {
-                $fich->setCommentaire(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function getUser(): ?User
     {
@@ -96,6 +84,30 @@ class Commentaire
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getIsValid(): ?bool
+    {
+        return $this->isValid;
+    }
+
+    public function setIsValid(bool $isValid): self
+    {
+        $this->isValid = $isValid;
+
+        return $this;
+    }
+
+    public function getFiche(): ?Fiche
+    {
+        return $this->fiche;
+    }
+
+    public function setFiche(?Fiche $fiche): self
+    {
+        $this->fiche = $fiche;
 
         return $this;
     }
