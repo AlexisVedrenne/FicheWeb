@@ -35,7 +35,26 @@ class FicheController extends AbstractController
         }
 
     /**
+<<<<<<< HEAD
      * @Route("/ajout/{id}",name="add")
+=======
+    * @Route("/{id}",name="fiche")
+    * Undocumented function
+    *
+    * @param FicheRepository $repo
+    * @param [type] $id
+    * @return void
+    */
+    public function getFiche(FicheRepository $repo,$id){
+        $fiche = $repo->find($id);
+    
+        return $this->render('fiche/fiche.html.twig',['fiche'=>$fiche]);
+    }    
+        
+    /**
+     * @Route("/ajout",name="add")
+     * 
+>>>>>>> FrancisConsultation/Page
      */
     public function addFiche(int $id,DemandeFicheRepository $repo,Request $request, EntityManagerInterface $manager )
     {

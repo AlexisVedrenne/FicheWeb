@@ -2,6 +2,167 @@
 
 {% block title %}FicheWeb{% endblock %}
 
-{% block body %}
+   
 
+{% block body %}
+    <style>
+        body{
+            /*background:url('{{ asset("images/back3.jpg!d") }}');*/
+            /*background: black;
+            background-attachment:fixed;
+            background-size:cover;*/
+        }
+    </style>
+    
+    <style>
+    .bloc1 .clip.clip1{
+        background: url('assets/images/image1.jpg');
+        background-size: cover;
+    }
+    .bloc1 .clip.clip2{
+        background: url('assets/images/connaissance.jpg');
+        background-size: cover;
+    }
+    .bloc1 .clip.clip3{
+        background: url('assets/images/presentation.jpg');
+        background-size: cover;
+    }
+    .home-right{
+        background: url('assets/images/back-hero1.jpg');
+        width: 60%;
+        height: 100%;
+        background-attachment:fixed;
+        background-repeat:no-repeat;
+        background-size:cover;
+    }
+    </style>
+
+    <!-- HERO -->
+    <div id="home" class="hero">
+        <div class="home-left">
+            <h2 class="home-titre">FICHE WEB</h2>
+            <p class="home-p">Web connaissance</p>
+            <p class="home-p">Consulter nos tutoriels afin d'acquérir de nouvelles compétences</p>
+            <p class="home-p">Tout les jours !</p>
+            <div class="btn-hero">
+                <a href="#" class="btn-home b1">Connexion</a>
+                <a href="#" class="btn-home b2">Inscription</a>
+            </div>
+        </div>
+        <div class="home-right"></div>
+    </div>
+
+    <!-- BLOC DE 3 LOGOS -->
+
+    <section class="bloc-services">
+        <div class="bloc-item">
+            <i class="bi bi-card-text fiche-icon"></i>
+            <p class="bloc-services-paragraphe"> Nos fiches tutoriels qu'on propose avec des textes, images et vidéos. </p>
+        </div>
+        <div class="bloc-item">
+            <i class="bi bi-lightbulb solution-icon"></i>
+            <p class="bloc-services-paragraphe"> Nos solutions qui permettront de répondre à votre besoin.</p>
+        </div>
+        <div class="bloc-item">
+            <i class="bi bi-reception-4 competence-icon"></i>
+            <p class="bloc-services-paragraphe"> Acquérir des compétences c'est une bonne chose.</p>
+        </div>
+    </section>
+
+    <!-- DIAPO CLIP -->
+    <div class ="contenu">
+    <div class="bloc1">
+        <div class="clip clip1">
+            <div class ="content1">
+                <h2 class="contenu-titre">Volonté</h2>
+                <p class="contenu-p">la volonté d’apprendre (et pas seulement de savoir : 
+                passer du désir de savoir au désir d’apprendre n’est pas si aisé)</p>
+            </div>
+        </div>
+        <div class="clip clip2">
+            <div class ="content1">
+                <h2 class="contenu-titre">Envie</h2>
+                <p class="contenu-p">l’envie d’apprendre (le désir et la motivation
+                qui poussent à se mettre en mouvement et à faire des efforts)</p>
+            </div>
+        </div>
+        <div class="clip clip3">
+            <div class ="content1">
+                <h2 class="contenu-titre">Représentation</h2>
+                <p class="contenu-p">la représentation claire de l’objectif à atteindre 
+                (la capacité à se projeter et à s’imaginer comment sera utilisé le savoir, 
+                quel projet ou quel besoin il servira)</p>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+    <style>
+        div.bloc2{
+            /*background: linear-gradient(147deg, #f9fcff 0%, #dee4ea 20%);*/
+            background:url('assets/images/banniere2.jpg');
+            color:white;
+            text-align:center;
+            padding:10px; 
+            background-attachment:fixed;
+            
+        }
+    </style>
+    <!-- BLOC AVEC LES FICHES --> 
+    <div class="bloc2">
+        <h1 class="bloc2-grand-titre">LES FICHES</h1>
+        <div class="container">
+        <div class="box">
+            <div class="content">
+                <h2 class="bloc2-num">01</h2>
+                <h3 class="bloc2-titre">HTML</h3>
+                <p class="bloc2-p">Le HyperText Markup Language, généralement abrégé HTML ou dans sa dernière version HTML5,
+                est le langage de balisage conçu pour représenter les pages web. 
+                Ce langage permet : d’écrire de l’hypertexte, 
+                </p>
+                <a href="#" class="bloc2-lien">En savoir plus</a>
+            </div>
+        </div>
+    
+        <div class="box">
+            <div class="content">
+                <h2 class="bloc2-num">02</h2>
+                <h3 class="bloc2-titre">Service Two</h3>
+                <p class="bloc2-p">Le HyperText Markup Language, généralement abrégé HTML ou dans sa dernière version HTML5,
+                est le langage de balisage conçu pour représenter les pages web. 
+                Ce langage permet : d’écrire de l’hypertexte, 
+                </p>
+                <a href="#" class="bloc2-lien">En savoir plus</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="content">
+                <h2 class="bloc2-num">03</h2>
+                <h3 class="bloc2-titre">Service Three</h3>
+                <p class="bloc2-p">Le HyperText Markup Language, généralement abrégé HTML ou dans sa dernière version HTML5,
+                est le langage de balisage conçu pour représenter les pages web. 
+                Ce langage permet : d’écrire de l’hypertexte, 
+                </p>
+                <a href="#" class="bloc2-lien">En savoir plus</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="content">
+                <h2 class="bloc2-num">04</h2>
+                <h3 class="bloc2-titre">Service Four</h3>
+                <p class="bloc2-p">Le HyperText Markup Language, généralement abrégé HTML ou dans sa dernière version HTML5,
+                est le langage de balisage conçu pour représenter les pages web. 
+                Ce langage permet : d’écrire de l’hypertexte, 
+                </p>
+                <a href="#" class="bloc2-lien">En savoir plus</a>
+            </div>
+        </div> 
+        
+    </div> 
+    </div>
+
+    
 {% endblock %}
+
