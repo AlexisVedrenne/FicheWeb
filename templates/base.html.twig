@@ -32,7 +32,7 @@
 						<li class="nav-item">
 						<a class="nav-link" href="/fiche/tous">Fiche</a>
 						</li>
-						{% if app.user.roles['ROLE'] == 'ROLE_ADMIN' %}
+						{% if app.user and app.user.roles['ROLE'] == 'ROLE_ADMIN' %}
 						<li class="nav-item">
 						<a class="nav-link " href="/admin/acceuil">Administration</a>
 						</li>
