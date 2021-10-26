@@ -1,13 +1,114 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheets %}
-			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-            <link rel="stylesheets" href="{{asset('css\styles.css')}}">
-{% endblock %}
-
 {% block title %} Une fiche ! {% endblock %}
 
 {% block body %}
+    <style>
+        .bannierre{
+            background: url('{{ asset("images/banniere2.jpg") }}');
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 600px;
+            background-attachment:fixed;
+            background-repeat:no-repeat;
+            background-size:cover;
+            position: 50% 10%;
+        }
+        .bloc-right{
+           background: url('{{ asset("images/back1.jpg") }}');
+           width: 50%;
+           height: 100%;
+        }
+        .bloc2-left{
+           background: url('{{ asset("images/back2.jpg") }}');
+           width: 50%;
+           height: 100%;
+           background-position: 45% 20%;
+        }
+            
+    </style>
+    <div class ="bannierre"> 
+        <h1 class="bannierre-titre"> Consultation </h1>
+    </div>
+
+    <div class="bloc-consultation">
+        <div class="bloc-left">
+            <div class="bloc-text">
+                <div class="bloc-titre-c">
+                    <h1 class="titre-c"> {{ fiche.nom}} </h1>
+                </div>
+                <div class="bloc-paragraphe-c">
+                    <p class="paragraphe-c">
+                        Le HyperText Markup Language, généralement abrégé HTML ou dans sa dernière version HTML5,
+                        est le langage de balisage conçu pour représenter les pages web. 
+                        Ce langage permet : d’écrire de l’hypertexte, 
+                        d’où son nom, de structurer sémantiquement la page, de mettre en forme le contenu, 
+                        de créer des formulaires de saisie.
+                    </p>
+                    
+                    <p class="paragraphe-c">
+                        Le HyperText Markup Language, généralement abrégé HTML ou dans sa dernière version HTML5,
+                        est le langage de balisage conçu pour représenter les pages web. 
+                        Ce langage permet : d’écrire de l’hypertexte, 
+                        d’où son nom, de structurer sémantiquement la page, de mettre en forme le contenu, 
+                        de créer des formulaires de saisie.
+                    </p>
+                    <p class="paragraphe-c">
+                        Le HyperText Markup Language, généralement abrégé HTML ou dans sa dernière version HTML5,
+                        est le langage de balisage conçu pour représenter les pages web. 
+                        Ce langage permet : d’écrire de l’hypertexte, 
+                        d’où son nom, de structurer sémantiquement la page, de mettre en forme le contenu, 
+                        de créer des formulaires de saisie.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="bloc-right">
+
+        </div>
+    </div>
+    <div class="bloc-consultation">
+        <div class="bloc2-left">
+        </div>
+        <div class="bloc2-right">
+            <div class="bloc2-text">
+                <div class="bloc-titre-c">
+                    <h1 class="titre-c"> {{ fiche.nom}} </h1>
+                </div>
+                <div class="bloc-paragraphe-c">
+                    <p class="paragraphe-c">
+                        Le HyperText Markup Language, généralement abrégé HTML ou dans sa dernière version HTML5,
+                        est le langage de balisage conçu pour représenter les pages web. 
+                        Ce langage permet : d’écrire de l’hypertexte, 
+                        d’où son nom, de structurer sémantiquement la page, de mettre en forme le contenu, 
+                        de créer des formulaires de saisie.
+                    </p>
+                    
+                    <p class="paragraphe-c">
+                        Le HyperText Markup Language, généralement abrégé HTML ou dans sa dernière version HTML5,
+                        est le langage de balisage conçu pour représenter les pages web. 
+                        Ce langage permet : d’écrire de l’hypertexte, 
+                        d’où son nom, de structurer sémantiquement la page, de mettre en forme le contenu, 
+                        de créer des formulaires de saisie.
+                    </p>
+                    <p class="paragraphe-c">
+                        Le HyperText Markup Language, généralement abrégé HTML ou dans sa dernière version HTML5,
+                        est le langage de balisage conçu pour représenter les pages web. 
+                        Ce langage permet : d’écrire de l’hypertexte, 
+                        d’où son nom, de structurer sémantiquement la page, de mettre en forme le contenu, 
+                        de créer des formulaires de saisie.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bloc-video">
+        <div class="video">
+            
+        </div>
+    </div>
+
     <div class="container">
         <div class="row">{{ render(controller('App\\Controller\\CommentaireController::AddCommentaire',{'ficheId':fiche.id})) }}</div>
         <hr>
@@ -23,4 +124,5 @@
             {% endif %}
         {% endfor %}
     </div>
+    
 {% endblock %}
