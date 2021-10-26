@@ -9,6 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Repository\DemandeFicheRepository;
 use App\Repository\FicheRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
@@ -21,10 +22,12 @@ class AdminController extends AbstractController
     /**
      * @Route("/acceuil",name="index")
      */
-    public function index(DemandeFicheRepository $repo): Response
+    public function index(DemandeFicheRepository $repo,CommentaireRepository $ctRepo,UserRepository $uRepo): Response
     {
         $last=$repo->getLastDemande();
-        return $this->render('admin/index.html.twig',['last'=>$last]);
+        $nbComm=$ctRepo->getNbComm();
+        $nbuser=$uRepo->getNbUser();
+        return $this->render('admin/index.html.twig',['last'=>$last,'nb'=>$nbComm,'nbU'=>$nbuser]);
     }
 
 

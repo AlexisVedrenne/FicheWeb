@@ -54,11 +54,13 @@ class DemandeFicheRepository extends ServiceEntityRepository
         $lesDemandes= $this->getEntityManager()->createQuery($dql)->execute();
         if($lesDemandes !=null){
             $lesDemandes[0]['message']=substr($lesDemandes[0]['message'],0,120);
+            $lesDemandes[0]['nb']=count($lesDemandes);
             return $lesDemandes[0];
         }
         else{
             $lesDemandes[0]['pseudo']="Aucun";
             $lesDemandes[0]['message']="Aucune demande disponible";
+            $lesDemandes[0]['nb']=0;
             return $lesDemandes[0];
         }
     }

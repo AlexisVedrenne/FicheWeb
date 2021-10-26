@@ -62,4 +62,10 @@ class CommentaireRepository extends ServiceEntityRepository
         $lesCommentaires=$this->getEntityManager()->createQuery($dql)->execute();
         return $lesCommentaires;
     }
+
+    public function getNbComm(){
+        $dql='SELECT count(c) as nb from App\Entity\Commentaire c where c.isValid = false';
+        $nb=$this->getEntityManager()->createQuery($dql)->execute();
+        return $nb;
+    }
 }

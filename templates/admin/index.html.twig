@@ -6,31 +6,36 @@
 
     <div class="container">
         <div class="row">    
-            <div class="card" style="width: 18rem;">
+            <div class="card me-5 mt-2" style="width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">Les demandes de fiche</h5>
+                    <div><h5 class="card-title">Gestion des demandes de fiche</h5></div>
                     <h6 class="card-subtitle mb-2 text-muted">Dernière demande : {{last['pseudo']}} </h6>
                     <p class="card-text">{{last['message']}}...</p>
-                    <a href="/admin/demandes" class="card-link">Voir toutes les demandes</a>
-                </div>     
+                    <a href="/admin/demandes" class="card-link">Voir toutes les demandes</a>            
+                </div>
+                {% if last['nb'] !=0 %}
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{last['nb']}}</span> 
+                {% endif %}   
             </div>
-            <div class="card" style="width: 18rem;">
+            <div class="card me-5 mt-2" style="width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
-                </div>     
+                    <h5 class="card-title">Gestion des commentaires</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Administration commentaire</h6>
+                    <p class="card-text">Ici il est possible de gérer les nouveaux commentaires poster par les utilisateurs</p>
+                    <a href="/admin/commentaires" class="card-link">Voir les commentaires</a>
+                </div>
+                {% if nb[0]['nb'] !=0 %}
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{nb[0]['nb']}}</span>
+                {% endif %}     
             </div>
-            <div class="card" style="width: 18rem;">
+            <div class="card card me-5 mt-2" style="width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
-                </div>     
+                    <h5 class="card-title">Gestion des utilisateurs</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Administration utilisateurs</h6>
+                    <p class="card-text">Ici vous pouvez gerer tous les utilisateurs du site (role, mot de passe, pseudo, status...)</p>
+                    <a href="#" class="card-link">Voir les utilisateurs</a>
+                </div>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">{{nbU[0]['nb']}}</span>     
             </div>
         </div>
     </div>
