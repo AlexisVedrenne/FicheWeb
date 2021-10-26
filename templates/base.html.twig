@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>{% block title %} Fiche Web {% endblock %}</title>
 		{% block stylesheets %}
-			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 			<link href="{{ asset('css/styles.css') }}" type="text/css" rel="stylesheet">
 			<link href="{{ asset('css/stylesAccueil.css') }}" type="text/css" rel="stylesheet">
@@ -25,9 +25,19 @@
 						<li class="nav-item">
 						<a class="nav-link active" aria-current="page" href="/">Acceuil</a>
 						</li>
+						<li class="nav-item dropdown">
+          					<a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Fiche</a>
+          						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            						<li><a class="dropdown-item" href="/fiche/tous">Voir toute les fiches</a></li>
+									{% if app.user %}
+            						<li><hr class="dropdown-divider"></li>
+            						<li><a class="dropdown-item" href="/fiche/demande">Demande de nouvelle fiche</a></li>
+									{% endif %}
+          						</ul>
+        				</li>
 						<li class="nav-item">
-						<a class="nav-link" href="/fiche/tous">Fiche</a>
-						</li>
+						<a class="nav-link active" aria-current="page" href="#">Compte</a>
+						</li>						
 						{% if app.user and app.user.roles['ROLE'] == 'ROLE_ADMIN' %}
 						<li class="nav-item">
 						<a class="nav-link " href="/admin/acceuil">Administration</a>
@@ -41,6 +51,7 @@
 				</div>
 			</div>
 		</nav>
+		
 	</header>
 	<body>
 		{% block body %}{% endblock %}
@@ -92,7 +103,6 @@
 		{% endblock %} 
 	</footer>
 	{% block javascripts %}
-			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
-			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 		{% endblock %}
 </html>
