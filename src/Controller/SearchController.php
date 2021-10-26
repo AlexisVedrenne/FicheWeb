@@ -28,8 +28,7 @@ class SearchController extends AbstractController {
          $valeurs=$request->request->get('form')['nom'];
          $repo->findBy(array('nom'=>$valeurs));
          
-         
-        
+    
 
      }
 
@@ -44,11 +43,7 @@ class SearchController extends AbstractController {
          ->add('nom')
          ->add('Rechercher',SubmitType::class)  
          ->getForm();
-        
-
-        
-        
-         
+    
          return $this->render('fiche/rechercher.html.twig', ["form"=>$form->createView()]);
      }
 
