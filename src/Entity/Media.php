@@ -22,6 +22,18 @@ class Media
      */
     private $lien;
 
+    /**
+     * @ORM\Column(type="string", length=15)
+     */
+    private $type;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Contenu::class, inversedBy="lesMedias",cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $contenu;
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -38,4 +50,29 @@ class Media
 
         return $this;
     }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    public function getContenu(): ?Contenu
+    {
+        return $this->contenu;
+    }
+
+    public function setContenu(?Contenu $contenu): self
+    {
+        $this->contenu = $contenu;
+
+        return $this;
+    }
+
 }
