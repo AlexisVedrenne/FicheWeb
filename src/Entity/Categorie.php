@@ -29,11 +29,17 @@ class Categorie
      */
     private $fiches;
 
+    /**
+     * @ORM\OneToMany(targetEntity=DemandeFiche::class, mappedBy="categorie")
+     */
+    private $demandeFiches;
+
 
     public function __construct()
     {
         $this->lesFiches = new ArrayCollection();
         $this->fiches = new ArrayCollection();
+        $this->demandeFiches = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -77,6 +83,36 @@ class Categorie
             // set the owning side to null (unless already changed)
             if ($fich->getLaCategorie() === $this) {
                 $fich->setLaCategorie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|DemandeFiche[]
+     */
+    public function getDemandeFiches(): Collection
+    {
+        return $this->demandeFiches;
+    }
+
+    public function addDemandeFich(DemandeFiche $demandeFich): self
+    {
+        if (!$this->demandeFiches->contains($demandeFich)) {
+            $this->demandeFiches[] = $demandeFich;
+            $demandeFich->setCategorie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDemandeFich(DemandeFiche $demandeFich): self
+    {
+        if ($this->demandeFiches->removeElement($demandeFich)) {
+            // set the owning side to null (unless already changed)
+            if ($demandeFich->getCategorie() === $this) {
+                $demandeFich->setCategorie(null);
             }
         }
 
