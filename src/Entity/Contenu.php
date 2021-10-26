@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ContenuRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -23,19 +25,24 @@ class Contenu
     private $rubrique;
 
     /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $media;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Fiche::class, inversedBy="contenus")
+     * @ORM\ManyToOne(targetEntity=Fiche::class, inversedBy="contenus",cascade={"persist"})
      */
     private $Fiche;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Media::class, mappedBy="contenu", orphanRemoval=true,cascade={"persist"})
+     */
+    private $lesMedias;
+
+    public function __construct()
+    {
+        $this->lesMedias = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -54,17 +61,6 @@ class Contenu
         return $this;
     }
 
-    public function getMedia(): ?string
-    {
-        return $this->media;
-    }
-
-    public function setMedia(string $media): self
-    {
-        $this->media = $media;
-
-        return $this;
-    }
 
     public function getDescription(): ?string
     {
@@ -86,6 +82,36 @@ class Contenu
     public function setFiche(?Fiche $Fiche): self
     {
         $this->Fiche = $Fiche;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Media[]
+     */
+    public function getLesMedias(): Collection
+    {
+        return $this->lesMedias;
+    }
+
+    public function addLesMedia(Media $lesMedia): self
+    {
+        if (!$this->lesMedias->contains($lesMedia)) {
+            $this->lesMedias[] = $lesMedia;
+            $lesMedia->setContenu($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLesMedia(Media $lesMedia): self
+    {
+        if ($this->lesMedias->removeElement($lesMedia)) {
+            // set the owning side to null (unless already changed)
+            if ($lesMedia->getContenu() === $this) {
+                $lesMedia->setContenu(null);
+            }
+        }
 
         return $this;
     }
