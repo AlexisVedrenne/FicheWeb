@@ -21,6 +21,7 @@ class AdminController extends AbstractController
 
     /**
      * @Route("/acceuil",name="index")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function index(DemandeFicheRepository $repo,CommentaireRepository $ctRepo,UserRepository $uRepo): Response
     {
@@ -33,6 +34,7 @@ class AdminController extends AbstractController
 
     /**
      * @Route("/demandes",name="demandes")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function getAllDemandes(DemandeFicheRepository $repo){
         $lesDemandes= $repo->findAll();
@@ -44,6 +46,7 @@ class AdminController extends AbstractController
 
     /**
      * @Route("/suppDemande/{id}",name="suppDemande")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function deleteDemande(int $id,DemandeFicheRepository $repo,EntityManagerInterface $manager){
         $demande=$repo->find($id);
@@ -55,6 +58,7 @@ class AdminController extends AbstractController
 
     /**
      * @Route("/commentaires",name="commentaires")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function getCommentaire(CommentaireRepository $repo){
         $lesCommantaires=$repo->getCommNonValid();
@@ -64,6 +68,7 @@ class AdminController extends AbstractController
 
     /**
      * @Route("/suppCommentaire/{id}",name="suppCommentaire")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function deleteCommentaire(int $id,CommentaireRepository $repo,EntityManagerInterface $manager,FicheRepository $fRepo){
         $commentaire=$repo->find($id);
@@ -76,6 +81,7 @@ class AdminController extends AbstractController
 
     /**
      * @Route("/validCommentaire/{id}",name="validCommentaire")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function validCommentaire(int $id,CommentaireRepository $repo,EntityManagerInterface $manager){
         $commentaire=$repo->find($id);

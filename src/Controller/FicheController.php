@@ -47,6 +47,7 @@ class FicheController extends AbstractController
         
     /**
      * @Route("/ajout/{id}",name="add")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function addFiche(int $id,DemandeFicheRepository $repo,Request $request, EntityManagerInterface $manager )
     {

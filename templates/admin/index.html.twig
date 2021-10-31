@@ -2,7 +2,7 @@
 
 {% block body %}
 
-    {% if app.user and (app.user.roles["ROLE"])=="ROLE_ADMIN" %}
+    {# {% if app.user and (app.user.roles["ROLE"])=="ROLE_ADMIN" %} #}
 
     <div class="container">
         <div class="row">
@@ -40,12 +40,12 @@
             </div>             
         </div>
     </div>
-    {% else %}
+    {# {% else %}
 
     <br>
     <h1 class="text-center">Vous n'etes pas connecter ou vous n'avez pas la permission d'accèder à cette page</h1>
 
-    {% endif %}
+    {% endif %} #}
 
 
 {% endblock %}
