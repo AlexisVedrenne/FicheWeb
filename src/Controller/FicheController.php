@@ -18,6 +18,7 @@ use App\Repository\CommentaireRepository;
 use App\Form\DemandeFicheType;
 use App\Service\Mail;
 use App\Repository\DemandeFicheRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 /**
 * @Route("/fiche", name="fiche_")
 */

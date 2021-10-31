@@ -12,6 +12,7 @@ use App\Repository\FicheRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
+
 /**
  * @Route("/admin", name="admin_")
  */
@@ -70,7 +71,7 @@ class AdminController extends AbstractController
      * @Route("/suppCommentaire/{id}",name="suppCommentaire")
      * @IsGranted("ROLE_ADMIN")
      */
-    public function deleteCommentaire(int $id,CommentaireRepository $repo,EntityManagerInterface $manager,FicheRepository $fRepo){
+    public function deleteCommentaire(int $id,CommentaireRepository $repo,EntityManagerInterface $manager){
         $commentaire=$repo->find($id);
         $commentaire->setUser(null);
         $commentaire->setFiche(null);
@@ -89,6 +90,15 @@ class AdminController extends AbstractController
         $manager->persist($commentaire);
         $manager->flush();
         return $this->redirectToRoute('admin_commentaires');
+    }
+
+    /**
+     * @Route("/users",name="users")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function getAllUser(UserRepository $repo){
+        $users=$repo->findAll();
+        return $this->render('admin/user.html.twig',['users'=>$users]);
     }
 
 }
