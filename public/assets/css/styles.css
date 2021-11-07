@@ -34,9 +34,9 @@
         margin-left: 15px;
     }
     
-    #btnEnregistrer {
+    /*#btnEnregistrer {
         margin-left: 100px;
-    }
+    }*/
     
     #ckcLogin {
         margin-left: 10px;
@@ -51,3 +51,32 @@
     .ajustForm{
         height: 500px;
     }
+
+
+/* ----------------------------------- PAGE LOGIN ------------------------------------- */
+
+@media (max-width:1036px) {
+    .container.col-4{
+        width: 50%;
+    }
+}
+@media (max-width:691px) {
+    .container.col-4{
+        width: 70%;
+    }
+}
+@media (max-width:493px) {
+    .bannierre-titre{
+        font-size: 40px;
+    }
+    .container.col-4{
+        width: 90%;
+    }
+}
+@media (max-width:383px) {
+    .container.col-4{
+        width: 100%;
+    }
+}
+
+/* --------------------------------- FIN PAGE LOGIN ----------------------------------- */

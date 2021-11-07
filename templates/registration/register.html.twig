@@ -5,10 +5,27 @@
 {% block javascripts %} <script type="text/javascript" src="{{ asset("js/inscription.js") }}"></script> {% endblock %}
 
 {% block body %}
+    <style>
+        .bannierre{
+            background: url('{{ asset("images/banniere2.jpg") }}');
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 400px;
+            background-attachment:fixed;
+            background-repeat:no-repeat;
+            background-size:cover;
+            position: 50% 10%;
+        }
+  </style>
+  <div class ="bannierre"> 
+        <h1 class="bannierre-titre"> Créer un compte </h1>
+  </div>
+    <br><br><br><br>
     {% for flashError in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
- 
+    
     <div class="container col-4 ">
         <h1 class="text-center" style="text-transform: uppercase;">Créer votre compte utilisateur</h1>
         {{ form_start(registrationForm) }}
@@ -35,17 +52,20 @@
                 <span class="input-group-text" id="addon-wrapping"><i class="bi bi-key"></i></span>
                 <input placeholder="Confimer le mot de passe..." class="form-control" type="password" name="confirm_password" id="confirm_password"  onkeyup='check();' required /> 
             </div> 
-            <div class="text-center" id='message'></div>                         
+            <div class="text-center" id='message'></div>
+            <br>
+            <div class="conteneur">
+                <div class="form-check aligne-centre">
+                    {{ form_widget(registrationForm.agreeTerms,{'attr':{'class':'form-check-input'}})}}
+                    <label id="thermeLabel" class="form-check-label"><i class="bi bi-journal-text"></i>Accepter les thermes d'utilisation</label>
+                    <div>
+                        <button id="btnEnregistrer" type="submit" class="btn btn-success " disabled>Créer <i class="bi bi-arrow-right"></i></button>
+                    </div>
+                    {{ form_end(registrationForm) }}
+                </div>
+            </div>
     </div>
     <br>
-    <div class="conteneur">
-        <div class="form-check aligne-centre">
-            {{ form_widget(registrationForm.agreeTerms,{'attr':{'class':'form-check-input'}})}}
-            <label id="thermeLabel" class="form-check-label"><i class="bi bi-journal-text"></i>Accepter les thermes d'utilisation</label>
-            <div>
-                <button id="btnEnregistrer" type="submit" class="btn btn-success " disabled>Créer <i class="bi bi-arrow-right"></i></button>
-            </div
-        
-
-        {{ form_end(registrationForm) }}
+    
+    <br><br><br><br>
 {% endblock %}

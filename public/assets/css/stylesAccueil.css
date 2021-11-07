@@ -1,4 +1,5 @@
-body{
+body, html{
+    height: 100%;
     margin: 0;
     padding: 0; 
     /*background: linear-gradient(147deg, #f9fcff 0%, #dee4ea 74%);*/
@@ -129,7 +130,7 @@ body{
 
 
 /* ------------------------------------------- BLOC SERVICES ------------------------------------------------- */
-.bloc{
+.bloc-info{
     padding-top: 50px;
     text-align: center;
     background: linear-gradient(147deg, #f9fcff 0%, #dee4ea 74%);
@@ -194,65 +195,6 @@ body{
 }
 
 /* ------------------------------------------- FIN BLOC SERVICES ------------------------------------------------- */
-
-
-
-/* ------------------------------------------- DIAPO CLIP ------------------------------------------------- */
-
-.contenu{
-    border-bottom: 5px solid white;
-}
-.contenu:hover{
-    border-bottom: 5px solid #1F39DD;
-}
-
-.bloc1{
-    position: relative;
-    width: 100%;
-    height: 800px;
-    background-color: black;
-    margin: 0; 
-
-}
-.bloc1 .clip{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transition: 0.2s;
-}
-.bloc1 .clip.clip1{
-    clip-path: polygon(0 0, 55% 0, 20% 100%, 0% 100%);
-}
-.bloc1 .clip.clip2{
-    clip-path: polygon(55% 0, 100% 0, 45% 100%, 20% 100%);
-}
-.bloc1 .clip.clip3{
-    clip-path: polygon(100% 0, 100% 0, 100% 100%, 45% 100%);
-}
-.bloc1:hover .clip{
-    clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
-}
-.bloc1 .clip:hover{
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-}
-.bloc1 .clip .content1{
-    position: absolute;
-    bottom: -100%;
-    left: 0;
-    width: 100%;
-    padding: 20px;
-    background-color: #fff;
-    transition: 0.5s;
-    opacity: 0;
-}
-.bloc1 .clip:hover .content1{
-    bottom:0;
-    opacity: 1;
-}
-/* ------------------------------------------- FIN DIAPO CLIP ------------------------------------------------- */
-
 
 
 
@@ -425,6 +367,7 @@ body{
 
 
 /* ------------------------------------------- FOOTER ------------------------------------------------- */
+
 #footer-main{
     position:relative;
     width:100%;
