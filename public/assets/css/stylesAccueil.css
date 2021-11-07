@@ -1,4 +1,6 @@
-body {
+body,
+html {
+    height: 100%;
     margin: 0;
     padding: 0;
     /*background: linear-gradient(147deg, #f9fcff 0%, #dee4ea 74%);*/
@@ -141,7 +143,7 @@ body {
 
 /* ------------------------------------------- BLOC SERVICES ------------------------------------------------- */
 
-.bloc {
+.bloc-info {
     padding-top: 50px;
     text-align: center;
     background: linear-gradient(147deg, #f9fcff 0%, #dee4ea 74%);
@@ -217,73 +219,6 @@ body {
 /* ------------------------------------------- FIN BLOC SERVICES ------------------------------------------------- */
 
 
-/* ------------------------------------------- DIAPO CLIP ------------------------------------------------- */
-
-.contenu {
-    border-bottom: 5px solid white;
-}
-
-.contenu:hover {
-    border-bottom: 5px solid #1F39DD;
-}
-
-.bloc1 {
-    position: relative;
-    width: 100%;
-    height: 800px;
-    background-color: black;
-    margin: 0;
-}
-
-.bloc1 .clip {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transition: 0.2s;
-}
-
-.bloc1 .clip.clip1 {
-    clip-path: polygon(0 0, 55% 0, 20% 100%, 0% 100%);
-}
-
-.bloc1 .clip.clip2 {
-    clip-path: polygon(55% 0, 100% 0, 45% 100%, 20% 100%);
-}
-
-.bloc1 .clip.clip3 {
-    clip-path: polygon(100% 0, 100% 0, 100% 100%, 45% 100%);
-}
-
-.bloc1:hover .clip {
-    clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
-}
-
-.bloc1 .clip:hover {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-}
-
-.bloc1 .clip .content1 {
-    position: absolute;
-    bottom: -100%;
-    left: 0;
-    width: 100%;
-    padding: 20px;
-    background-color: #fff;
-    transition: 0.5s;
-    opacity: 0;
-}
-
-.bloc1 .clip:hover .content1 {
-    bottom: 0;
-    opacity: 1;
-}
-
-
-/* ------------------------------------------- FIN DIAPO CLIP ------------------------------------------------- */
-
-
 /* ------------------------------------------- LES TITRES H1 ------------------------------------------------- */
 
 .bloc2-grand-titre {
@@ -312,7 +247,7 @@ body {
 
 /* ------------------------------------------- BLOC DES FICHES ------------------------------------------------- */
 
-.bloc-contenu {
+.bloc2-fiches {
     display: flex;
     position: relative;
     width: 90%;
@@ -322,12 +257,15 @@ body {
     grid-gap: 0 40px;
     margin-top: 100px;
     margin-bottom: 100px;
+    margin-right: auto;
+    margin-left: auto;
     z-index: 1;
     align-items: center;
     border-radius: 10px;
+    justify-content: center;
 }
 
-.bloc-contenu .box {
+.bloc2-fiches .box {
     position: relative;
     height: 400px;
     background: #060c21;
@@ -337,7 +275,7 @@ body {
     margin: 20px;
 }
 
-.bloc-contenu .box:before {
+.bloc2-fiches .box:before {
     content: '';
     position: absolute;
     top: -2px;
@@ -349,39 +287,39 @@ body {
     z-index: -1;
 }
 
-.bloc-contenu .box:nth-child(1):before {
+.bloc2-fiches .box:nth-child(1):before {
     background: linear-gradient(315deg, #e94619, #f6d9a9);
 }
 
-.bloc-contenu .box:nth-child(2):before {
+.bloc2-fiches .box:nth-child(2):before {
     background: linear-gradient(315deg, #89ff00, #00bcd4);
 }
 
-.bloc-contenu .box:nth-child(3):before {
+.bloc2-fiches .box:nth-child(3):before {
     background: linear-gradient(315deg, #e91e63, #5d02ff);
 }
 
-.bloc-contenu .box:nth-child(4):before {
+.bloc2-fiches .box:nth-child(4):before {
     background: linear-gradient(315deg, #ff0000, #ffc107);
 }
 
-.bloc-contenu .box:nth-child(5):before {
+.bloc2-fiches .box:nth-child(5):before {
     background: linear-gradient(315deg, #ff0000, #ffc107);
 }
 
-.bloc-contenu .box:nth-child(6):before {
+.bloc2-fiches .box:nth-child(6):before {
     background: linear-gradient(315deg, #e91e63, #5d02ff);
 }
 
-.bloc-contenu .box:nth-child(7):before {
+.bloc2-fiches .box:nth-child(7):before {
     background: linear-gradient(315deg, #89ff00, #00bcd4);
 }
 
-.bloc-contenu .box:nth-child(8):before {
+.bloc2-fiches .box:nth-child(8):before {
     background: linear-gradient(315deg, #e94619, #f6d9a9);
 }
 
-.bloc-contenu .box:after {
+.bloc2-fiches .box:after {
     content: '';
     position: absolute;
     top: 0;
@@ -465,10 +403,10 @@ body {
 
 /* ------------------------------------------- FOOTER ------------------------------------------------- */
 
-footer {
-    /* position: absolute; */
+#footer-main {
+    position: relative;
     width: 100%;
-    /* height: auto; */
+    height: auto;
     padding: 50px 100px;
     color: white;
     /*background:#111;*/
