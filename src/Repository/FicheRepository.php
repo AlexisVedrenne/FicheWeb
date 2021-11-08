@@ -22,19 +22,25 @@ class FicheRepository extends ServiceEntityRepository
     // /**
     //  * @return Fiche[] Returns an array of Fiche objects
     //  */
-    /*
-    public function findByExampleField($value)
+
+    public function findByExampleField(string $query)
     {
-        return $this->createQueryBuilder('f')
-            ->andWhere('f.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('f.id', 'ASC')
-            ->setMaxResults(10)
+        $qb = $this->createQueryBuilder('p');
+        $qb
+            ->where(
+                $qb->expr()->andX(
+                    $qb->expr()->orX(
+                        $qb->expr()->like('p.nom', ':query'),
+                    )
+                )
+            )
+            ->setParameter('query', '%' . $query . '%');
+        return $qb
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
-    */
+
+
 
     /*
     public function findOneBySomeField($value): ?Fiche
@@ -47,9 +53,4 @@ class FicheRepository extends ServiceEntityRepository
         ;
     }
     */
-
-    
-    
-
-    
 }
