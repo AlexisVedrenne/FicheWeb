@@ -1,8 +1,22 @@
 {% extends "base.html.twig" %}
-
+{% block javascripts %} <script type="text/javascript" src="{{ asset("js/inscription.js") }}"></script> {% endblock %}
 {% block body %}
 
-    {{ form_start(form) }}
-        <button type="submit">Valider</button>
-    {{ form_end(form) }}
+    <div class="container col-4 mt-5 mb-5">
+        {{ form_start(form) }}
+            <div class="row justify-content-md-center">
+                <label>Nouveau mot de passe</label>
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text" id="addon-wrapping"><i class="bi bi-key"></i></span>
+                        {{ form_widget(form.password,{'attr':{'class':'form-control','placeholder':'Entrée votre mot de passe...','value':''}})}}
+                    </div>
+                <label>Confimer le nouveau mot de passe</label>
+                <div class="input-group flex-nowrap">
+                    <span class="input-group-text" id="addon-wrapping"><i class="bi bi-key"></i></span>
+                    <input placeholder="Confimer le mot de passe..." class="form-control" type="password" name="confirm_password" id="confirm_password"  onkeyup='check();' required /> 
+                </div>
+                <button class="mt-2 btn btn-success" type="submit">Valider</button>
+            </div>
+        {{ form_end(form) }}
+    </div>
 {% endblock %}
