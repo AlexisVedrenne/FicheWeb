@@ -1,8 +1,30 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
+    <style>
+        .bannierre{
+            background: url('{{ asset("images/banniere2.jpg") }}');
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 400px;
+            background-attachment:fixed;
+            background-repeat:no-repeat;
+            background-size:cover;
+            background-position: 50% 10%;
+        }
+        button{
+            display :none;
+        }
 
-<div class="container">
+        button.btn{
+            display :inline-block;
+        }
+    </style>
+    <div class ="bannierre"> 
+        <h1 class="bannierre-titre"> Validation des commentaires </h1>
+    </div>
+<div class="container mt-5 mb-5">
 
     <table class="table table-striped">
         <thead>
@@ -30,5 +52,5 @@
         </tbody>
     </table>
 </div>
-
+<br><br><br><br>
 {% endblock %}

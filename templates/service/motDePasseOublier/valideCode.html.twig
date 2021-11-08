@@ -1,10 +1,32 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <br>
+    <style>
+        .bannierre{
+            background: url('{{ asset("images/banniere2.jpg") }}');
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 400px;
+            background-attachment:fixed;
+            background-repeat:no-repeat;
+            background-size:cover;
+            background-position: 50% 10%;
+        }
+        button{
+            display :none;
+        }
+
+        button.btn{
+            display :inline-block;
+        }
+    </style>
+    <div class ="bannierre"> 
+        <h1 class="bannierre-titre"> Validation du code </h1>
+    </div>
     
         {{ form_start(form) }}
-        <div class="container">
+        <div class="container mt-4 mb-4">
             <h4 class="text-center">Veuillez entrée le code que vous avez reçu par email :</h4>
             <h6 class="text-center">Pensez à regarder toute les catégories de votre boite mail<br>
             Parfois le mail peut se mettre ailleur (promotion,spam...)</h6>
@@ -13,7 +35,7 @@
                 <div class="ms-4 row justify-content-md-center">
                     {% set digit = code %}
                     {% for i in 1..digit %}
-                        <input id="digit-{{ i }}" name="digit-{{ i }}" class="col-1 d-flex justify-content-center digit form-control" type="number" min="0" max="9" required>
+                        <input id="digit-{{ i }}" name="digit-{{ i }}" class="ms-2 col-1 d-flex justify-content-center digit form-control" type="number" min="0" max="9" required>
                     {% endfor %}
                 </div>
             </div>

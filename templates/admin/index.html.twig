@@ -1,10 +1,32 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+     <style>
+        .bannierre{
+            background: url('{{ asset("images/banniere2.jpg") }}');
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 400px;
+            background-attachment:fixed;
+            background-repeat:no-repeat;
+            background-size:cover;
+            background-position: 50% 10%;
+        }
+        button{
+            display :none;
+        }
 
+        button.btn{
+            display :inline-block;
+        }
+    </style>
+    <div class ="bannierre"> 
+        <h1 class="bannierre-titre"> Administration </h1>
+    </div>
     {# {% if app.user and (app.user.roles["ROLE"])=="ROLE_ADMIN" %} #}
 
-    <div class="container">
+    <div class="container mt-4 mb-4">
         <div class="row">
             <div class="card border-dark col-12 mt-2">
                 <div class="card-header">Gestion des demandes de fiche</div>

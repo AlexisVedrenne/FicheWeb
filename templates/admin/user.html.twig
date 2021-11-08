@@ -1,7 +1,30 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <div class="container">
+    <style>
+        .bannierre{
+            background: url('{{ asset("images/banniere2.jpg") }}');
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 400px;
+            background-attachment:fixed;
+            background-repeat:no-repeat;
+            background-size:cover;
+            background-position: 50% 10%;
+        }
+        button{
+            display :none;
+        }
+
+        button.btn{
+            display :inline-block;
+        }
+    </style>
+    <div class ="bannierre"> 
+        <h1 class="bannierre-titre"> Les utilisateurs </h1>
+    </div>
+    <div class="container mt-5 mb-5">
         <form>
         <div class="accordion accordion-flush" id="accordionFlushExample">
             {% for user in users %}
@@ -45,4 +68,5 @@
     </div>
    
     <script src="{{ asset('js/admin.js') }}"></script>
+<br><br><br><br>
 {% endblock %}
