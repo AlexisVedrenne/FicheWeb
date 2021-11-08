@@ -64,4 +64,10 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         ;
     }
     */
+
+    public function getNbUser(){
+        $dql='SELECT count(u) as nb from App\Entity\User u';
+        $nb=$this->getEntityManager()->createQuery($dql)->execute();
+        return $nb;
+    }
 }

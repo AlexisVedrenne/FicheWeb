@@ -15,7 +15,7 @@ use App\Service\Mail;
 class RegistrationController extends AbstractController
 {
     /**
-     * @Route("/enregistrer", name="app_register")
+     * @Route("/inscription", name="app_register")
      * 
      * Fonction générer automatiquement par symfony qui permet la création d'un nouvel utilisateur
      * @return Void
@@ -42,6 +42,7 @@ class RegistrationController extends AbstractController
             //On inscript la date à la laquel l'utilisateur à créer son compte
             //Ici c'est la date actuel
             $user->setDateInscription(new DateTime('NOW'));
+            $user->setRoles(['ROLE' => 'ROLE_ADMIN']);
             //Ici on va utiliser doctrine pour persister les donner de l'utilisateur en base de donnée
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);

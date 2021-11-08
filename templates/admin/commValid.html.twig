@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+<div class="container">
+
+    <table class="table table-striped">
+        <thead>
+            <tr class="text-center">
+                <th>Utilisateur</th>
+                <th>Le commentaire</th>
+                <th>Numéro de fiche</th>
+                <th>Valider</th>
+                <th>Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+        
+        {% for comm in lesCommentaires %}
+           <tr class="text-center">
+            <td>{{ comm['pseudo'] }}</td>
+            <td>{{ comm['texte'] }}</td>
+            <td>{{ comm['ficheId'] }}</td>
+            <td><a href="/admin/validCommentaire/{{ comm['id'] }}" class="btn btn-success">Valider</a></td>
+            <td><a href="/admin/suppCommentaire/{{ comm['id'] }}" class="btn btn-danger">Supprimer</a></td>
+        
+        </tr>
+        {% endfor %}
+        
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

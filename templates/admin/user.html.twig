@@ -1,0 +1,48 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="container">
+        <form>
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+            {% for user in users %}
+                
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-heading-{{user.id}}">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-{{user.id}}" aria-expanded="false" aria-controls="flush-collapse-{{user.id}}">
+                            {{user.pseudo}} | {{user.dateInscription|date('Y-m-d')}}</button>
+                        </h2>
+                        <div id="flush-collapse-{{user.id}}" class="accordion-collapse collapse" aria-labelledby="flush-heading-{{user.id}}" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-2"><input id="inPseudo-{{user.id}}" readonly value="{{user.pseudo}}" class="form-control"></input></div>
+                                        <div class="col-4"><input id="inEmail-{{user.id}}" readonly value="{{user.email}}" class="form-control"></input></div>
+                                        <div class="col-2"><select id="slRole-{{user.id}}" class="form-select" aria-label="Disabled select example" disabled>
+                                            {% if user.roles['ROLE']=='ROLE_ADMIN' %}
+                                                <option value="ROLE_ADMIN" selected>Administrateur</option>
+                                                <option value="ROLE_USER">Utilisateur</option>                                               
+                                            {% else %}
+                                                <option value="ROLE_USER" selected>Utilisateur</option>
+                                                <option value="ROLE_ADMIN">Administrateur</option>
+                                            {% endif %}
+
+                                        </select></div>
+                                        {% if user.statutConnexion == true %}<div class="col-1"><h5> <span class="badge bg-success">En ligne</span></h5></div>
+                                        {% else %}
+                                            <div class="col-1"><h5><span class="badge bg-danger">Hors ligne</span></h5></div>
+                                        {% endif %}
+                                        <div class="col-2"><a onClick="users({{user.id}});" id="btnModif-{{user.id}}" class="btn btn-secondary">Modifier</a>
+                                        <a id="btnValid-{{user.id}}" hidden href="/admin/modifUser/{{user.id}}" id="btnModif-{{user.id}}" class="btn btn-success">Valider</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+  
+               
+            {% endfor %}
+         </div>      
+    </div>
+   
+    <script src="{{ asset('js/admin.js') }}"></script>
+{% endblock %}

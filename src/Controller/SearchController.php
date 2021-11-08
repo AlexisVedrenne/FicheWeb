@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 namespace App\Controller;
 
 use App\Repository\FicheRepository;
@@ -11,11 +12,13 @@ use App\Repository\NavireRepository;
 use Symfony\Component\HttpFoundation\Request;
 use \Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
-class SearchController extends AbstractController {
+class SearchController extends AbstractController
+{
 
-    public function index(): Response {
+    public function index(): Response
+    {
         return $this->render('fiche/rechercher.html.twig', [
-                    'controller_name' => 'SearchController',
+            'controller_name' => 'SearchController',
         ]);
     }
 
@@ -24,33 +27,26 @@ class SearchController extends AbstractController {
      *
      */
 
-     public function handleSearch(Request $request,FicheRepository $repo){
-         $valeurs=$request->request->get('form')['nom'];
-         $repo->findBy(array('nom'=>$valeurs));
-         
-         return $this->redirectToRoute('fiche_all');
-         
-        
+    public function handleSearch(Request $request, FicheRepository $repo)
+    {
+        $valeurs = $request->request->get('form')['nom'];
+        $repo->findBy(array('nom' => $valeurs));
 
-     }
+        return $this->redirectToRoute('fiche_all');
+    }
 
-     /**
+    /**
      * @Route("/search", name="search")
      */
 
-     public function searchBar()
-     {
-         $form=$this->createFormBuilder()
-         ->setAction($this->generateUrl("search_handlesearch"))
-         ->add('nom')
-         ->add('Rechercher',SubmitType::class)  
-         ->getForm();
-        
+    public function searchBar()
+    {
+        $form = $this->createFormBuilder()
+            ->setAction($this->generateUrl("search_handlesearch"))
+            ->add('nom')
+            ->add('Rechercher', SubmitType::class)
+            ->getForm();
 
-        
-        
-         
-         return $this->render('fiche/rechercher.html.twig', ["form"=>$form->createView()]);
-     }
-
+        return $this->render('fiche/rechercher.html.twig', ["form" => $form->createView()]);
+    }
 }
