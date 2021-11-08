@@ -47,7 +47,9 @@
 	<body>
 		{% block body %}{% endblock %}
 	</body>
+	
 	<footer>
+		{% block footer %}
         	<!-- FOOTER -->
 			<div id="footer-main">
 				<div class="footer-contenu">
@@ -89,6 +91,8 @@
 				<div class="copyrightText">
 					<p class="Copyright"> Copyright © 2021. Tous droits réservés</p>
 				</div>  
-			</div>	   
+			</div>
+		{% endblock footer %}
 	</footer>
+
 </html>
