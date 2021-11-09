@@ -25,10 +25,10 @@
     <div class ="bannierre"> 
         <h1 class="bannierre-titre"> Ajout d'une fiche </h1>
     </div>
-<div class='card text-center'>
-    <h1 class=""> Ajouter une fiche</h1>
+<div class='card text-center mt-5 mb-5' style="border:none;">
+    <h1 class=""> Veuillez remplir le formulaire pour l'ajout d'une fiche</h1>
     {{ form_start(form)}}
-    <div class="container">
+    <div class="container mt-5 mb-5">
     {{form_label(form.nom, 'Titre de la fiche') }}
     {{form_widget(form.nom, {'attr':{'placeholder':"Titre de la fiche ",'class':"form-control"}}) }}
     
@@ -43,6 +43,6 @@
     <input name="nbContenue" style="width:50px !important;" id="nbContenue" class="btn btn-warning" value="0" readonly></input>
 
     <div class="container" id="contenue"></div>
-   
+   </div>
 </div>
 {% endblock %}
