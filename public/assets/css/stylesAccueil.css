@@ -44,6 +44,10 @@ html {
     line-height: 1.3;
 }
 
+.bloc-role{
+    background: #505050;
+}
+
 .btn-hero {
     display: flex;
 }

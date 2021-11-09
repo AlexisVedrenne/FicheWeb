@@ -3,11 +3,34 @@
 {% block title %} Toutes les fiches {% endblock %}
 
 {% block body %}
+    <style>
+        .bannierre{
+            background: url('{{ asset("images/banniere2.jpg") }}');
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 400px;
+            background-attachment:fixed;
+            background-repeat:no-repeat;
+            background-size:cover;
+            background-position: 50% 10%;
+        }
+        button{
+            display :none;
+        }
+
+        button.btn{
+            display :inline-block;
+        }
+    </style>
+    <div class ="bannierre"> 
+        <h1 class="bannierre-titre"> Toutes les fiches </h1>
+    </div>
 <div class="container mt-4 mb-4">
   <div class="row">  
       {% for fiche in lesFiches %}
     
-      <div class="card me-4 mb-4" style="width: 15rem;">
+      <div class="card me-4 mb-4 mt-4 col-xl">
         <img src="{{ asset('images/html-5.jpg') }}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">{{ fiche.nom }}</h5>
@@ -21,7 +44,4 @@
    </div>
 </div>
  <br><br><br><br>
-  <br><br><br><br>
-   <br><br><br><br>
-    <br><br><br><br>
  {% endblock %}

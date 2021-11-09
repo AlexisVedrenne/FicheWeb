@@ -6,6 +6,29 @@
 {% block javascripts %} <script type="text/javascript" src="{{ asset("js/fiche.js") }}"></script>{% endblock %}
 
 {% block body %}
+    <style>
+        .bannierre{
+            background: url('{{ asset("images/banniere2.jpg") }}');
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 400px;
+            background-attachment:fixed;
+            background-repeat:no-repeat;
+            background-size:cover;
+            background-position: 50% 10%;
+        }
+        button{
+            display :none;
+        }
+
+        button.btn{
+            display :inline-block;
+        }
+    </style>
+    <div class ="bannierre"> 
+        <h1 class="bannierre-titre"> Ajout d'une fiche </h1>
+    </div>
 <div class='card text-center'>
     <h1 class=""> Ajouter une fiche</h1>
     {{ form_start(form)}}

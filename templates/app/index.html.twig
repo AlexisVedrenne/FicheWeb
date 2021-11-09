@@ -32,12 +32,14 @@
                 <a href="/inscription" class="btn-home b2">Inscription</a>
             </div>
             {% else  %}
+            <div class="bloc-role">
                 <p class="home-p">Bienvenue {{ app.user.pseudo }} !</p>
                 {% if app.user.roles['ROLE'] == 'ROLE_ADMIN' %}
                     <p class="home-p">Vous etes administrateur !</p>
                 {% else %}
                     <p class="home-p">Vous etes un utilisateur</p>
                 {% endif %}
+            </div>
             {% endif %}
         </div>
         <div class="home-right"></div>
