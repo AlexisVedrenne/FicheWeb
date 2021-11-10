@@ -8,38 +8,29 @@
         <h1 class="bannierre-titre"> Connexion </h1>
   </div>
   <br><br><br><br>
-    <div class="container">
+    <div class="container bloc-form">
       <form method="post">
         {% if error %}
           <div class="alert alert-danger col-4">Erreur lors de la connexion. Email ou mot de passe invalide</div>
         {% endif %}
-
         <div class="row"><h1 class="text-center h3 mb-3 font-weight-normal col">Veuillez vous connecter</h1></div>
-        <div class="row">
-          <div class="form-floating mb-3">
-          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-          <label for="floatingInput">Email address</label>
-        </div>
-        </div>
-        <label for="inputEmail">Email</label>
-        <div class="input-group mb-3 col-4">
-          <span class="input-group-text" id="basic-addon1">@</span>
-          <input placeholder="Entre votre adresse email..." type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required="required" autofocus="autofocus">
-        </div>
-        
-        <label for="inputPassword">Mot de passe</label>
-        <div class="input-group mb-3 col-4">
-          <span class="input-group-text" id="basic-addon1"><i class="bi bi-lock"></i></span>
-          <input placeholder="Entre votre mot de passe..." type="password" name="password" id="inputPassword" class="form-control" required="required">
-        </div>
-        
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-2"><button  class="btn btn-lg btn-success mt-2" type="submit">Connexion</button></div>
-            <div class="col-3 d-flex align-items-center"><a class="text-center" href="service/motDePasseOublier">Mot de passe oublié ?</a></div>
+        <div class="row justify-content-center">
+            <div class="form-floating col-xl-4 col-lg-6 col mb-2">
+              <input placeholder="Entre votre adresse email..." type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required="required" autofocus="autofocus">
+              <label class="ms-2" style="color:black;" for="inputEmail">@ Adresse mail</label>
           </div>
         </div>
+        <div class="row justify-content-center">
+            <div class="form-floating col-xl-4 col-lg-6 col">
+              <input placeholder="Entre votre mot de passe..." type="password" name="password" id="inputPassword" class="form-control" required="required">
+              <label class="ms-2" style="color:black;" for="inputPassword"><i class="bi bi-lock"></i> Mot de passe</label>
+            </div>
+        </div>                      
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+          <div class="row justify-content-center">
+            <div class="col-xl-1 col-lg-3 col"><button  class="btn btn-success mt-2" type="submit">Connexion</button></div>
+            <div class="col-xl-3 col-lg-3 col d-flex align-items-center"><a class="text-center" href="service/motDePasseOublier">Mot de passe oublié ?</a></div>
+          </div>
         <br>
       </form>
     </div>
