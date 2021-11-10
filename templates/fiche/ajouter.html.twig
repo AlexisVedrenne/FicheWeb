@@ -42,10 +42,31 @@
     <button id="btnFiche" class="btn btn-success" type="submit" disabled>Créer la fiche</button>
     {{form_end(form)}}
     <a class="btn btn-secondary" id="btnCtn">Ajouter un contenu</a>
-    <button type="button" class="btn btn-danger" id="btnSpCtn" disabled>Surprimer contenu</button>
+    <button id="spModal" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" disabled>Suprimer contenu</button>
     <input name="nbContenue" style="width:50px !important;" id="nbContenue" class="btn btn-warning" value="0" readonly></input>
 
     <div class="container" id="contenue"></div>
    </div>
+</div>
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-exclamation-diamond-fill"></i> Attention !</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h1>Êtes-vous sur ?</h1>
+        <p>Cette action supprimera le dernier contenu ajouté.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="btnSpCtn">Surprimer</button>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}

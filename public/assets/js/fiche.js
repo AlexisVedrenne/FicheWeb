@@ -145,7 +145,7 @@ document.getElementById('btnCtn').addEventListener('click', function() {
     ajtAttrDiv();
     if(nbContenue>0){
         document.getElementById("btnFiche").removeAttribute("disabled");
-        document.getElementById('btnSpCtn').removeAttribute("disabled");
+        document.getElementById('spModal').removeAttribute("disabled");
     }
 });
 
@@ -156,7 +156,7 @@ document.getElementById('btnSpCtn').addEventListener('click',function(){
     nbContenue-=1;
     nbCon.value=nbContenue;
     if(nbCon.value==0){
-        this.setAttribute('disabled',true);
+        document.getElementById('spModal').setAttribute('disabled',true);
         document.getElementById("btnFiche").setAttribute("disabled",true);
     }
 })
