@@ -1,7 +1,10 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <div class="container mt-5 mb-5">
+    <div class ="bannierre"> 
+        <h1 class="bannierre-titre"> Liste des fiches </h1>
+    </div>
+    <div class="container mt-5 mb-5 bloc-form">
         <div class="row justify-content-center mb-3">
             <h1 class="col-2">Les fiches</h1>
             <div class="col-2"><a href="/fiche/ajout" class="btn btn-primary">Ajouter une fiche</a></div>
@@ -9,7 +12,7 @@
         <div class="row justify-content-md-center">
         <table class="table table-striped">
             <thead>
-                <tr>
+                <tr class="tableau-fiches"> 
                     <th class="text-center" scope="col">#</th>
                     <th class="text-center" scope="col">Nom</th>
                     <th class="text-center" scope="col">Categorie</th>
@@ -19,12 +22,12 @@
             </thead>
             <tbody>
                 {% for fiche in fiches %}
-                <tr>
+                <tr class="tableau-fiches">
                     <th class="text-center" scope="row">{{ fiche.id }}</th>
                     <td class="text-center">{{ fiche.nom }}</td>
                     <td class="text-center">{{ fiche.laCategorie.nom }}</td>
                     <td class="text-center">{{ fiche.contenus|length }}</td>
-                    <td class="text-center"><a class="btn" href="#"><i class="bi bi-pencil-square"></i></a><a class="btn"><i class="bi bi-trash-fill"></i></a></td>
+                    <td class="text-center"><a class="btn" href="#"><i class="bi bi-pencil-square crayon"></i></a><a class="btn"><i class="bi bi-trash-fill poubelle"></i></a></td>
                 </tr>                   
                 {% endfor %}
             </tbody>
