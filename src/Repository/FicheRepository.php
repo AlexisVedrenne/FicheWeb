@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Fiche;
+use App\Entity\Categorie;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -18,6 +19,27 @@ class FicheRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Fiche::class);
     }
+
+
+
+
+
+    public function recherche($value)
+    {
+
+        return $this->createQueryBuilder('f')
+            ->join(Categorie::class, 'c', 'WITH', 'f.laCategorie=c.id')
+            ->Where('f.nom LIKE :lib')
+            ->orWhere('c.nom LIKE :val')
+            ->setParameter('val', "%" . $value . "%")
+            ->setParameter('lib', "%" . $value . "%")
+
+            ->getQuery()
+            ->getResult();
+    }
+
+
+
 
     // /**
     //  * @return Fiche[] Returns an array of Fiche objects

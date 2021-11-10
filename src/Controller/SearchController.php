@@ -29,24 +29,10 @@ class SearchController extends AbstractController
 
     public function handleSearch(Request $request, FicheRepository $repo)
     {
-        $valeurs = $request->request->get('form')['nom'];
-        $repo->findBy(array('nom' => $valeurs));
-
-        return $this->redirectToRoute('fiche_all');
-    }
-
-    /**
-     * @Route("/search", name="search")
-     */
-
-    public function searchBar()
-    {
-        $form = $this->createFormBuilder()
-            ->setAction($this->generateUrl("search_handlesearch"))
-            ->add('nom')
-            ->add('Rechercher', SubmitType::class)
-            ->getForm();
-
-        return $this->render('fiche/rechercher.html.twig', ["form" => $form->createView()]);
+        $mot = $request->query->get("mot");
+        return $this->render('fiche/allFiches.html.twig', [
+            'lesFiches' => $repo->recherche($mot),
+            'mot' => $mot
+        ]);
     }
 }
