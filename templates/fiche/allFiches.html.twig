@@ -8,9 +8,9 @@
     <h1 class="bannierre-titre"> Toutes les fiches </h1>
 </div>
 <div class="container mt-4 mb-4">
-  <div class="row">  
+  <div class="row row-cols-md-4 justify-content-center">  
       {% for fiche in lesFiches %}
-      <div class="card me-4 mb-4 mt-4 col-xl">
+      <div class="card me-4 mb-4 mt-4 col-md-3">
         <img src="{{ asset('images/html-5.jpg') }}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">{{ fiche.nom }}</h5>
@@ -18,11 +18,9 @@
           <p class="card-text">{{ des[:280] ~ (des|length > 280 ?'...') }}</p>
           <a href="/fiche/voir/{{ fiche.id }}" class="btn btn-primary">Entrer</a>
         </div>
-        <br>
       </div>
-
       {% endfor %}
    </div>
 </div>
- <br><br><br><br>
+ <br><br><br><br><br>
  {% endblock %}
