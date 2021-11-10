@@ -69,14 +69,12 @@ class FicheController extends AbstractController
             }
 
             $manager->persist($fiche);
-            if($id!=null){
-                $manager->remove($demande);
-            }
+            $id!=null?$manager->remove($demande):null;            
             $manager->flush();
             return $this->redirectToRoute('admin_demandes');
         }
 
-        return $this->render('fiche/ajouter.html.twig', ['form' => $form->createView()]);
+        return $this->render('fiche/ajouter.html.twig', ['form' => $form->createView(),'demande'=>$id!=null?$demande:'']);
     }
 
 
