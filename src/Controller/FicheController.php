@@ -50,11 +50,14 @@ class FicheController extends AbstractController
 
     /**
      * @Route("/ajout/{id}",name="add")
+     * @Route("/ajout")
      * @IsGranted("ROLE_ADMIN")
      */
-    public function addFiche(int $id, DemandeFicheRepository $repo, Request $request, EntityManagerInterface $manager)
-    {
-        $demande = $repo->find($id);
+    public function addFiche(int $id=null, DemandeFicheRepository $repo, Request $request, EntityManagerInterface $manager)
+    {   
+        if($id!=null){
+            $demande = $repo->find($id);
+        }
         $fiche = new Fiche();
         $form = $this->createForm(FicheType::class, $fiche);
         $form->handleRequest($request);
@@ -66,7 +69,9 @@ class FicheController extends AbstractController
             }
 
             $manager->persist($fiche);
-            $manager->remove($demande);
+            if($id!=null){
+                $manager->remove($demande);
+            }
             $manager->flush();
             return $this->redirectToRoute('admin_demandes');
         }

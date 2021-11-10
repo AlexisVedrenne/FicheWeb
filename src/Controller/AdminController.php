@@ -114,4 +114,12 @@ class AdminController extends AbstractController
         $manager->flush();
         return $this->redirectToRoute('admin_users');
     }
+
+    /**
+     * @Route("/fiches",name="fiches")
+     */
+    public function getAllFiche(FicheRepository $repo){
+        $fiches=$repo->findAll();
+        return $this->render('admin/fiche.html.twig',['fiches'=>$fiches]);
+    }
 }
