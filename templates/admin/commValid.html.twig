@@ -1,23 +1,11 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <style>
-        .bannierre{
-            background: url('{{ asset("images/banniere2.jpg") }}');
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 400px;
-            background-attachment:fixed;
-            background-repeat:no-repeat;
-            background-size:cover;
-            background-position: 50% 10%;
-        }
-    </style>
+
     <div class ="bannierre"> 
         <h1 class="bannierre-titre"> Validation des commentaires </h1>
     </div>
-<div class="container mt-5 mb-5">
+<div class="container mt-5 mb-5 bloc-form">
 
     <table class="table table-striped">
         <thead>
@@ -33,9 +21,9 @@
         
         {% for comm in lesCommentaires %}
            <tr class="text-center">
-            <td>{{ comm['pseudo'] }}</td>
-            <td>{{ comm['texte'] }}</td>
-            <td>{{ comm['ficheId'] }}</td>
+            <td class="text-tableau">{{ comm['pseudo'] }}</td>
+            <td class="text-tableau">{{ comm['texte'] }}</td>
+            <td class="text-tableau">{{ comm['ficheId'] }}</td>
             <td><a href="/admin/validCommentaire/{{ comm['id'] }}" class="btn btn-success">Valider</a></td>
             <td><a href="/admin/suppCommentaire/{{ comm['id'] }}" class="btn btn-danger">Supprimer</a></td>
         

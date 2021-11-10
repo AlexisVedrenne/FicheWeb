@@ -51,9 +51,32 @@
     .ajustForm{
         height: 500px;
     }
+    .table{
+        color:white;
+    }
+    .text-tableau{
+        color: white !important;
+    }
+    
 
 
 /* ----------------------------------- PAGE LOGIN ------------------------------------- */
+
+.bloc-form{
+    color:white;
+    background-image:url(../images/back-hero2.jpg);
+    background-attachment:fixed;
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position: 50% 10%;
+    padding: 30px;
+    box-shadow: -10px 11px 5px 0px rgb(158 158 158 / 75%);
+    transition:0.5s;
+}
+.bloc-form:hover{
+    box-shadow: -20px 40px 5px 0px rgb(158 158 158 / 75%);
+    transition:0.5s;
+}
 
 @media (max-width:1036px) {
     .container.col-4{

@@ -1,24 +1,12 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <style>
-        .bannierre{
-            background: url('{{ asset("images/banniere2.jpg") }}');
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 400px;
-            background-attachment:fixed;
-            background-repeat:no-repeat;
-            background-size:cover;
-            background-position: 50% 10%;
-        }
-    </style>
+
     <div class ="bannierre"> 
         <h1 class="bannierre-titre"> Les utilisateurs </h1>
     </div>
-    <div class="container mt-5 mb-5">
-        <form action="/admin/modifUser" method="post">
+    <div class="container mt-5 mb-5 bloc-form">
+        <form>
         <div class="accordion accordion-flush" id="accordionFlushExample">
             {% for user in users %}
                 
