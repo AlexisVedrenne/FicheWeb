@@ -83,7 +83,6 @@ function addContenue(element) {
         console.log(this);
         nbMedia = document.getElementById("nbMedia-" + this.value).value;
         nbMedia++;
-        console.log(nbMedia);
         document.getElementById("nbMedia-" + this.value).value = nbMedia
         document.getElementById("contenue-" + this.value).children["iRub-" + this.value].appendChild(document.createElement("div")).setAttribute("id", "media-" + nbMedia);
         addMedia(nbMedia, this.value);
@@ -146,6 +145,19 @@ document.getElementById('btnCtn').addEventListener('click', function() {
     ajtAttrDiv();
     if(nbContenue>0){
         document.getElementById("btnFiche").removeAttribute("disabled");
+        document.getElementById('btnSpCtn').removeAttribute("disabled");
     }
 });
+
+document.getElementById('btnSpCtn').addEventListener('click',function(){
+    nbCon=document.getElementById("nbContenue")
+    contenu=getContenue();
+    contenu.removeChild(document.getElementById('contenue-'+nbContenue));
+    nbContenue-=1;
+    nbCon.value=nbContenue;
+    if(nbCon.value==0){
+        this.setAttribute('disabled',true);
+        document.getElementById("btnFiche").setAttribute("disabled",true);
+    }
+})
 
