@@ -1,23 +1,11 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-      <style>
-        .bannierre{
-            background: url('{{ asset("images/banniere2.jpg") }}');
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 400px;
-            background-attachment:fixed;
-            background-repeat:no-repeat;
-            background-size:cover;
-            background-position: 50% 10%;
-        }
-    </style>
+    
     <div class ="bannierre"> 
         <h1 class="bannierre-titre"> Les demandes </h1>
     </div>
-    <div class="container mt-5 mb-5">
+    <div class="container mt-5 mb-5 bloc-form">
 
     <table class="table table-striped">
         <thead>
@@ -33,10 +21,10 @@
         {% for demande in demandes %}
 
            <tr class="text-center">
-            <td>{{ demande.id }}</td>
-            <td>{{ demande.categorie.nom }}</td>
-            <td>{{ demande.objet }}</td>
-            <td>{{ demande.user.pseudo }}</td>
+            <td class="text-tableau">{{ demande.id }}</td>
+            <td class="text-tableau">{{ demande.categorie.nom }}</td>
+            <td class="text-tableau">{{ demande.objet }}</td>
+            <td class="text-tableau">{{ demande.user.pseudo }}</td>
             <td>
 <div class="col-4"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{ demande.id }}">Ouvrir</button></div>
 
@@ -55,7 +43,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
         <a href="/admin/suppDemande/{{demande.id}}" class="btn btn-danger">Refuser</a>
-        <a href="/fiche/ajout/{{demande.id}}" class="btn btn-primary">Valider la demande et créer la fiche</a>
+        <a href="/fiche/ajout/{{demande.id}}" class="btn btn-success">Valider la demande et créer la fiche</a>
       </div>
     </div>
   </div>

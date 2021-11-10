@@ -5,19 +5,7 @@
 {% block javascripts %} <script type="text/javascript" src="{{ asset("js/inscription.js") }}"></script> {% endblock %}
 
 {% block body %}
-    <style>
-        .bannierre{
-            background: url('{{ asset("images/banniere2.jpg") }}');
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 400px;
-            background-attachment:fixed;
-            background-repeat:no-repeat;
-            background-size:cover;
-            position: 50% 10%;
-        }
-  </style>
+
   <div class ="bannierre"> 
         <h1 class="bannierre-titre"> Créer un compte </h1>
   </div>
@@ -26,7 +14,7 @@
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
     
-    <div class="container col-4 ">
+    <div class="container col-4 bloc-form">
         <h1 class="text-center" style="text-transform: uppercase;">Créer votre compte utilisateur</h1>
         {{ form_start(registrationForm) }}
             <label>Pseudo</label>

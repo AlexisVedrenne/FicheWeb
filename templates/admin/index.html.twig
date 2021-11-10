@@ -1,19 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-     <style>
-        .bannierre{
-            background: url('{{ asset("images/banniere2.jpg") }}');
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 400px;
-            background-attachment:fixed;
-            background-repeat:no-repeat;
-            background-size:cover;
-            background-position: 50% 10%;
-        }
-    </style>
+    
     <div class ="bannierre"> 
         <h1 class="bannierre-titre"> Administration </h1>
     </div>
@@ -34,10 +22,10 @@
             </div>
             <div class="card border-dark me-3 mt-2" style="max-width: 18rem;">
                 <div class="card-header">Gestion des utilisateurs</div>
-                <div class="card-body text-dark">
+                <div class="card-body text-white">
                     <h5 class="card-title">Administration utilisateurs</h5>
                     <p class="card-text">Ici vous pouvez gerer tous les utilisateurs du site (role, mot de passe, pseudo, status...)</p>
-                    <a href="/admin/users" class="btn btn-secondary">Voir les utilisateurs</a>
+                    <a href="/admin/users" class="btn btn-primary">Voir les utilisateurs</a>
                 </div>
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">{{nbU[0]['nb']}}</span>
             </div>      
@@ -47,7 +35,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Administration commentaire</h5>
                     <p class="card-text">Ici il est possible de gérer les nouveaux commentaires poster par les utilisateurs</p>
-                    <a href="/admin/commentaires" class="btn btn-secondary">Voir les commentaires</a>
+                    <a href="/admin/commentaires" class="btn btn-primary">Voir les commentaires</a>
                 </div>
                 {% if nb[0]['nb'] !=0 %}
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{nb[0]['nb']}}</span>

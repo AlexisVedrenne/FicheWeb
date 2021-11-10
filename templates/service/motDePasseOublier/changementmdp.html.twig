@@ -1,23 +1,11 @@
 {% extends "base.html.twig" %}
 {% block javascripts %} <script type="text/javascript" src="{{ asset("js/inscription.js") }}"></script> {% endblock %}
 {% block body %}
-    <style>
-        .bannierre{
-            background: url('{{ asset("images/banniere2.jpg") }}');
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 400px;
-            background-attachment:fixed;
-            background-repeat:no-repeat;
-            background-size:cover;
-            background-position: 50% 10%;
-        }
-    </style>
+
     <div class ="bannierre"> 
         <h1 class="bannierre-titre"> Votre nouveau mot de passe </h1>
     </div>
-    <div class="container col-4 mt-5 mb-5">
+    <div class="container col-4 mt-5 mb-5 bloc-form">
         {{ form_start(form) }}
             <div class="row justify-content-md-center">
                 <label>Nouveau mot de passe</label>
