@@ -57,7 +57,32 @@
     .text-tableau{
         color: white !important;
     }
-    
+    .tableau-fiches{
+        color: white!important;
+    }
+    .crayon{
+        color: white;
+        padding:5px;
+        border: 1px solid white;
+        transition:0.5s;
+    }
+    .crayon:hover{
+        background-color: white;
+        color: black;
+        transition:0.5s;
+    }
+
+    .poubelle{
+        color: white;
+        padding:5px;
+        border: 1px solid white;
+        transition:0.5s;
+    }
+    .poubelle:hover{
+        background-color: white;
+        color: black;
+        transition:0.5s;
+    }
 
 /* ----------------------------------- PAGE LOGIN ------------------------------------- */
 
