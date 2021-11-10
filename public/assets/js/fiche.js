@@ -144,5 +144,8 @@ document.getElementById('btnCtn').addEventListener('click', function() {
     ajtAttrRub(getRubrique(nbContenue));
     ajtAtrrDes(getDescription(nbContenue));
     ajtAttrDiv();
-    console.log(nbContenue);
+    if(nbContenue>0){
+        document.getElementById("btnFiche").removeAttribute("disabled");
+    }
 });
+
