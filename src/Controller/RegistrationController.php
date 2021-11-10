@@ -42,7 +42,7 @@ class RegistrationController extends AbstractController
             //On inscript la date à la laquel l'utilisateur à créer son compte
             //Ici c'est la date actuel
             $user->setDateInscription(new DateTime('NOW'));
-            $user->setRoles(['ROLE' => 'ROLE_ADMIN']);
+            $user->setRoles(['ROLE' => 'ROLE_USER']);
             //Ici on va utiliser doctrine pour persister les donner de l'utilisateur en base de donnée
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
