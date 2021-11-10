@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Contenu;
 use App\Entity\Fiche;
 use App\Entity\Media;
+use App\Repository\FicheRepository;
 
 
 class AppController extends AbstractController
@@ -18,19 +19,22 @@ class AppController extends AbstractController
     /**
      * @route("/",name="home")
      */
-    public function home(){
+    public function home(FicheRepository $repo)
+    {
 
-        return $this->render('app/index.html.twig');
+        $lesFiches = $repo->affichage_alea();
 
+        return $this->render('app/index.html.twig', ['lesFiches' => $lesFiches]);
     }
 
     /**
      * @route("/deconnexion",name="deconnexion")
      */
-    public function deconnexion(EntityManagerInterface $manager){
+    public function deconnexion(EntityManagerInterface $manager)
+    {
 
         //Ces lignes permette de changer le status de en ligne à hors ligne
-        $user=$this->getUser();
+        $user = $this->getUser();
         $user->setStatutConnexion(false);
         $manager->persist($user);
         $manager->flush();
@@ -39,27 +43,27 @@ class AppController extends AbstractController
         return $this->redirectToRoute('app_logout');
     }
 
-    public static function codeGen($longueur){
-        $number= "0123456789";
+    public static function codeGen($longueur)
+    {
+        $number = "0123456789";
         return substr(str_shuffle(str_repeat($number, $longueur)), 0, $longueur);
     }
 
 
-    public static function traitementCtn(Fiche $fiche,$request,int $nbContenue, int $nbMedia){
-        $contenue=new Contenu();
-        $contenue->setRubrique($request->get("rub-".$nbContenue));
-        $contenue->setDescription($request->get("des-".$nbContenue));
+    public static function traitementCtn(Fiche $fiche, $request, int $nbContenue, int $nbMedia)
+    {
+        $contenue = new Contenu();
+        $contenue->setRubrique($request->get("rub-" . $nbContenue));
+        $contenue->setDescription($request->get("des-" . $nbContenue));
         $contenue->setFiche($fiche);
-        for($i=0;$i<$nbMedia;){
+        for ($i = 0; $i < $nbMedia;) {
             $i++;
-            $media=new Media();
-            $media->setLien($request->get("lien-".$i."-".$nbContenue));
-            $media->setType($request->get("type-".$i."-".$nbContenue));
+            $media = new Media();
+            $media->setLien($request->get("lien-" . $i . "-" . $nbContenue));
+            $media->setType($request->get("type-" . $i . "-" . $nbContenue));
             $contenue->addLesMedia($media);
         }
 
         return $contenue;
     }
-
-    
 }

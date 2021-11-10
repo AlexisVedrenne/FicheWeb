@@ -6,6 +6,7 @@ use App\Entity\Fiche;
 use App\Entity\Categorie;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use DoctrineExtensions\Query\Mysql\Rand;
 
 /**
  * @method Fiche|null find($id, $lockMode = null, $lockVersion = null)
@@ -39,6 +40,15 @@ class FicheRepository extends ServiceEntityRepository
     }
 
 
+
+    public function affichage_alea()
+    {
+        return $this->createQueryBuilder('f')
+            //->orderBy('rand()')
+            ->setMaxResults(4)
+            ->getQuery()
+            ->execute();
+    }
 
 
     // /**
