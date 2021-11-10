@@ -35,10 +35,7 @@
             						<li><a class="dropdown-item" href="/fiche/demande">Demande de nouvelle fiche</a></li>
 									{% endif %}
           						</ul>
-        				</li>
-						<li class="nav-item">
-						<a class="nav-link" aria-current="page" href="#"><i class="bi bi-person-circle"></i>Compte</a>
-						</li>						
+        				</li>						
 						{% if app.user and app.user.roles['ROLE'] == 'ROLE_ADMIN' %}
 						<li class="nav-item">
 						<a class="nav-link " href="/admin/acceuil"><i class="bi bi-person-lines-fill"></i>Administration</a>
@@ -46,14 +43,23 @@
 						{% endif %}
 						{% if app.user %}
 						<li class="nav-item">
+							<a class="nav-link" aria-current="page" href="#"><i class="bi bi-person-circle"></i>Compte</a>
+						</li>
+						<li class="nav-item">
 						<a class="nav-link" aria-current="page" href="/deconnexion"><i class="bi bi-door-closed-fill"></i>Deconnexion</a>
 						</li>
 						{% endif %}
 					</ul>
+					<div class="col">
 					<form class="form-inline my-2 my-lg-0" action="{{ path('search_handlesearch')}}">
-					<input class="form-control mr-sm-2" name="mot" type="search" placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Recherche</button>
+						<div class="container">
+							<div class="row justify-content-md-end">
+								<div class="col-3"><input class="form-control mr-sm-2" name="mot" type="search" placeholder="Rechercher une fiche ici..." aria-label="Search"></div>
+								<div class="col-2"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Recherche</button></div>
+							</div>
+						<div>
 					</form>
+					</div>
 				</div>
 			</div>
 		</nav>
