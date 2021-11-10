@@ -24,10 +24,10 @@
 					<a class="navbar-brand" href="/"><img src="https://img.icons8.com/bubbles/50/000000/purchase-order.png"/></a>
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item">
-						<a class="nav-link active" aria-current="page" href="/">Acceuil</a>
+						<a class="nav-link active" aria-current="page" href="/"><i class="bi bi-house-door-fill"></i>Accueil</a>
 						</li>
 						<li class="nav-item dropdown">
-          					<a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Fiche</a>
+          					<a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-file-text"></i>Fiche</a>
           						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             						<li><a class="dropdown-item" href="/fiche/tous">Voir toute les fiches</a></li>
 									{% if app.user %}
@@ -37,16 +37,16 @@
           						</ul>
         				</li>
 						<li class="nav-item">
-						<a class="nav-link" aria-current="page" href="#">Compte</a>
+						<a class="nav-link" aria-current="page" href="#"><i class="bi bi-person-circle"></i>Compte</a>
 						</li>						
 						{% if app.user and app.user.roles['ROLE'] == 'ROLE_ADMIN' %}
 						<li class="nav-item">
-						<a class="nav-link " href="/admin/acceuil">Administration</a>
+						<a class="nav-link " href="/admin/acceuil"><i class="bi bi-person-lines-fill"></i>Administration</a>
 						</li>
 						{% endif %}
 						{% if app.user %}
 						<li class="nav-item">
-						<a class="nav-link" aria-current="page" href="/deconnexion">Deconnexion</a>
+						<a class="nav-link" aria-current="page" href="/deconnexion"><i class="bi bi-door-closed-fill"></i>Deconnexion</a>
 						</li>
 						{% endif %}
 					</ul>
@@ -85,9 +85,6 @@
 						<ul class="sec">
 							<li class="sec-li"><a href="#" class="sec-lien">A propos</a></li>
 							<li class="sec-li"><a href="#" class="sec-lien">FAQ</a></li>
-							<li class="sec-li"><a href="#" class="sec-lien">Politique de confidentialité</a></li>
-							<li class="sec-li"><a href="#" class="sec-lien">Aide</a></li>
-							<li class="sec-li"><a href="#" class="sec-lien">Termes et Conditions</a></li>
 							<li class="sec-li"><a href="#" class="sec-lien">Contact</a></li>
 						</ul>
 					</div> 

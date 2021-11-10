@@ -3,7 +3,7 @@
 {% block title %} Toutes les fiches {% endblock %}
 
 {% block body %}
-    <style>
+<style>
         .bannierre{
             background: url('{{ asset("images/banniere2.jpg") }}');
             display: flex;
@@ -15,17 +15,10 @@
             background-size:cover;
             background-position: 50% 10%;
         }
-        button{
-            display :none;
-        }
-
-        button.btn{
-            display :inline-block;
-        }
-    </style>
-    <div class ="bannierre"> 
-        <h1 class="bannierre-titre"> Toutes les fiches </h1>
-    </div>
+</style>
+<div class ="bannierre"> 
+    <h1 class="bannierre-titre"> Toutes les fiches </h1>
+</div>
 <div class="container mt-4 mb-4">
   <div class="row">  
       {% for fiche in lesFiches %}
