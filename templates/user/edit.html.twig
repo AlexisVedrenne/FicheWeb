@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier les données personelles{% endblock %}
+
+
+    
+
+
+{% block body %}
+<h1>Modifier les données personelles</h1>
+
+  <div class='card text-center'>
+    
+    {{ form_start(form)}}
+    <div class="container">
+    {{form_label(form.email, 'Email') }}
+    {{form_widget(form.email, {'attr':{'placeholder':"Email ",'class':"form-control"}}) }}
+    
+    {{form_label(form.pseudo, 'Pseudo') }}
+    {{form_widget(form.pseudo, {'attr':{'placeholder':"Pseudo ",'class':"form-control"}}) }}
+    
+    <br>
+
+    {{form_end(form)}}
+    <button type="submit" class='btn btn-success'> Modifier </button>
+    </div>
+</div>
+
+{% endblock %}

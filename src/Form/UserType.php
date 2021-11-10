@@ -13,10 +13,7 @@ class UserType extends AbstractType
     {
         $builder
             ->add('email')
-            ->add('password')
-            ->add('pseudo')
-            ->add('statutConnexion')
-        ;
+            ->add('pseudo');
     }
 
     public function configureOptions(OptionsResolver $resolver)
