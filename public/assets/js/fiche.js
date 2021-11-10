@@ -14,7 +14,7 @@ function addMedia(nb, contenue) {
     lien = div.children["iLien-" + nb];
     type = div.children["iType-" + nb];
     lien.appendChild(document.createElement("input")).setAttribute("id", "lien-" + nb);
-    type.appendChild(document.createElement("input")).setAttribute("id", "type-" + nb);
+    type.appendChild(document.createElement("select")).setAttribute("id", "type-" + nb);
     ajtLien(lien.children["lien-" + nb], nb, contenue);
     ajtType(type.children["type-" + nb], nb, contenue);
     console.log(lien);
@@ -41,9 +41,31 @@ function ajtAttrDiv() {
 }
 
 function ajtType(input, nb, contenue) {
+    input.addEventListener("click",function(){
+        lien=document.getElementById("lien-"+nb);
+        if(input.value=="PDF"){
+            lien.removeAttribute("type");
+            lien.setAttribute("type","file");
+        }
+        else{
+            lien.removeAttribute("type");
+            lien.setAttribute("type","text");
+        }
+
+    })
+    pdf=document.createElement("option");
+    pdf.value="PDF";
+    pdf.text="PDF";
+    image=document.createElement("option");
+    image.value="Image";
+    image.text="Image";
+    video=document.createElement("option");
+    video.value="Video";
+    video.text="Video";
     input.setAttribute("name", "type-" + nb + "-" + contenue);
-    input.setAttribute("type", "text");
-    input.setAttribute("placeholder", "Selectionez un type...");
+    input.add(image);
+    input.add(video);
+    input.add(pdf);
     input.classList.add("form-control");
 }
 
