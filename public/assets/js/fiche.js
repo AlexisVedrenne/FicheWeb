@@ -14,7 +14,7 @@ function addMedia(nb, contenue) {
     lien = div.children["iLien-" + nb];
     type = div.children["iType-" + nb];
     lien.appendChild(document.createElement("input")).setAttribute("id", "lien-" + nb);
-    type.appendChild(document.createElement("input")).setAttribute("id", "type-" + nb);
+    type.appendChild(document.createElement("select")).setAttribute("id", "type-" + nb);
     ajtLien(lien.children["lien-" + nb], nb, contenue);
     ajtType(type.children["type-" + nb], nb, contenue);
     console.log(lien);
@@ -41,9 +41,31 @@ function ajtAttrDiv() {
 }
 
 function ajtType(input, nb, contenue) {
+    input.addEventListener("click",function(){
+        lien=document.getElementById("lien-"+nb);
+        if(input.value=="PDF"){
+            lien.removeAttribute("type");
+            lien.setAttribute("type","file");
+        }
+        else{
+            lien.removeAttribute("type");
+            lien.setAttribute("type","text");
+        }
+
+    })
+    pdf=document.createElement("option");
+    pdf.value="PDF";
+    pdf.text="PDF";
+    image=document.createElement("option");
+    image.value="Image";
+    image.text="Image";
+    video=document.createElement("option");
+    video.value="Video";
+    video.text="Video";
     input.setAttribute("name", "type-" + nb + "-" + contenue);
-    input.setAttribute("type", "text");
-    input.setAttribute("placeholder", "Selectionez un type...");
+    input.add(image);
+    input.add(video);
+    input.add(pdf);
     input.classList.add("form-control");
 }
 
@@ -83,7 +105,6 @@ function addContenue(element) {
         console.log(this);
         nbMedia = document.getElementById("nbMedia-" + this.value).value;
         nbMedia++;
-        console.log(nbMedia);
         document.getElementById("nbMedia-" + this.value).value = nbMedia
         document.getElementById("contenue-" + this.value).children["iRub-" + this.value].appendChild(document.createElement("div")).setAttribute("id", "media-" + nbMedia);
         addMedia(nbMedia, this.value);
@@ -144,5 +165,21 @@ document.getElementById('btnCtn').addEventListener('click', function() {
     ajtAttrRub(getRubrique(nbContenue));
     ajtAtrrDes(getDescription(nbContenue));
     ajtAttrDiv();
-    console.log(nbContenue);
+    if(nbContenue>0){
+        document.getElementById("btnFiche").removeAttribute("disabled");
+        document.getElementById('spModal').removeAttribute("disabled");
+    }
 });
+
+document.getElementById('btnSpCtn').addEventListener('click',function(){
+    nbCon=document.getElementById("nbContenue")
+    contenu=getContenue();
+    contenu.removeChild(document.getElementById('contenue-'+nbContenue));
+    nbContenue-=1;
+    nbCon.value=nbContenue;
+    if(nbCon.value==0){
+        document.getElementById('spModal').setAttribute('disabled',true);
+        document.getElementById("btnFiche").setAttribute("disabled",true);
+    }
+})
+

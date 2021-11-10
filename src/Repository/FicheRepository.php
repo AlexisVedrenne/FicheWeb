@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Fiche;
+use App\Entity\Categorie;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -19,22 +20,49 @@ class FicheRepository extends ServiceEntityRepository
         parent::__construct($registry, Fiche::class);
     }
 
+
+
+
+
+    public function recherche($value)
+    {
+
+        return $this->createQueryBuilder('f')
+            ->join(Categorie::class, 'c', 'WITH', 'f.laCategorie=c.id')
+            ->Where('f.nom LIKE :lib')
+            ->orWhere('c.nom LIKE :val')
+            ->setParameter('val', "%" . $value . "%")
+            ->setParameter('lib', "%" . $value . "%")
+
+            ->getQuery()
+            ->getResult();
+    }
+
+
+
+
     // /**
     //  * @return Fiche[] Returns an array of Fiche objects
     //  */
-    /*
-    public function findByExampleField($value)
+
+    public function findByExampleField(string $query)
     {
-        return $this->createQueryBuilder('f')
-            ->andWhere('f.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('f.id', 'ASC')
-            ->setMaxResults(10)
+        $qb = $this->createQueryBuilder('p');
+        $qb
+            ->where(
+                $qb->expr()->andX(
+                    $qb->expr()->orX(
+                        $qb->expr()->like('p.nom', ':query'),
+                    )
+                )
+            )
+            ->setParameter('query', '%' . $query . '%');
+        return $qb
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
-    */
+
+
 
     /*
     public function findOneBySomeField($value): ?Fiche
@@ -48,11 +76,9 @@ class FicheRepository extends ServiceEntityRepository
     }
     */
 
-    public function getCommFiche($idComm){
-        $dql='SELECT f.id from App\Entity\Fiche f WHERE f.commentaire='.$idComm;
+    public function getCommFiche($idComm)
+    {
+        $dql = 'SELECT f.id from App\Entity\Fiche f WHERE f.commentaire=' . $idComm;
         return $this->getEntityManager()->createQuery($dql)->execute()[0];
     }
-    
-
-    
 }

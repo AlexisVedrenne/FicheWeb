@@ -10,12 +10,12 @@
 <div class="container mt-4 mb-4">
   <div class="row">  
       {% for fiche in lesFiches %}
-    
       <div class="card me-4 mb-4 mt-4 col-xl">
         <img src="{{ asset('images/html-5.jpg') }}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">{{ fiche.nom }}</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          {% set des = fiche.contenus[0].description %}
+          <p class="card-text">{{ des[:280] ~ (des|length > 280 ?'...') }}</p>
           <a href="/fiche/voir/{{ fiche.id }}" class="btn btn-primary">Entrer</a>
         </div>
         <br>

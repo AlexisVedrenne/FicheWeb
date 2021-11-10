@@ -11,7 +11,8 @@ use App\Repository\DemandeFicheRepository;
 use App\Repository\FicheRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
-
+use App\Entity\User;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @Route("/admin", name="admin_")
@@ -101,4 +102,24 @@ class AdminController extends AbstractController
         return $this->render('admin/user.html.twig',['users'=>$users]);
     }
 
+    /**
+     * @Route("/modifUser")
+     */
+    public function modifUser(UserRepository $repo,EntityManagerInterface $manager,Request $request){
+        $user=$repo->find($request->request->get('idUser'));
+        $user->setPseudo($request->request->get('inPseudo-'.$user->getId()));
+        $user->setEmail($request->request->get('inEmail-'.$user->getId()));
+        $user->setRoles(['ROLE'=>$request->request->get('slRole-'.$user->getId())]);
+        $manager->persist($user);
+        $manager->flush();
+        return $this->redirectToRoute('admin_users');
+    }
+
+    /**
+     * @Route("/fiches",name="fiches")
+     */
+    public function getAllFiche(FicheRepository $repo){
+        $fiches=$repo->findAll();
+        return $this->render('admin/fiche.html.twig',['fiches'=>$fiches]);
+    }
 }

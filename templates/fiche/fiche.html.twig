@@ -3,12 +3,31 @@
 {% block title %} Une fiche ! {% endblock %}
 
 {% block body %}
-
     <div class ="bannierre"> 
-        <h1 class="bannierre-titre"> Consultation </h1>
+        <h1 class="bannierre-titre"> Consultation de la fiche : {{ fiche.nom}}  </h1>
     </div>
 
-    
+    {% for contenu in fiche.contenus %}
+        <div class="container mt-5 mb-5">
+            <div class="row">
+                <h1>{{ contenu.rubrique }}</h1>
+            </div>
+            <div class="row">
+                <div class="col me-3"><p>{{ contenu.description }}</p></div>
+                <div class="col">
+                    {% for media in contenu.lesMedias %}
+                        {% if media.type == "Image" %}
+                            <img src="{{media.lien}}">
+                        {% elseif media.type == "Video" %}
+                            <iframe width="560" height="315" src="{{ media.lien }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        {% else %}
+                            {{ media.lien }}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>      
+    {% endfor %}
 
     <div class="container mt-5 mb-5 bloc-commentaire">
         <div class="row">{{ render(controller('App\\Controller\\CommentaireController::AddCommentaire',{'ficheId':fiche.id})) }}</div>
