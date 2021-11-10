@@ -16,6 +16,7 @@
             background-position: 50% 10%;
         }
   </style>
+
   <div class ="bannierre"> 
         <h1 class="bannierre-titre"> Connexion </h1>
   </div>
@@ -29,7 +30,7 @@
         <h1 class="text-center h3 mb-3 font-weight-normal">Veuillez vous connecter</h1>
         <label for="inputEmail">Email</label>
         <div class="input-group mb-3">
-          <span class="input-group-text" id="basic-addon1"><i class="bi bi-lock"></i></span>
+          <span class="input-group-text" id="basic-addon1">@</span>
           <input placeholder="Entre votre adresse email..." type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required="required" autofocus="autofocus">
         </div>
         
@@ -40,11 +41,10 @@
         </div>
         
         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-        <a href="service/motDePasseOublier">Mot de passe oublié ?</a>
-        <div class="conteneur">
-          <button  class="btn btn-lg btn-success mt-2" type="submit">Connexion</button>
-          <div class="conteneur mb-3 form-check">
-            <label class="aligne-centre form-check-label mt-2"><input class="form-check-input" id="ckcLogin" type="checkbox" name="_remember_me">Se souvenir de moi</label>
+        <div class="container">
+          <div class="row align-items-center justify-content-md-center">
+            <div class="col-3"><button  class="btn btn-lg btn-success mt-2" type="submit">Connexion</button></div>
+            <div class="col-5 ms-4"><a href="service/motDePasseOublier">Mot de passe oublié ?</a></div>
           </div>
         </div>
         <br>
