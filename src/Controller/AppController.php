@@ -17,8 +17,12 @@ class AppController extends AbstractController
 
     /**
      * @route("/",name="home")
+     * 
+     * @return Response Cette objet est la réponse qui est envoyer au navigateur (ex l'affichage)
+     * 
+     * Cette fonction permet l'affoche de notre page d'aceuil
      */
-    public function home(){
+    public function home():Response{
 
         return $this->render('app/index.html.twig');
 
@@ -26,8 +30,15 @@ class AppController extends AbstractController
 
     /**
      * @route("/deconnexion",name="deconnexion")
+     * 
+     * $manager : C'est la variable qui permet de gérer les entitées vers la base de donnée
+     * 
+     * @return Response Cette objet est la réponse qui est envoyer au navigateur (ex l'affichage)
+     * 
+     * Cette fonction permet de nous deconnecter du site et elle met l'utilisateur en question 
+     * en hors ligne en base de donnée
      */
-    public function deconnexion(EntityManagerInterface $manager){
+    public function deconnexion(EntityManagerInterface $manager):Response{
 
         //Ces lignes permette de changer le status de en ligne à hors ligne
         $user=$this->getUser();
@@ -39,6 +50,11 @@ class AppController extends AbstractController
         return $this->redirectToRoute('app_logout');
     }
 
+    /**
+     * $longueur : Cette variable représente la longeur du code que l'on veut générer
+     * 
+     * Cette fonction permet
+     */
     public static function codeGen($longueur){
         $number= "0123456789";
         return substr(str_shuffle(str_repeat($number, $longueur)), 0, $longueur);
