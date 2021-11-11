@@ -27,7 +27,7 @@
                     <td class="text-center">{{ fiche.nom }}</td>
                     <td class="text-center">{{ fiche.laCategorie.nom }}</td>
                     <td class="text-center">{{ fiche.contenus|length }}</td>
-                    <td class="text-center"><a class="btn" href="/fiche/voir/{{ fiche.id }}"><i class="bi bi-eye-fill"></i></a><a class="btn" href="/fiche/edit/{{ fiche.id }}"><i class="bi bi-pencil-square crayon"></i></a><a href="/admin/del/fiche/{{ fiche.id }}" class="btn"><i class="bi bi-trash-fill poubelle"></i></a></td>
+                    <td class="text-center"><a class="btn" href="/fiche/voir/{{ fiche.id }}"><i class="bi bi-eye-fill eye"></i></a><a class="btn" href="/fiche/edit/{{ fiche.id }}"><i class="bi bi-pencil-square crayon"></i></a><a href="/admin/del/fiche/{{ fiche.id }}" class="btn"><i class="bi bi-trash-fill poubelle"></i></a></td>
                 </tr>                   
                 {% endfor %}
             </tbody>

@@ -54,6 +54,17 @@
         color: black;
         transition:0.5s;                /* Pour que l'icône de suppression devient noir quand on survol sur l'icône */
     }
+    .bi-eye-fill{
+        color: white;
+        padding:5px;                    /* Pour que l'icône d'oeil d'une fiche soit de couleur blanc */
+        border: 1px solid white;    
+        transition:0.5s;
+    }
+    .bi-eye-fill:hover{                        /* Pour que l'icône d'oeil' devient noir quand on survol sur l'icône */
+        background-color: white;    
+        color: black;                   
+        transition:0.5s; 
+    }
 
 /* ----------------------------------- PAGE LOGIN ------------------------------------- */
 
