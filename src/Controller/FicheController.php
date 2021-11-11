@@ -69,7 +69,10 @@ class FicheController extends AbstractController
             }
 
             $manager->persist($fiche);
-            $id!=null?$manager->remove($demande):null;            
+            if($id!=null){
+                $manager->remove($demande);
+                Mail::demandeFicheFermer($demande->getUser(),$demande->getObjet(),$demande->getMessage(),$demande->getCategorie()->getNom(),$fiche->getId());
+            }            
             $manager->flush();
             return $this->redirectToRoute('admin_demandes');
         }
