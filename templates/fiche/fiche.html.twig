@@ -14,17 +14,15 @@
             </div>
             <div class="row">
                 <div class="col me-3"><p>{{ contenu.description }}</p></div>
-                <div class="col">
                     {% for media in contenu.lesMedias %}
                         {% if media.type == "Image" %}
-                            <img src="{{media.lien}}">
+                            <div class="col-6 mb-2"><img style="width:100%; height:100%; display:block;" src="{{media.lien}}"></div>
                         {% elseif media.type == "Video" %}
-                            <iframe width="560" height="315" src="{{ media.lien }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <div class="row mb-2"><div style="height:500px;" class="col"><iframe style="width:100%; height:100%; display:block;" src="{{ media.lien }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
                         {% else %}
-                            {{ media.lien }}
+                            <h5>Lien vers le pdf en ligne : <a href="{{ media.lien }}">{{ media.lien }}</a></h5>
                         {% endif %}
                     {% endfor %}
-                </div>
             </div>
         </div>      
     {% endfor %}
