@@ -1,8 +1,9 @@
+/* ------------------------ BANNIERE ------------------------- */
 .bannierre{
-    background: url('../images/banniere2.jpg');
+    background: url('../images/banniere2.jpg'); 
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center;              /* Modification de l'arrière plan du bannière */
     height: 400px;
     background-attachment:fixed;
     background-repeat:no-repeat;
@@ -13,35 +14,41 @@
 .bannierre-titre{
     font-size: 60px;
     color: white;
-    margin: 0;
+    margin: 0;                          /* Modification du grand titre dans la bannière */
     width: 100%;
     height: 100px;
     line-height: 100px;
     text-align: center;
 }
+/* -------------------------- FIN BANNIERE ---------------------------*/
+
+
+/* ----------------- BLOC COMMENTAIRE ---------------------*/
 
 .bloc-commentaire{
     color:white;
     background-image:url(../images/back5.png);
     background-attachment:fixed;
     background-repeat:no-repeat;
-    background-size:cover;
+    background-size:cover;                                  /* Modification de l'arrière plan du bloc commentaire */
     background-position: 50% 10%;
     padding: 10px;
     box-shadow: -10px 11px 5px 0px rgb(158 158 158 / 75%);
     transition:0.5s;
 }
 .bloc-commentaire:hover{
-    box-shadow: -20px 40px 5px 0px rgb(158 158 158 / 75%);
+    box-shadow: -20px 40px 5px 0px rgb(158 158 158 / 75%);       /* Afficher l'effet d'ombre quand on survol le bloc */
     transition:0.5s;
 }
 .trait{
     height: 5px!important;
-    opacity: 0.5;
+    opacity: 0.5;                   /* Les hr avec une couleur blanche et transparente */
     color:white;
 }
 .commentaires{
-    color:white;
+    color:white;            /* La couleur des commentaires */
 }
+
+/* -------------------- FIN DU BLOC COMMENTAIRE --------------------- */
 
     

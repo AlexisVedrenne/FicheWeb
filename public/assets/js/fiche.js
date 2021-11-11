@@ -41,18 +41,7 @@ function ajtAttrDiv() {
 }
 
 function ajtType(input, nb, contenue) {
-    input.addEventListener("click",function(){
-        lien=document.getElementById("lien-"+nb);
-        if(input.value=="PDF"){
-            lien.removeAttribute("type");
-            lien.setAttribute("type","file");
-        }
-        else{
-            lien.removeAttribute("type");
-            lien.setAttribute("type","text");
-        }
 
-    })
     pdf=document.createElement("option");
     pdf.value="PDF";
     pdf.text="PDF";

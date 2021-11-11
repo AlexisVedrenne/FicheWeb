@@ -1,36 +1,7 @@
 
-    /*body{
-        background-color: black;
-    }*/
-    .row{
-        display: flex !important;
-    }
-    
-    .conteneur {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-content: center;
-    }
-    
-    .lg {
-        height: 20rem;
-    }
-    
-    .conteneur {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-content: center;
-    }
-    
-    .aligne-centre {
-        display: flex!important;
-        align-items: center;
-    }
     
     #thermeLabel {
-        margin-right: 50px;
+        margin-right: 50px;   /* Pour l'espacement du lien mot de passe oublié */ 
         margin-left: 15px;
     }
     
@@ -39,8 +10,8 @@
     }*/
     
     #ckcLogin {
-        margin-left: 10px;
-        margin-right: 5px;
+        margin-left: 10px;      /* Pour l'espacement du checkbox "termes de conditions" */
+        margin-right: 5px;      
     }
     
     .digit {
@@ -49,46 +20,46 @@
     }
 
     .ajustForm{
-        height: 500px;
+        height: 500px;      /* Taille du formulaire */
     }
     .table{
-        color:white;
+        color:white;       /* Pour que les textes sont de couleurs blancs */
     }
     .text-tableau{
-        color: white !important;
-    }
+        color: white !important;   /* Pour que les textes sont de couleurs blancs */
+    } 
     .tableau-fiches{
-        color: white!important;
+        color: white!important;   /* Pour que les textes sont de couleurs blancs */
     }
     .crayon{
         color: white;
-        padding:5px;
+        padding:5px;                    /* Pour que l'icône de mofication d'une fiche soit de couleur blanc */
         border: 1px solid white;
         transition:0.5s;
     }
     .crayon:hover{
-        background-color: white;
+        background-color: white;     /* Pour que l'icône de suppression devient noir quand on survol sur l'icône */
         color: black;
         transition:0.5s;
     }
 
     .poubelle{
         color: white;
-        padding:5px;
-        border: 1px solid white;
+        padding:5px;                    /* Pour que l'icône de suppression d'une fiche soit de couleur blanc */
+        border: 1px solid white;    
         transition:0.5s;
     }
     .poubelle:hover{
-        background-color: white;
+        background-color: white;    
         color: black;
-        transition:0.5s;
+        transition:0.5s;                /* Pour que l'icône de suppression devient noir quand on survol sur l'icône */
     }
 
 /* ----------------------------------- PAGE LOGIN ------------------------------------- */
 
 .bloc-form{
     color:white;
-    background-image:url(../images/back-hero2.jpg);
+    background-image:url(../images/back-hero2.jpg);              /* Modification pour l'arrière blanc des blocs formulaires */
     background-attachment:fixed;
     background-repeat:no-repeat;
     background-size:cover;
@@ -98,10 +69,11 @@
     transition:0.5s;
 }
 .bloc-form:hover{
-    box-shadow: -20px 40px 5px 0px rgb(158 158 158 / 75%);
+    box-shadow: -20px 40px 5px 0px rgb(158 158 158 / 75%);    /* L'effet d'ombrage quand on survole sur le bloc formulaire */
     transition:0.5s;
 }
 
+/* ------------------- RESPONSIVE DES CHAMPS ---------------------- */
 @media (max-width:1036px) {
     .container.col-4{
         width: 50%;
@@ -125,5 +97,7 @@
         width: 100%;
     }
 }
+
+/* ------------------- FIN RESPONSIVE DES CHAMPS ---------------------- */
 
 /* --------------------------------- FIN PAGE LOGIN ----------------------------------- */

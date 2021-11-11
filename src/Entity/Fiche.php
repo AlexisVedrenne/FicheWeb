@@ -37,7 +37,7 @@ class Fiche
     private $contenus;
 
     /**
-     * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="fiche")
+     * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="fiche",cascade={"remove"})
      */
     private $commentaires;
 

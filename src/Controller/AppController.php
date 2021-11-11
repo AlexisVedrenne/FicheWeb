@@ -18,9 +18,17 @@ class AppController extends AbstractController
 
     /**
      * @route("/",name="home")
+     * 
+     * @return Response Cette objet est la réponse qui est envoyer au navigateur (ex l'affichage)
+     * 
+     * Cette fonction permet l'affoche de notre page d'aceuil
      */
+<<<<<<< HEAD
     public function home(FicheRepository $repo)
     {
+=======
+    public function home():Response{
+>>>>>>> dev
 
         $lesFiches = $repo->affichage_alea();
 
@@ -29,9 +37,20 @@ class AppController extends AbstractController
 
     /**
      * @route("/deconnexion",name="deconnexion")
+     * 
+     * $manager : C'est la variable qui permet de gérer les entitées vers la base de donnée
+     * 
+     * @return Response Cette objet est la réponse qui est envoyer au navigateur (ex l'affichage)
+     * 
+     * Cette fonction permet de nous deconnecter du site et elle met l'utilisateur en question 
+     * en hors ligne en base de donnée
      */
+<<<<<<< HEAD
     public function deconnexion(EntityManagerInterface $manager)
     {
+=======
+    public function deconnexion(EntityManagerInterface $manager):Response{
+>>>>>>> dev
 
         //Ces lignes permette de changer le status de en ligne à hors ligne
         $user = $this->getUser();
@@ -43,9 +62,19 @@ class AppController extends AbstractController
         return $this->redirectToRoute('app_logout');
     }
 
+<<<<<<< HEAD
     public static function codeGen($longueur)
     {
         $number = "0123456789";
+=======
+    /**
+     * $longueur : Cette variable représente la longeur du code que l'on veut générer
+     * 
+     * Cette fonction permet
+     */
+    public static function codeGen($longueur){
+        $number= "0123456789";
+>>>>>>> dev
         return substr(str_shuffle(str_repeat($number, $longueur)), 0, $longueur);
     }
 
@@ -66,4 +95,19 @@ class AppController extends AbstractController
 
         return $contenue;
     }
+<<<<<<< HEAD
+=======
+
+    public static function modifCtn($request,$fiche){
+        foreach ($fiche->getContenus() as $contenu) {
+            $contenu->setRubrique($request->get("rb-".$contenu->getId()));
+            $contenu->setDescription($request->get("des-".$contenu->getId()));
+                foreach ($contenu->getLesMedias() as $media) {
+                $media->setType($request->get("sl-".$contenu->getId()."-".$media->getId()));
+                $media->setLien($request->get("lien-".$contenu->getId()."-".$media->getId()));
+            }
+        }
+
+    }
+>>>>>>> dev
 }
