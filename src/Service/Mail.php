@@ -130,5 +130,37 @@ Class Mail{
     $response = Mail::getClient()->post(Resources::$Email, ['body' => $body]);
     return $response->success();
   }
+
+  static public function demandeFicheFermer(User $user,string $objet,string $message,string $categorie,$id){
+    $body = [
+      'Messages' => [
+      [
+          'From' => [
+            'Email' => "service@ficheweb.fr",
+            'Name' => "Service Fiche Web"
+          ],
+          'To' => [
+            [
+              'Email' => $user->getEmail(),
+              'Name' => $user->getPseudo()
+            ]
+          ],
+          'Subject' => "[FicheWeb Suppot] Information sur la demande de fiche : ".$objet,
+          'TextPart' => "Support",
+          'HTMLPart' => "<h1>Information sur la demande</h1>
+          <p>Une fiche de catégorie :<h5>".$categorie."</h5><br>
+            La demmande était :". $message ."
+            Nous vous confirmons que votre demande a été prise en compte et que la fiche a bien été créer.
+            Elle sera disponible au lien suivant http://local.ficheweb/fiche/voir/".$id.
+          "</p>
+          <h4>L'équipe FicheWeb</h4>
+          <h6>Veuillez ne pas répondre à ce mail générer automatiquement</h6>",
+          'CustomID' => "AppGettingStartedTest"
+        ]
+      ]
+    ];
+    $response = Mail::getClient()->post(Resources::$Email, ['body' => $body]);
+    return $response->success();    
+  }
 }
 ?>

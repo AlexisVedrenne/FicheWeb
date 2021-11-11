@@ -13,6 +13,7 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\User;
 use Symfony\Component\HttpFoundation\Request;
+use App\Entity\Fiche;
 
 /**
  * @Route("/admin", name="admin_")
@@ -121,5 +122,14 @@ class AdminController extends AbstractController
     public function getAllFiche(FicheRepository $repo){
         $fiches=$repo->findAll();
         return $this->render('admin/fiche.html.twig',['fiches'=>$fiches]);
+    }
+
+    /**
+     *@Route("/del/fiche/{id}")
+     */
+    public function deleteFiche(Fiche $fiche,EntityManagerInterface $manager){
+        $manager->remove($fiche);
+        $manager->flush();
+        return $this->redirectToRoute('admin_fiches');
     }
 }
