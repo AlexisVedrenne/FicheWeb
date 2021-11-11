@@ -25,6 +25,9 @@ class SearchController extends AbstractController
     /**
      * @Route("search/handlesearch", name="search_handlesearch")
      *
+     * $mot: c'est la valeur entré par l'utlisateur dans la barre du recherche
+     * $request:ce qui va permettre de récuperer les données provenant du formulaire de recherche
+     * $repo : C'est la variable qui permet l'accès au données de la classe Fiche
      */
 
     public function handleSearch(Request $request, FicheRepository $repo)

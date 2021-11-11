@@ -29,6 +29,14 @@ class ProfilController extends AbstractController
 
     /**
      * @Route("/compte", name="user_edit", methods={"GET","POST"})
+     * 
+     * $request ce qui va permettre de récuperer les données provenant du formulaire de modification
+     * $user c'est pour récuperer les données d'user connecté
+     * $form c'est pour créer le formulaire d'user
+     * handlerequest : prise en charge du traitement des données du formulaire
+     * $entityManager:qui nous permet de manipuler  l'entité user
+     * 
+     * Cette fonction permet de récuperer les données rentrés par l'utlisateur et aprés les modifier dans la base des données
      */
     public function edit(Request $request): Response
     {

@@ -12,6 +12,9 @@ class ContactController extends AbstractController
 {
     /**
      * @Route("/contact", name="contact")
+     * 
+     * $request: ce qui va permettre de récuperer les données provenant du formulaire
+     * cette fonction permet de récuperer toutes les données que l'utilisateur a rentré dans le formulaire Contact
      */
     public function contact(Request $request): Response
     {
