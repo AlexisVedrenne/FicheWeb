@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20211110211933 extends AbstractMigration
+final class Version20211111220131 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -26,7 +26,7 @@ final class Version20211110211933 extends AbstractMigration
         $this->addSql('CREATE TABLE demande_fiche (id INT AUTO_INCREMENT NOT NULL, user_id INT NOT NULL, categorie_id INT DEFAULT NULL, objet VARCHAR(30) NOT NULL, message VARCHAR(1000) NOT NULL, INDEX IDX_BACD4F51A76ED395 (user_id), INDEX IDX_BACD4F51BCF5E72D (categorie_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE fiche (id INT AUTO_INCREMENT NOT NULL, la_categorie_id INT NOT NULL, nom VARCHAR(50) NOT NULL, INDEX IDX_4C13CC78281042B9 (la_categorie_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE media (id INT AUTO_INCREMENT NOT NULL, contenu_id INT NOT NULL, lien VARCHAR(5000) NOT NULL, type VARCHAR(15) NOT NULL, INDEX IDX_6A2CA10C3C1CC488 (contenu_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, email VARCHAR(180) NOT NULL, roles JSON NOT NULL, password VARCHAR(255) NOT NULL, pseudo VARCHAR(20) NOT NULL, statut_connexion TINYINT(1) NOT NULL, date_inscription DATETIME NOT NULL, UNIQUE INDEX UNIQ_8D93D649E7927C74 (email), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, email VARCHAR(180) NOT NULL, roles JSON NOT NULL, password VARCHAR(255) NOT NULL, pseudo VARCHAR(20) NOT NULL, statut_connexion TINYINT(1) NOT NULL, date_inscription DATETIME NOT NULL, nom VARCHAR(30) DEFAULT NULL, prenom VARCHAR(30) DEFAULT NULL, ville VARCHAR(30) DEFAULT NULL, tel VARCHAR(10) DEFAULT NULL, UNIQUE INDEX UNIQ_8D93D649E7927C74 (email), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('ALTER TABLE commentaire ADD CONSTRAINT FK_67F068BCA76ED395 FOREIGN KEY (user_id) REFERENCES user (id)');
         $this->addSql('ALTER TABLE commentaire ADD CONSTRAINT FK_67F068BCDF522508 FOREIGN KEY (fiche_id) REFERENCES fiche (id)');
         $this->addSql('ALTER TABLE contenu ADD CONSTRAINT FK_89C2003FDF522508 FOREIGN KEY (fiche_id) REFERENCES fiche (id)');
