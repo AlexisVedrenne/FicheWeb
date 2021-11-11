@@ -55,7 +55,9 @@ class AppController extends AbstractController
     /**
      * $longueur : Cette variable représente la longeur du code que l'on veut générer
      * 
-     * Cette fonction permet
+     * Cette fonction permet de génerer un code de façon aléatoire
+     * 
+     * @return int Retourne le code générer
      */
     public static function codeGen($longueur){
         $number= "0123456789";
@@ -63,6 +65,16 @@ class AppController extends AbstractController
     }
 
 
+    /**
+     * $fiche : cette varaible représente la fiche que l'on vient de créer
+     * $request : C'est la variable qui va stocker toute la requête http qui a été effectuer
+     * $nbContenue : Cette variable représente le nombre de contenus d'une fiche
+     * $nbMedia : Cette variable representer le nombre de média d'une fiche
+     * 
+     * @return Contenu contenu que l'on vient de créer
+     * 
+     * Cette fonction permet de créer un contenu avec ses média
+     */
     public static function traitementCtn(Fiche $fiche, $request, int $nbContenue, int $nbMedia)
     {
         $contenue = new Contenu();
@@ -80,6 +92,14 @@ class AppController extends AbstractController
         return $contenue;
     }
 
+    /**
+     * $fiche : cette varaible représente la fiche que l'on veut modifier
+     * $request : C'est la variable qui va stocker toute la requête http qui a été effectuer
+     * 
+     * @return void ne retourne rien
+     * 
+     * Cette fonction permet de modifier une fiche
+     */
     public static function modifCtn($request,$fiche){
         foreach ($fiche->getContenus() as $contenu) {
             $contenu->setRubrique($request->get("rb-".$contenu->getId()));

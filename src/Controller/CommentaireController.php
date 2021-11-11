@@ -21,8 +21,16 @@ class CommentaireController extends AbstractController
 
     /**
      * @Route("/commentaire/post",name="commentaire_post")
+     * 
+     * $request : C'est la variable qui va stocker toute la requête http qui a été effectuer
+     * $manager : C'est la variable qui permet de gérer les entitées vers la base de donnée
+     * $repo : C'est la variable qui permet de faire le lien avec la base pour Fiche
+     * 
+     *  @return Response Cette objet est la réponse qui est envoyer au navigateur (ex l'affichage)
+     * 
+     * Cette fonction permet de poster un nouveau commentaire sur une fiche
      */
-    public function postCommentaire(Request $request,EntityManagerInterface $manager,FicheRepository $repo){
+    public function postCommentaire(Request $request,EntityManagerInterface $manager,FicheRepository $repo):Response{
         $commentaire=new Commentaire();
         $fiche=$repo->find($request->request->get('ficheId'));
         $commentaire->setUser($this->getUser());
@@ -35,6 +43,11 @@ class CommentaireController extends AbstractController
         return new RedirectResponse('/fiche/voir/'.$request->request->get('ficheId') );
     }
 
+    /**
+     * $ficheId : Cette variable représente l'id de la fiche lié au formulaire qui permet de commenter
+     * 
+     * Cette fonction générer le formulaire de commentaire en fonction de la fiche demander 
+     */
     public function AddCommentaire($ficheId) {
         $form = $this->createFormBuilder()
                 ->setAction($this->generateUrl("commentaire_post"))
