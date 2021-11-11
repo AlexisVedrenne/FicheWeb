@@ -134,4 +134,15 @@ class FicheController extends AbstractController
 
         return $this->render('fiche/allFiches.html.twig', ['lesFiches' => $lesFiches]);
     }
+
+    /**
+     * @Route("/apropos",name="apropos")
+     */
+    public function apropos(FicheRepository $repo)
+    {
+
+        return $this->render('fiche/apropos.html.twig');
+    }
+
+
 }
