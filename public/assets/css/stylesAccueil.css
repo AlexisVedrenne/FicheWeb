@@ -3,10 +3,6 @@ html {
     height: 100%;
     margin: 0;
     padding: 0;
-    /*background: linear-gradient(147deg, #f9fcff 0%, #dee4ea 74%);*/
-    /*background: linear-gradient(315deg, #c2b6b6 0%, #576574 74%);*/
-    /*background: linear-gradient(340deg, #ffeaa7 0%, #000000 100%);*/
-    /*background: linear-gradient(340deg, #55efc4 0%, #000000 100%);*/
     font-family: 'Poppins', sans-serif;
 }
 
@@ -15,7 +11,7 @@ html {
 
 .hero {
     height: 800px;
-    display: flex;
+    display: flex;                /* Hauteur du bloc HERO */
     overflow: hidden;
 }
 
@@ -23,14 +19,14 @@ html {
     background: url('../images/back-hero1.jpg');
     width: 60%;
     height: 100%;
-    background-attachment:fixed;
+    background-attachment:fixed;        /* Bloc à droite qui se trouve dans le bloc hero */
     background-repeat:no-repeat;
     background-size:cover;
 }
 
 .home-left {
     position: relative;
-    width: 40%;
+    width: 40%;                 /* Bloc à gauche qui se trouve dans le bloc hero */
     height: 100%;
     background: black;
     box-shadow: 90px 0 100px black;
@@ -39,7 +35,7 @@ html {
 .home-titre {
     color: white;
     font-size: 90px;
-    padding-top: 200px;
+    padding-top: 200px;         /* Le titre dans le bloc hero */
     padding-bottom: 20px;
     margin-left: 8vw;
     white-space: nowrap;
@@ -48,20 +44,20 @@ html {
 .home-p {
     color: white;
     font-size: 30px;
-    width: 600px;
+    width: 600px;       /* Le paragraphe dans le bloc hero */
     margin-left: 8vw;
     line-height: 1.3;
 }
 
 .btn-hero {
-    display: flex;
+    display: flex;    /* Les boutons connexion et inscription */
 }
 
 .btn-home {
     font-size: 18px;
     text-align: center;
     color: white;
-    padding: 15px;
+    padding: 15px;                /* Bouton avec bordure de couleure blanche et texte blanc */
     text-decoration: none;
     margin-top: 40px;
     border: 1px solid white;
@@ -71,18 +67,19 @@ html {
 
 .btn-home:hover {
     transition: all 0.2s ease;
-    color: black;
+    color: black;                    /* Le bouton devient blanc et le texte en noir quand on survol sur le bouton */
     background: white;
 }
 
 .b1 {
-    margin-left: 8vw;
+    margin-left: 8vw;     /* L'espacement du bouton connexion */
 }
 
 .b2 {
-    margin-left: 10px;
+    margin-left: 10px;   /* L'espacement du bouton inscription */
 }
 
+/* ----------- RESPONSIVE BLOC HERO -------------- */
 @media screen and (max-width: 1350px) {
     .home-left {
         width: 60%;
@@ -145,7 +142,7 @@ html {
         width: 40%
     }
 }
-
+/* ------- FIN BLOC RESPONSIVE ------- */
 
 /* ------------------------------------------- FIN HERO ------------------------------------------------- */
 
@@ -153,8 +150,8 @@ html {
 /* ------------------------------------------- BLOC SERVICES ------------------------------------------------- */
 
 .bloc-info {
-    padding-top: 50px;
-    text-align: center;
+    padding-top: 50px;     /* L'arrière blanc du bloc de présentation */
+    text-align: center;   
     background: linear-gradient(147deg, #f9fcff 0%, #dee4ea 74%);
 }
 
@@ -164,7 +161,7 @@ html {
 
 .bloc-titre::before {
     content: '';
-    position: absolute;
+    position: absolute;           /* Le grand titre dans le bloc de présentation */
     bottom: -7px;
     width: 200px;
     height: 4px;
@@ -173,8 +170,7 @@ html {
 
 .bloc-services {
     display: flex;
-    justify-content: space-evenly;
-    /*background:linear-gradient(147deg, #f9fcff 0%, #dee4ea 74%);*/
+    justify-content: space-evenly;      /* Espacement des 3 blocs */
 }
 
 .bloc-item {
@@ -182,7 +178,7 @@ html {
     align-items: center;
     flex-direction: column;
     margin: 50px;
-    border: 5px solid black;
+    border: 5px solid black;       /* Le design des 3 blocs */
     padding: 35px;
     border-radius: 10px;
     color: black;
@@ -191,15 +187,15 @@ html {
 }
 
 .bloc-item:hover {
-    background: /*rgb(61, 61, 61);*/
-    black;
-    transition: 0.5s;
+    background:black;
+    transition: 0.5s;             /* Le design des 3 blocs quand on survol */
     border-radius: 50px 10px;
     box-shadow: 0px 20px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
     opacity: 1;
     color: white;
 }
 
+/* ---- Les icônes --- */
 .fiche-icon {
     font-size: 50px;
 }
@@ -211,10 +207,11 @@ html {
 .competence-icon {
     font-size: 50px;
 }
+/* ---- Les icônes --- */
 
 .bloc-services-paragraphe {
     font-weight: 600;
-    width: 200px;
+    width: 200px;           /* Paragraphe des 3 blocs d'icônes */
     text-align: center;
 }
 
@@ -260,7 +257,7 @@ html {
 .bloc2{
     background:url('../images/banniere2.jpg');
     color:white;
-    text-align:center;
+    text-align:center;          /* Arrière plan des blocs de fiches */
     padding:10px; 
     background-attachment:fixed;
     
@@ -273,7 +270,7 @@ html {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     grid-template-rows: auto;
-    grid-gap: 0 40px;
+    grid-gap: 0 40px;                  /* Position des blocs des fiches */
     margin-top: 100px;
     margin-bottom: 100px;
     margin-right: auto;
@@ -288,7 +285,7 @@ html {
     position: relative;
     height: 400px;
     background: #060c21;
-    display: flex;
+    display: flex;                  /* La couleur des boîtes des fiches */
     justify-content: center;
     align-items: center;
     margin: 20px;
@@ -298,7 +295,7 @@ html {
     content: '';
     position: absolute;
     top: -2px;
-    left: -2px;
+    left: -2px;          /* La couleur des boîtes à l'arrière */
     right: -2px;
     bottom: -2px;
     background: #fff;
@@ -306,6 +303,7 @@ html {
     z-index: -1;
 }
 
+/* --------------------  La couleur des boîtes quand on survol  ---------------------- */
 .bloc2-fiches .box:nth-child(1):before {
     background: linear-gradient(315deg, #36096d 0%, #37d5d6 74%);
 }
@@ -321,13 +319,14 @@ html {
 .bloc2-fiches .box:nth-child(4):before {
     background: linear-gradient(315deg, #36096d 0%, #37d5d6 74%);
 }
+/* --------------------  La couleur des boîtes quand on survol  ---------------------- */
 
 .bloc2-fiches .box:after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    width: 50%;
+    width: 50%;     /* La couleur gauche de la boîte */
     height: 100%;
     background: rgba(255, 255, 255, 0.05);
     pointer-events: none;
@@ -335,19 +334,19 @@ html {
 
 .content {
     position: relative;
-    padding: 20px;
+    padding: 20px;                    /* l'effet de mouvement du contenu */
     transform: translateY(40px);
 }
 
 .box:hover {
-    opacity: 0.9;
+    opacity: 0.9;     /* l'opacité quand on survol sur les blocs */
 }
 
 .box .content .bloc2-num {
     position: absolute;
     top: -60px;
     right: 20px;
-    margin: 0;
+    margin: 0;              /* La couleur du numéro */
     padding: 0;
     font-size: 10em;
     color: rgba(255, 255, 255, .05);
@@ -356,21 +355,21 @@ html {
 
 .box:hover .content .bloc2-num {
     top: -100px;
-    color: #505050;
+    color: #505050;      /* La couleur du numéro devient plus foncé quand on survol */
     z-index: -1;
 }
 
 .box .content .bloc2-titre {
     margin: 0 0 10px;
-    padding: 0;
-    font-size: 24px;
+    padding: 0; 
+    font-size: 24px;       /* Titre de la fiche */
     font-weight: 500;
     color: #fff;
 }
 
 .box .content .bloc2-p {
     margin: 0;
-    padding: 0;
+    padding: 0;            /* Paragraphe de la fiche */
     color: #fff;
     font-size: 16px;
 }
@@ -381,7 +380,7 @@ html {
     padding: 10px 20px;
     text-decoration: none;
     border: 1px solid #fff;
-    display: inline-block;
+    display: inline-block;         /* Le bouton en savoir plus */
     color: #fff;
     transition: 0.5s;
     transform: translateY(-40px);
@@ -391,13 +390,13 @@ html {
 
 .box:hover .content .bloc2-lien {
     transform: translateY(0);
-    opacity: 1;
+    opacity: 1;                 /* faire apparaître le bouton quand on survol sur le bloc */
     visibility: visible;
 }
 
 .box .content .bloc2-lien:hover {
-    color: #000;
-    background: #fff;
+    color: #000;     
+    background: #fff;    /* La couleur du bouton change quand on survol */
 }
 
 
@@ -410,7 +409,7 @@ html {
     position: relative;
     width: 100%;
     height: auto;
-    padding: 50px 100px;
+    padding: 50px 100px;       /* L'arrière plan du Footer */
     color: white;
     /*background:#111;*/
     background: linear-gradient(180deg, #070707 30%, #000000 70%);
@@ -422,22 +421,22 @@ html {
 
 .footer-contenu {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap;      /* Les positions des blocs dans le contenu du footer */
     flex-direction: row;
     justify-content: space-between;
 }
 
 .footer-contenu .sec {
-    margin-right: 30px;
+    margin-right: 30px;      /* Espacement des blocs */
 }
 
 .footer-contenu .sec.aboutus {
-    width: 40%
+    width: 40%           /* Longueur des blocs */
 }
 
 .footer-contenu .footer-titre {
     position: relative;
-    color: #fff;
+    color: #fff;           /* Couleur blanc des titres des blocs */
     font-weight: 500;
     margin-bottom: 15px;
 }
@@ -446,24 +445,24 @@ html {
     content: '';
     position: absolute;
     bottom: -7px;
-    left: 0;
+    left: 0;             /* La barre bleu au dessous des grands titres */
     width: 150px;
     height: 4px;
     background: #1F39DD;
 }
 
 .footer-contenu .footer-p {
-    color: #999;
+    color: #999;            /* Couleur gris des textes du footer */
     font-size: 20px
 }
 
 .sci {
-    margin-top: 20px;
+    margin-top: 20px;     /* Espacement de 20px de haut */
     display: flex;
 }
 
 .sci .sci-li {
-    list-style: none;
+    list-style: none;    /* Supression le rond du style des listes */
 }
 
 .sci .sci-li .sci-lien {
@@ -472,7 +471,7 @@ html {
     height: 40px;
     background: #222;
     display: flex;
-    justify-content: center;
+    justify-content: center;    /* Les liens avec la balisa a */
     align-items: center;
     margin-right: 10px;
     text-decoration: none;
@@ -481,93 +480,90 @@ html {
 }
 
 .facebook:hover{
-    background-color: #1a0dab!important;
+    background-color: #1a0dab!important;   /* Couleur de facebook pendant le survol */
 }
-.instagram:hover{
+.instagram:hover{   /* Couleur d'Instagram pendant le survol */
     background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%)!important;
 }
 .twitter:hover{
-    background-color: #00ACEE!important;
-}
-
-.sci .sci-li .sci-lien:hover {
-    background: #1F39DD;
+    background-color: #00ACEE!important;  /* Couleur de Twitter pendant le survol */
 }
 
 .sci .sci-li .sci-lien .bi {
     color: #fff;
-    font-size: 20px;
+    font-size: 20px;   /* Couleur des icônes réseaux sociaux */
 }
 
 .quickLinks {
-    position: relative;
+    position: relative;  /* longueur des liens rapides */
     width: 25%;
 }
 
 .quickLinks .sec {
-    padding: 0;
+    padding: 0;   /* padding 0 des liens rapides */
 }
 
 .quickLinks .sec .sec-li {
-    list-style: none;
+    list-style: none;        /* Suppresion des ronds */
 }
 
 .quickLinks .sec .sec-li .sec-lien {
     color: #999;
     text-decoration: none;
-    margin-bottom: 10px;
+    margin-bottom: 10px;     /* Couleur gris pour les liens rapides */
     display: inline-block;
     font-size: 20px;
 }
 
 .quickLinks .sec .sec-li .sec-lien:hover {
-    color: #fff;
+    color: #fff;  /* Change la couleur des liens rapides en blanc quand on survol */
 }
 
 .contact {
     width: calc(35% - 60px);
-    margin-right: 0 !important;
+    margin-right: 0 !important;  /* Bloc Contact */
 }
 
 .contact .info {
-    position: relative;
+    position: relative;  /* position de l'email */
     padding: 0;
 }
 
 .contact .info .contact-li {
     display: flex;
-    margin-bottom: 16px;
+    margin-bottom: 16px;   
 }
 
 .contact .info .contact-li .contact-span:nth-child(1) {
     color: #fff;
-    font-size: 20px;
+    font-size: 20px;    /* la taille de l'icône */
     margin-right: 10px;
 }
 
 .contact .info .contact-li .contact-span {
-    color: #999;
+    color: #999;  /* couleur de l'email */
 }
 
 .contact .info .contact-li .email {
     color: #999;
-    text-decoration: none;
+    text-decoration: none;  /* couleur de l'email */
     font-size: 20px;
 }
 
 .contact .info .contact-li .email:hover {
-    color: #fff;
+    color: #fff;   /* couleur de l'email quand on survol */
 }
 
 .copyrightText {
     width: 100%;
     background: #161616;
-    padding: 8px 100px;
+    padding: 8px 100px;    /* Copyright */
     text-align: center;
     color: #999;
     font-size: 20px;
 }
 
+/* ---------------- RESPONSIVE FOOTER -----------------*/
 @media (max-width: 991px) {
     #footer-main {
         padding: 40px;
@@ -588,6 +584,7 @@ html {
         padding: 8px 40px;
     }
 }
+/* ---------------- RESPONSIVE FOOTER -----------------*/
 
 
 /* ------------------------------------------- FIN FOOTER ------------------------------------------------- */

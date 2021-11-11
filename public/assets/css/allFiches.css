@@ -4,32 +4,33 @@
     background-attachment:fixed;
     background-repeat:no-repeat;
     background-size:cover;
-    background-position: 50% 10%;
+    background-position: 50% 10%;                    /* Modification de l'arrière plan dans la page gestion de l'admin */
     color:white;
-    /*background: linear-gradient(315deg, #2d3436 0%, #000000 74%);*/
     padding: 10px;
     box-shadow: -10px 11px 5px 0px rgb(158 158 158 / 75%);
     transition: 0.5s;
     border:none;
 }
+
 .card:hover{
     background: url('../images/back-hero2.jpg');
     background-position: 50% 10%;
     background-attachment:fixed;
-    background-repeat:no-repeat;
-    background-size:cover;
+    background-repeat:no-repeat;                /* Effet d'ombrage et de mouvement de l'image d'arrière plan */
+    background-size:cover;                                              
     box-shadow: -20px 50px 5px 0px rgb(158 158 158 / 75%);
     border-radius: 20px;
     transition: 0.5s;
   }
+
 .btn-primary{
     border: 2px solid white;
-    background-color: transparent;
+    background-color: transparent;          /* Bouton avec bordure blanche et transparente à l'intérieur */
     transition: 0.5s;
 }
 .btn-primary:hover{
     color:black;
-    background-color: white;
+    background-color: white;        /* Le texte devient noir et le bouton devient blanc quand on survol */
     border: 2px solid white;
     
 }
