@@ -1,3 +1,15 @@
+.bannierre{
+    background: url('../images/banniere2.jpg');
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    background-attachment:fixed;
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position: 50% 10%;
+}
+
 .bannierre-titre{
     font-size: 60px;
     color: white;
@@ -7,29 +19,29 @@
     line-height: 100px;
     text-align: center;
 }
-.bloc-consultation{
-    display: flex;
-    height: 800px;
+
+.bloc-commentaire{
+    color:white;
+    background-image:url(../images/back5.png);
+    background-attachment:fixed;
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position: 50% 10%;
+    padding: 10px;
+    box-shadow: -10px 11px 5px 0px rgb(158 158 158 / 75%);
+    transition:0.5s;
 }
-.bloc-titre-c{
-    text-align: center;
-    margin: 40px;
-    background: black;
-    color: white;
-    opacity: 0.8;
+.bloc-commentaire:hover{
+    box-shadow: -20px 40px 5px 0px rgb(158 158 158 / 75%);
+    transition:0.5s;
 }
-.paragraphe-c{
-    padding: 40px;
+.trait{
+    height: 5px!important;
+    opacity: 0.5;
+    color:white;
 }
-.bloc-left{
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(147deg, #f9fcff 0%, #dee4ea 74%);
-}
-.bloc2-right{
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(147deg, #f9fcff 0%, #dee4ea 74%);
+.commentaires{
+    color:white;
 }
 
     

@@ -2,7 +2,10 @@
 
 {% block body %}
 
-<div class="container">
+    <div class ="bannierre"> 
+        <h1 class="bannierre-titre"> Validation des commentaires </h1>
+    </div>
+<div class="container mt-5 mb-5 bloc-form">
 
     <table class="table table-striped">
         <thead>
@@ -18,9 +21,9 @@
         
         {% for comm in lesCommentaires %}
            <tr class="text-center">
-            <td>{{ comm['pseudo'] }}</td>
-            <td>{{ comm['texte'] }}</td>
-            <td>{{ comm['ficheId'] }}</td>
+            <td class="text-tableau">{{ comm['pseudo'] }}</td>
+            <td class="text-tableau">{{ comm['texte'] }}</td>
+            <td class="text-tableau">{{ comm['ficheId'] }}</td>
             <td><a href="/admin/validCommentaire/{{ comm['id'] }}" class="btn btn-success">Valider</a></td>
             <td><a href="/admin/suppCommentaire/{{ comm['id'] }}" class="btn btn-danger">Supprimer</a></td>
         
@@ -30,5 +33,5 @@
         </tbody>
     </table>
 </div>
-
+<br><br><br><br>
 {% endblock %}

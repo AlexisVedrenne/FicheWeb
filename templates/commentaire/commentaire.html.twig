@@ -1,3 +1,4 @@
+{% if app.user %}
 {{ form_start(form) }}
 <input name="ficheId" value="{{ ficheId }}" hidden></input>
 <div class="container">
@@ -10,3 +11,4 @@
 </div>
 
 {{form_end(form)}}
+{% endif %}

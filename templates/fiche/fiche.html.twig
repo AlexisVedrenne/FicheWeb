@@ -3,123 +3,42 @@
 {% block title %} Une fiche ! {% endblock %}
 
 {% block body %}
-    <style>
-        .bannierre{
-            background: url('{{ asset("images/banniere2.jpg") }}');
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 600px;
-            background-attachment:fixed;
-            background-repeat:no-repeat;
-            background-size:cover;
-            position: 50% 10%;
-        }
-        .bloc-right{
-           background: url('{{ asset("images/back1.jpg") }}');
-           width: 50%;
-           height: 100%;
-        }
-        .bloc2-left{
-           background: url('{{ asset("images/back2.jpg") }}');
-           width: 50%;
-           height: 100%;
-           background-position: 45% 20%;
-        }
-            
-    </style>
     <div class ="bannierre"> 
-        <h1 class="bannierre-titre"> Consultation </h1>
+        <h1 class="bannierre-titre"> Consultation de la fiche : {{ fiche.nom}}  </h1>
     </div>
 
-    <div class="bloc-consultation">
-        <div class="bloc-left">
-            <div class="bloc-text">
-                <div class="bloc-titre-c">
-                    <h1 class="titre-c"> {{ fiche.nom}} </h1>
-                </div>
-                <div class="bloc-paragraphe-c">
-                    <p class="paragraphe-c">
-                        Le HyperText Markup Language, généralement abrégé HTML ou dans sa dernière version HTML5,
-                        est le langage de balisage conçu pour représenter les pages web. 
-                        Ce langage permet : d’écrire de l’hypertexte, 
-                        d’où son nom, de structurer sémantiquement la page, de mettre en forme le contenu, 
-                        de créer des formulaires de saisie.
-                    </p>
-                    
-                    <p class="paragraphe-c">
-                        Le HyperText Markup Language, généralement abrégé HTML ou dans sa dernière version HTML5,
-                        est le langage de balisage conçu pour représenter les pages web. 
-                        Ce langage permet : d’écrire de l’hypertexte, 
-                        d’où son nom, de structurer sémantiquement la page, de mettre en forme le contenu, 
-                        de créer des formulaires de saisie.
-                    </p>
-                    <p class="paragraphe-c">
-                        Le HyperText Markup Language, généralement abrégé HTML ou dans sa dernière version HTML5,
-                        est le langage de balisage conçu pour représenter les pages web. 
-                        Ce langage permet : d’écrire de l’hypertexte, 
-                        d’où son nom, de structurer sémantiquement la page, de mettre en forme le contenu, 
-                        de créer des formulaires de saisie.
-                    </p>
+    {% for contenu in fiche.contenus %}
+        <div class="container mt-5 mb-5">
+            <div class="row">
+                <h1>{{ contenu.rubrique }}</h1>
+            </div>
+            <div class="row">
+                <div class="col me-3"><p>{{ contenu.description }}</p></div>
+                <div class="col">
+                    {% for media in contenu.lesMedias %}
+                        {% if media.type == "Image" %}
+                            <img src="{{media.lien}}">
+                        {% elseif media.type == "Video" %}
+                            <iframe width="560" height="315" src="{{ media.lien }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        {% else %}
+                            {{ media.lien }}
+                        {% endif %}
+                    {% endfor %}
                 </div>
             </div>
-        </div>
-        <div class="bloc-right">
+        </div>      
+    {% endfor %}
 
-        </div>
-    </div>
-    <div class="bloc-consultation">
-        <div class="bloc2-left">
-        </div>
-        <div class="bloc2-right">
-            <div class="bloc2-text">
-                <div class="bloc-titre-c">
-                    <h1 class="titre-c"> {{ fiche.nom}} </h1>
-                </div>
-                <div class="bloc-paragraphe-c">
-                    <p class="paragraphe-c">
-                        Le HyperText Markup Language, généralement abrégé HTML ou dans sa dernière version HTML5,
-                        est le langage de balisage conçu pour représenter les pages web. 
-                        Ce langage permet : d’écrire de l’hypertexte, 
-                        d’où son nom, de structurer sémantiquement la page, de mettre en forme le contenu, 
-                        de créer des formulaires de saisie.
-                    </p>
-                    
-                    <p class="paragraphe-c">
-                        Le HyperText Markup Language, généralement abrégé HTML ou dans sa dernière version HTML5,
-                        est le langage de balisage conçu pour représenter les pages web. 
-                        Ce langage permet : d’écrire de l’hypertexte, 
-                        d’où son nom, de structurer sémantiquement la page, de mettre en forme le contenu, 
-                        de créer des formulaires de saisie.
-                    </p>
-                    <p class="paragraphe-c">
-                        Le HyperText Markup Language, généralement abrégé HTML ou dans sa dernière version HTML5,
-                        est le langage de balisage conçu pour représenter les pages web. 
-                        Ce langage permet : d’écrire de l’hypertexte, 
-                        d’où son nom, de structurer sémantiquement la page, de mettre en forme le contenu, 
-                        de créer des formulaires de saisie.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="bloc-video">
-        <div class="video">
-            
-        </div>
-    </div>
-
-    <div class="container">
+    <div class="container mt-5 mb-5 bloc-commentaire">
         <div class="row">{{ render(controller('App\\Controller\\CommentaireController::AddCommentaire',{'ficheId':fiche.id})) }}</div>
-        <hr>
+        <hr class="trait">
         {% for comm in lesCommentaires %}
             {% if comm.isValid == true %}
-            <div class=" table row">
+            <div class="table row ms-0 commentaires">
                 <div class="col-1"><h6 class="text-center callout-info">{{ comm.user.pseudo }}</h6></div>
                 <div class="col-5"><p>  {{ comm.texte }}</p></div>
             </div>
-            <div class="row col-1"><a href="#" class="link-secondary">répondre</a></div>
-            <hr>
+            <hr class="trait">
             <br>
             {% endif %}
         {% endfor %}
