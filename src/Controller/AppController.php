@@ -23,12 +23,7 @@ class AppController extends AbstractController
      * 
      * Cette fonction permet l'affoche de notre page d'aceuil
      */
-<<<<<<< HEAD
-    public function home(FicheRepository $repo)
-    {
-=======
-    public function home():Response{
->>>>>>> dev
+    public function home(FicheRepository $repo):Response{
 
         $lesFiches = $repo->affichage_alea();
 
@@ -45,12 +40,7 @@ class AppController extends AbstractController
      * Cette fonction permet de nous deconnecter du site et elle met l'utilisateur en question 
      * en hors ligne en base de donnée
      */
-<<<<<<< HEAD
-    public function deconnexion(EntityManagerInterface $manager)
-    {
-=======
     public function deconnexion(EntityManagerInterface $manager):Response{
->>>>>>> dev
 
         //Ces lignes permette de changer le status de en ligne à hors ligne
         $user = $this->getUser();
@@ -62,11 +52,6 @@ class AppController extends AbstractController
         return $this->redirectToRoute('app_logout');
     }
 
-<<<<<<< HEAD
-    public static function codeGen($longueur)
-    {
-        $number = "0123456789";
-=======
     /**
      * $longueur : Cette variable représente la longeur du code que l'on veut générer
      * 
@@ -74,7 +59,6 @@ class AppController extends AbstractController
      */
     public static function codeGen($longueur){
         $number= "0123456789";
->>>>>>> dev
         return substr(str_shuffle(str_repeat($number, $longueur)), 0, $longueur);
     }
 
@@ -95,8 +79,6 @@ class AppController extends AbstractController
 
         return $contenue;
     }
-<<<<<<< HEAD
-=======
 
     public static function modifCtn($request,$fiche){
         foreach ($fiche->getContenus() as $contenu) {
@@ -109,5 +91,4 @@ class AppController extends AbstractController
         }
 
     }
->>>>>>> dev
 }
