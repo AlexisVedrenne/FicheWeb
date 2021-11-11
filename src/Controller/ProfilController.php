@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Form\ProfilType;
 
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,7 +22,7 @@ class ProfilController extends AbstractController
     public function index(): Response
     {
 
-        return $this->render('profil/index.html.twig', [
+        return $this->render('user/edit.html.twig', [
             'controller_name' => 'ProfilController',
         ]);
     }
@@ -31,7 +32,7 @@ class ProfilController extends AbstractController
      */
     public function edit(Request $request, User $user, int $id): Response
     {
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(ProfilType::class, $user);
         $form->handleRequest($request);
         $user = $this->getDoctrine()->getRepository(User::class);
         $user = $user->find($id);
@@ -39,7 +40,7 @@ class ProfilController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $user = $form->getData();
             $entityManager->flush();
-            return $this->redirectToRoute('profil');
+            //return $this->redirectToRoute('');
         }
         return $this->render('user/edit.html.twig', array('form' => $form->createView()));;
     }

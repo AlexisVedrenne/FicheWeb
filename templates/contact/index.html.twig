@@ -1,0 +1,61 @@
+
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Hello ContactController!{% endblock %}
+
+{% block body %}
+<br>
+<div class="container">
+<div class='card text-center' >
+<div class="row" style="margin: 0 auto; width: 80%;font-family: 'Times New Roman', serif;">
+		<div class="col-sm" style="text-align:left">
+			<h1 style="color:#c2a18b ">Bonjour</h1>
+			<p style="font-size: 13px;">Nous sommes très accessibles et aimerions vous parler. N'hésitez pas à nous appeler, nous envoyer un email, nous tweeter ou simplement remplir le formulaire</p>
+			<br>
+			<div class="supprimer">
+				<i class="fas fa-envelope"></i> service@ficheweb.fr<br><br>
+				<i class="fas fa-map-marker-alt"></i> 30 Rue de Turbigo, 75003 Paris,France<br><br>
+				<i class="fab fa-instagram"> </i> @ficheWeb <br><br>
+				<i class="fab fa-twitter"></i> @ficheWeb <br><br>
+				
+			</div>
+
+		</div>
+		<div class="col-sm">
+		<div class="form">
+		    <h1>Envoyer un message</h1>
+		    <form  method="post">
+		        <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-circle"></i></span>
+                <input type="text" class="form-control" placeholder="Nom Complet" aria-label="Username" name="nom">
+                </div>
+		     <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">@</span>
+                <input type="mail" class="form-control" placeholder="Mail" aria-label="Username" name="mail">
+                </div>
+		     <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-telephone-fill"></i></span>
+                <input type="text" class="form-control" placeholder="Numéro de téléphone" aria-label="Username" name="tel">
+                </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-forward"></i></span>
+                <input type="text" class="form-control" placeholder="Objet" aria-label="Username" name="objet">
+                </div>
+		     <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-envelope"></i></span>
+                <textarea class="form-control" aria-label="With textarea" placeholder="Message" name="msg"></textarea>
+                </div>
+		    
+		    <input type="submit" value="Envoyer un message" name="ok" class="btn btn-primary">
+		    
+		    </form>
+		    </div>
+
+		</div>
+		
+	</div>
+</div>
+</div>
+
+{% endblock %}
