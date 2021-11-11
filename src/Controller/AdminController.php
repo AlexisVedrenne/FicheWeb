@@ -17,6 +17,7 @@ use App\Entity\Fiche;
 
 /**
  * @Route("/admin", name="admin_")
+ * @IsGranted("ROLE_ADMIN")
  */
 class AdminController extends AbstractController
 {
@@ -105,6 +106,7 @@ class AdminController extends AbstractController
 
     /**
      * @Route("/modifUser")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function modifUser(UserRepository $repo,EntityManagerInterface $manager,Request $request){
         $user=$repo->find($request->request->get('idUser'));
@@ -118,6 +120,7 @@ class AdminController extends AbstractController
 
     /**
      * @Route("/fiches",name="fiches")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function getAllFiche(FicheRepository $repo){
         $fiches=$repo->findAll();
@@ -126,6 +129,7 @@ class AdminController extends AbstractController
 
     /**
      *@Route("/del/fiche/{id}")
+     *@IsGranted("ROLE_ADMIN")
      */
     public function deleteFiche(Fiche $fiche,EntityManagerInterface $manager){
         $manager->remove($fiche);

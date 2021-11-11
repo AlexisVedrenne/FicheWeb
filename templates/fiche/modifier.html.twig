@@ -4,20 +4,47 @@
 {% block title %}Modifier une fiche{% endblock %}
 
 {% block body %}
-<div class='card text-center'>
-    <h1 class=""> Modifier une fiche</h1>
+<div class='container'>
+    <h1 class="">Modification de la fiche</h1>
     {{ form_start(form)}}
-    <div class="container">
-    {{form_label(form.nom, 'titre de la fiche') }}
-    {{form_widget(form.nom, {'attr':{'placeholder':"Titre de la fiche ",'class':"form-control"}}) }}
-    
-    {{form_label(form.nom, 'Les Catégories') }}
-    {{form_widget(form.laCategorie, {'attr':{'placeholder':"Catégorie ",'class':"form-select"}}) }}
-    
-    <br>
-
+    <div class="row mt-3"><h2>Information général</h2></div>
+        <div class="row justify-content-center mt-3 mb-5">
+            <div class="col-4">
+                <div class="text-center mb-2">{{form_label(form.nom, 'Titre de la fiche') }}</div>
+                <div class="">{{form_widget(form.nom, {'attr':{'placeholder':"Titre de la fiche ",'class':"form-control"}}) }}</div>
+            </div>
+            <div class="col-2">
+                <div class="text-center mb-2">{{form_label(form.nom, 'La Catégories') }}</div>
+                <div class="">{{form_widget(form.laCategorie, {'attr':{'placeholder':"Catégorie ",'class':"form-select"}}) }}</div>
+            </div>
+        </div>
+        <div class="row"><h2>Information sur les contenus de la fiche</h2></div>
+        {% for contenu in fiche.contenus %}
+        <div class="row justify-content-center mt-3 mb-5">
+                <div class="col-3">
+                    <div class="text-center mb-2">Rubrique du contenu</div>
+                    <input class="form-control mb-2" type="text" name="rb-{{ contenu.id }}" value="{{ contenu.rubrique }}"></input>
+                    {{ contenu.lesMedias|length !=0 ? '<h6> Les médias du contenu</h6>' }}
+                    {% for media in contenu.lesMedias %}
+                    <div class="mb-3 mt-3">
+                        <input class="form-control mb-1" value="{{ media.lien }}" name="lien-{{ contenu.id }}-{{ media.id }}"></input>
+                        <select class="form-select" aria-label="Default select example" name="sl-{{ contenu.id }}-{{ media.id }}">
+                            <option value="{{ media.type }}">{{ media.type }}</option>
+                            <option value="{{ media.type == "Image" or media.type == "PDF" ? 'Video' : 'Image' }}">{{ media.type == "Image" or media.type == "PDF" ? 'Video' : 'Image' }}</option>
+                            <option value="{{ media.type == "Image" or media.type == "Video" ? 'PDF' : 'Image' }}">{{ media.type == "Image" or media.type == "Video" ? 'PDF' : 'Image' }}</option>
+                        </select>
+                    </div>
+                {% endfor %}
+                </div>
+                <div class="col-6 mb-3">
+                    <div class="text-center mb-2">Description du contenu</div>
+                    <textarea class="form-control" rows="15" name="des-{{ contenu.id }}">{{ contenu.description }}</textarea>
+                </div>
+                </div>
+        </div>
+        {% endfor %}
+        <button type="submit" class='btn btn-success'> Modifier </button>
     {{form_end(form)}}
-    <button type="submit" class='btn btn-success'> Modifier </button>
     </div>
 </div>
 {% endblock %}

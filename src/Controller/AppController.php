@@ -61,5 +61,15 @@ class AppController extends AbstractController
         return $contenue;
     }
 
-    
+    public static function modifCtn($request,$fiche){
+        foreach ($fiche->getContenus() as $contenu) {
+            $contenu->setRubrique($request->get("rb-".$contenu->getId()));
+            $contenu->setDescription($request->get("des-".$contenu->getId()));
+                foreach ($contenu->getLesMedias() as $media) {
+                $media->setType($request->get("sl-".$contenu->getId()."-".$media->getId()));
+                $media->setLien($request->get("lien-".$contenu->getId()."-".$media->getId()));
+            }
+        }
+
+    }
 }

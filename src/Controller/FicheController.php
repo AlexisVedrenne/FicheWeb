@@ -74,7 +74,12 @@ class FicheController extends AbstractController
                 Mail::demandeFicheFermer($demande->getUser(),$demande->getObjet(),$demande->getMessage(),$demande->getCategorie()->getNom(),$fiche->getId());
             }            
             $manager->flush();
-            return $this->redirectToRoute('admin_demandes');
+            if($id!=null){
+                return $this->redirectToRoute('admin_demandes');
+            }
+            else{
+                return $this->redirectToRoute('admin_fiches');
+            }
         }
 
         return $this->render('fiche/ajouter.html.twig', ['form' => $form->createView(),'demande'=>$id!=null?$demande:'']);
@@ -84,43 +89,20 @@ class FicheController extends AbstractController
 
     /**
      * @Route("/edit/{id}", name="edit")
+     * @IsGranted("ROLE_ADMIN")
      * c'est une fonction qui permet de modifier une fiche (nom/catégorie)
      */
-    public function editFiche(Request $request, $id)
-    {
-        $fiche = $this->getDoctrine()->getRepository(Fiche::class);
-        $fiche = $fiche->find($id);
-
-        //message d'erruer au cas ou l'id n'existe pas
-        if (!$fiche) {
-            throw $this->createNotFoundException(
-                "il n'ya pas de fiche avec l'id " . $id
-            );
-        }
-        //affichage du formulaire
-        $form = $this->createFormBuilder($fiche)
-            ->add('nom', TextType::class)
-            ->add('laCategorie', EntityType::class, [
-                'class' => Categorie::class,
-                'choice_label' => 'nom',
-                'expanded' => false,
-                'multiple' => false,
-
-            ])
-
-            ->getForm();
+    public function editFiche(Request $request, Fiche $fiche,EntityManagerInterface $manager)
+    {   
+        $form=$this->createForm(FicheType::class,$fiche);
         $form->handleRequest($request);
-        // récupération des donnés et modifcation
-        if ($form->isSubmitted()) {
-            $em = $this->getDoctrine()->getManager();
-            $fiche = $form->getData();
-            $em->flush();
-            //redirection vers la page d'accueil (juste temporaire)
-            return $this->redirectToRoute('home');
-            # code...
+        if($form->isSubmitted()&&$form->isValid()){
+            AppController::modifCtn($request->request,$fiche);
+            $manager->persist($fiche);
+            $manager->flush();
+            return $this->redirectToRoute('admin_fiches');
         }
-
-        return $this->render('fiche/modifier.html.twig', array('form' => $form->createView()));;
+        return $this->render('fiche/modifier.html.twig', array('form' => $form->createView(),'fiche'=>$fiche));;
     }
 
 
