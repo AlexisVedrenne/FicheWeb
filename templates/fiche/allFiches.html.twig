@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 
+{% set img = "" %}
 {% block title %} Toutes les fiches {% endblock %}
 
 {% block body %}
@@ -10,8 +11,18 @@
 <div class="container mt-4 mb-4">
   <div class="row row-cols-md-4 justify-content-center">  
       {% for fiche in lesFiches %}
+        {% set img = "" %}
+        {% set break = false %}
+        {% for item in fiche.contenus[0].lesMedias %}
+          {% if break == false %}
+          {% if item.type == 'Image' %}
+              {% set img = item.lien %}
+              {% set break = true %}
+            {% endif %}
+          {% endif %}
+          {% endfor %}
       <div class="card me-4 mb-4 mt-4 ms-4 col-md-3">
-        <img src="{{ asset('images/html-5.jpg') }}" class="card-img-top" alt="...">
+        <img src={% if img != "" %} {{img}}{% else %} "{{ asset('images/html-5.jpg') }}" {% endif %} class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">{{ fiche.nom }}</h5>
           {% set des = fiche.contenus[0].description %}

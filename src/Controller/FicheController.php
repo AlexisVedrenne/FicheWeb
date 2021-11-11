@@ -41,9 +41,8 @@ class FicheController extends AbstractController
      * @param [type] $id
      * @return void
      */
-    public function getFiche(FicheRepository $repo, int $id, CommentaireRepository $cmtRepo)
+    public function getFiche(Fiche $fiche, CommentaireRepository $cmtRepo)
     {
-        $fiche = $repo->find($id);
         $lesCommenaitres = $fiche->getCommentaires();
         return $this->render('fiche/fiche.html.twig', ['fiche' => $fiche, 'lesCommentaires' => $lesCommenaitres]);
     }
