@@ -12,6 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Commentaire;
 use App\Repository\FicheRepository;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 
 class CommentaireController extends AbstractController
@@ -21,6 +22,8 @@ class CommentaireController extends AbstractController
 
     /**
      * @Route("/commentaire/post",name="commentaire_post")
+     * @IsGranted("ROLE_USER")
+     * @IsGranted("ROLE_ADMIN")
      * 
      * $request : C'est la variable qui va stocker toute la requête http qui a été effectuer
      * $manager : C'est la variable qui permet de gérer les entitées vers la base de donnée

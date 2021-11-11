@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface as Hasher;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 
 class ProfilController extends AbstractController
@@ -29,6 +30,7 @@ class ProfilController extends AbstractController
 
     /**
      * @Route("/compte", name="user_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_USER")
      * 
      * $request ce qui va permettre de récuperer les données provenant du formulaire de modification
      * $user c'est pour récuperer les données d'user connecté

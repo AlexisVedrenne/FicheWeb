@@ -37,7 +37,8 @@ class FicheController extends AbstractController
     /**
      * @Route("/voir/{id}",name="voir")
      * Undocumented function
-     *
+     * @IsGranted("ROLE_USER")
+     * @IsGranted("ROLE_ADMIN")     
      * @param FicheRepository $repo
      * @param [type] $id
      * @return void
@@ -108,6 +109,7 @@ class FicheController extends AbstractController
 
     /**
      * @Route("/demande",name="demande")
+     * @IsGranted("ROLE_USER")
      */
     public function demandeFiche(Request $request, EntityManagerInterface $manager)
     {
