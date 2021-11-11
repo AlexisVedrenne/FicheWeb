@@ -30,13 +30,11 @@ class ProfilController extends AbstractController
     /**
      * @Route("/compte", name="user_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, int $id): Response
+    public function edit(Request $request): Response
     {
         $user = $this->getUser();
         $form = $this->createForm(ProfilType::class, $user);
         $form->handleRequest($request);
-        $user = $this->getDoctrine()->getRepository(User::class);
-        $user = $user->find($id);
         if ($form->isSubmitted()) {
             $entityManager = $this->getDoctrine()->getManager();
             $user = $form->getData();
