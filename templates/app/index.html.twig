@@ -61,53 +61,22 @@
     <div class="bloc2">
         <h1 class="bloc2-grand-titre">LES FICHES</h1>
             <div class="container bloc2-fiches">
+            {% for fiche in lesFiches %}
                 <div class="box">
                     <div class="content">
-                        <h2 class="bloc2-num">01</h2>
-                        <h3 class="bloc2-titre">HTML</h3>
-                        <p class="bloc2-p">Le HyperText Markup Language, généralement abrégé HTML ou dans sa dernière version HTML5,
-                        est le langage de balisage conçu pour représenter les pages web. 
-                        Ce langage permet : d’écrire de l’hypertexte, 
-                        </p>
+                        <h2 class="bloc2-num">{{ fiche.id }}</h2>
+                        <h3 class="bloc2-titre">{{ fiche.nom }}</h3>
+                        <p class="bloc2-p">{{fiche.contenus[0].description}}</p>
                         <a href="#" class="bloc2-lien">En savoir plus</a>
                     </div>
                 </div>
         
-                <div class="box">
-                    <div class="content">
-                        <h2 class="bloc2-num">02</h2>
-                        <h3 class="bloc2-titre">Service Two</h3>
-                        <p class="bloc2-p">Le HyperText Markup Language, généralement abrégé HTML ou dans sa dernière version HTML5,
-                        est le langage de balisage conçu pour représenter les pages web. 
-                        Ce langage permet : d’écrire de l’hypertexte, 
-                        </p>
-                        <a href="#" class="bloc2-lien">En savoir plus</a>
-                    </div>
-                </div>
-
-                <div class="box">
-                    <div class="content">
-                        <h2 class="bloc2-num">03</h2>
-                        <h3 class="bloc2-titre">Service Three</h3>
-                        <p class="bloc2-p">Le HyperText Markup Language, généralement abrégé HTML ou dans sa dernière version HTML5,
-                        est le langage de balisage conçu pour représenter les pages web. 
-                        Ce langage permet : d’écrire de l’hypertexte, 
-                        </p>
-                        <a href="#" class="bloc2-lien">En savoir plus</a>
-                    </div>
-                </div>
-
-                <div class="box">
-                    <div class="content">
-                        <h2 class="bloc2-num">04</h2>
-                        <h3 class="bloc2-titre">Service Four</h3>
-                        <p class="bloc2-p">Le HyperText Markup Language, généralement abrégé HTML ou dans sa dernière version HTML5,
-                        est le langage de balisage conçu pour représenter les pages web. 
-                        Ce langage permet : d’écrire de l’hypertexte, 
-                        </p>
-                        <a href="#" class="bloc2-lien">En savoir plus</a>
-                    </div>
-                </div> 
+                
+          {% endfor %}
+            </div> 
+          
+        
+            
         
             </div> 
         

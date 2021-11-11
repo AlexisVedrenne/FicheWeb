@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+
+
+
+
+{% block title %}Profil{% endblock %}
+{% block body %}
+
+
+<div class="container">
+<h1>Bienvenue sur la page profil</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Ville</th>
+          <th>Numéro de téléphone</th>
+          <th>Email</th>
+          <th>Pseudo</th>
+          <th>Date d'inscription</th>
+      </thead>
+      <tbody>
+          <td>{{ app.user.nom }}</td>
+          <td>{{ app.user.prenom }}</td>
+          <td>{{ app.user.ville }}</td>
+          <td>{{ app.user.tel }}</td>
+          <td>{{ app.user.email }}</td>
+          <td>{{ app.user.pseudo }}</td>
+          <td>{{ app.user.dateInscription.format('d/m/Y') }}</td>
+      </tbody>
+</table>
+
+<a href="{{ path('user_edit',{'id':app.user.id}) }}"> Modifier mes données personelles</a>
+
+
+
+</div>
+{% endblock %}

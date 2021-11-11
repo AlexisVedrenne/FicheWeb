@@ -17,6 +17,28 @@
     <div class="container col-4 bloc-form">
         <h1 class="text-center" style="text-transform: uppercase;">Créer votre compte utilisateur</h1>
         {{ form_start(registrationForm) }}
+            
+            <label>Nom</label>
+            <div class="input-group flex-nowrap">
+                <span class="input-group-text" id="addon-wrapping"><i class="bi bi-person-circle"></i></span>
+                {{ form_widget(registrationForm.nom,{'attr':{'class':'form-control','placeholder':'Entrée votre nom...'}})}}
+            </div>
+            <label>Prénom</label>
+            <div class="input-group flex-nowrap">
+                <span class="input-group-text" id="addon-wrapping"><i class="bi bi-person-circle"></i></span>
+                {{ form_widget(registrationForm.prenom,{'attr':{'class':'form-control','placeholder':'Entrée votre prénom...'}})}}
+            </div>
+            <label>ville</label>
+            <div class="input-group flex-nowrap">
+                <span class="input-group-text" id="addon-wrapping"><i class="bi bi-geo-alt"></i></span>
+                {{ form_widget(registrationForm.ville,{'attr':{'class':'form-control','placeholder':'Entrée votre ville...'}})}}
+            </div>
+            <label>Numéro de téléphone</label>
+            <div class="input-group flex-nowrap">
+                <span class="input-group-text" id="addon-wrapping"><i class="bi bi-telephone-fill"></i></span>
+                {{ form_widget(registrationForm.tel,{'attr':{'class':'form-control','placeholder':'Entrée votre numéro de téléphone...'}})}}
+            </div>
+
             <label>Pseudo</label>
             <div class="input-group flex-nowrap">
                 <span class="input-group-text" id="addon-wrapping"><i class="bi bi-person-circle"></i></span>

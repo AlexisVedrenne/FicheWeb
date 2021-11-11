@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use DoctrineExtensions\Query\Mysql\Rand;
 use App\Entity\DemandeFiche;
 use App\Repository\FicheRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
