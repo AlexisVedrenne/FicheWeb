@@ -42,10 +42,11 @@
                     <div class="text-center mb-2">Description du contenu</div>
                     <textarea class="form-control" rows="15" name="des-{{ contenu.id }}">{{ contenu.description }}</textarea>
                 </div>
+                <button type="submit" class='btn btn-success col-4'> Modifier </button>
                 </div>
         </div>
+        
         {% endfor %}
-        <button type="submit" class='btn btn-success'> Modifier </button>
     {{form_end(form)}}
     </div>
 </div>
