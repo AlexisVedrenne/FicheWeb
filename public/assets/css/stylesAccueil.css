@@ -479,6 +479,16 @@ html {
     font-size: 20px;
 }
 
+.facebook:hover{
+    background-color: #1a0dab!important;
+}
+.instagram:hover{
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%)!important;
+}
+.twitter:hover{
+    background-color: #00ACEE!important;
+}
+
 .sci .sci-li .sci-lien:hover {
     background: #1F39DD;
 }
