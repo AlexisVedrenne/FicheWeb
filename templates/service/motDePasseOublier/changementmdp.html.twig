@@ -16,9 +16,10 @@
                 <label>Confimer le nouveau mot de passe</label>
                 <div class="input-group flex-nowrap">
                     <span class="input-group-text" id="addon-wrapping"><i class="bi bi-key"></i></span>
-                    <input placeholder="Confimer le mot de passe..." class="form-control" type="password" name="confirm_password" id="confirm_password"  onkeyup='check();' required /> 
+                    <input placeholder="Confimer le mot de passe..." class="form-control" type="password" name="confirm_password" id="confirm_password"  onkeyup='check2();' required /> 
                 </div>
-                <button class="mt-2 btn btn-success" type="submit">Valider</button>
+                <div class="text-center" id='message'></div>
+                <button id="btnEnregistrer" class="mt-2 btn btn-success" type="submit" disabled>Valider</button>
             </div>
         {{ form_end(form) }}
     </div>

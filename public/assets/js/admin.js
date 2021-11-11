@@ -1,10 +1,7 @@
-function sleep(miliseconds) {
-    var currentTime = new Date().getTime();
 
-    while (currentTime + miliseconds >= new Date().getTime()) {}
-}
-
+// Cette fonction permet de deverouiller la modification des users dans admin
 function users(id) {
+    //récupération des élément html
     p="inPseudo-";
     i="idUser-";
     e="inEmail-";
@@ -26,7 +23,8 @@ function users(id) {
     role = document.getElementById(r);
     console.log(role);
     btn = document.getElementById(b);
-    console.log(btn);
+
+    //Test pour savoir si les element son activer ou pas
     if (pseudo.getAttribute("disabled") != null) {
         pseudo.removeAttribute("disabled");
         email.removeAttribute("disabled");

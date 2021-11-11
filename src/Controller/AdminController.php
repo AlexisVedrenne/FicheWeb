@@ -153,7 +153,7 @@ class AdminController extends AbstractController
      * @Route("/modifUser")
      * @IsGranted("ROLE_ADMIN")
      * 
-     * $repo : C'est la variable qui permet l'accès au données de la classe User
+     * @param $repo : C'est la variable qui permet l'accès au données de la classe User
      * $manager : C'est la variable qui permet de gérer les entitées vers la base de donnée
      * $request : C'est la variable qui va stocker toute la requête http qui a été effectuer
      * 

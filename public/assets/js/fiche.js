@@ -4,6 +4,11 @@ function getMedia(nb) {
     return document.getElementById('media-' + nb);
 }
 
+/**
+ * Fonction qui ajoute des médias dans un contenu
+ * @param {*} nb 
+ * @param {*} contenue 
+ */
 function addMedia(nb, contenue) {
     div = document.getElementById('iRub-' + contenue).children["media-" + nb];
     div.appendChild(document.createElement("h5")).setAttribute("id", "hmd-" + nb);
@@ -64,7 +69,11 @@ function getContenue() {
     return document.getElementById('contenue');
 }
 
-
+/**
+ * Fonction qui va crééer dynamiquement des contenu pour une fiche 
+ * 
+ * @param {*} element 
+ */
 function addContenue(element) {
     nbContenue++;
     document.getElementById("nbContenue").value = nbContenue;
@@ -72,19 +81,22 @@ function addContenue(element) {
     element.appendChild(document.createElement("div")).setAttribute("id", "contenue-" + nbContenue);
     //Récupération de notre div contenue-nb dans une variable
     div = document.getElementById("contenue-" + nbContenue);
-    div.appendChild(document.createElement("div")).setAttribute("id", "ctnhead-" + nbContenue);
+    div.appendChild(document.createElement("div")).setAttribute("id", "ctnhead-" + nbContenue); //création de la div ctnhead
     div.children["ctnhead-" + nbContenue].classList.add("row");
     div.children["ctnhead-" + nbContenue].classList.add("col-12");
     div.children["ctnhead-" + nbContenue].appendChild(document.createElement("div")).setAttribute("id", "titre-" + nbContenue);
+    //Création et stylisation d'une nouvel div titre- dans la div ctnhead
     div.children["ctnhead-" + nbContenue].children["titre-" + nbContenue].classList.add("col-3");
     div.children["ctnhead-" + nbContenue].children["titre-" + nbContenue].classList.add("offset-3");
     div.children["ctnhead-" + nbContenue].children["titre-" + nbContenue].classList.add("ml-5")
     div.children["ctnhead-" + nbContenue].children["titre-" + nbContenue].appendChild(document.createElement("button")).setAttribute("id", "btnMd-" + nbContenue);
+    //Création du bouton d'ajout des médias dans la div titre-
     div.children["ctnhead-" + nbContenue].children["titre-" + nbContenue].children["btnMd-" + nbContenue].classList.add("btn");
     div.children["ctnhead-" + nbContenue].children["titre-" + nbContenue].children["btnMd-" + nbContenue].classList.add("btn-secondary");
     div.children["ctnhead-" + nbContenue].children["titre-" + nbContenue].children["btnMd-" + nbContenue].classList.add("mt-2");
     div.children["ctnhead-" + nbContenue].children["titre-" + nbContenue].children["btnMd-" + nbContenue].innerHTML = "<i class='bi bi-plus-circle-fill'></i>";
     div.children["ctnhead-" + nbContenue].children["titre-" + nbContenue].children["btnMd-" + nbContenue].setAttribute("type", "button");
+
     div.appendChild(document.createElement("input")).setAttribute("id", "nbMedia-" + nbContenue);
     div.children["ctnhead-" + nbContenue].children["titre-" + nbContenue].children["btnMd-" + nbContenue].setAttribute("value", "" + nbContenue);
     div.children["nbMedia-" + nbContenue].setAttribute("value", "0");
@@ -114,6 +126,10 @@ function addContenue(element) {
     document.getElementById("iDes-" + nbContenue).appendChild(document.createElement("textarea")).setAttribute('id', "des-" + nbContenue);
 }
 
+/**
+ * Ajout des attribut à l'input rubrique
+ * @param {*} input 
+ */
 function ajtAttrRub(input) {
     input.setAttribute("name", "rub-" + nbContenue);
     input.setAttribute("type", "text");
@@ -123,14 +139,31 @@ function ajtAttrRub(input) {
     input.classList.add("form-control");
 }
 
+/**
+ * Récuperer la rubrique d'un contenu
+ * 
+ * @param {*} nb 
+ * @returns 
+ */
 function getRubrique(nb) {
     return document.getElementById("rub-" + nb);
 }
 
+
+/**
+ * Recuperer une description d'un contenu
+ * 
+ * @param {*} nb 
+ * @returns 
+ */
 function getDescription(nb) {
     return document.getElementById("des-" + nb);
 }
 
+/**
+ * Ajout des attributs à l'input
+ * @param {} input 
+ */
 function ajtAtrrDes(input) {
     input.setAttribute("name", "des-" + nbContenue);
     input.setAttribute("type", "text");
@@ -141,6 +174,9 @@ function ajtAtrrDes(input) {
     input.classList.add("form-control");
 }
 
+/**
+ * Ajoute les attribut aux div
+ */
 function ajtAttrDiv() {
     document.getElementById("contenue-" + nbContenue).classList.add("row");
     document.getElementById("iRub-" + nbContenue).classList.add(["col-sm-5"]);
@@ -149,17 +185,23 @@ function ajtAttrDiv() {
 }
 
 
+/**
+ * Fonction qui permet d'ajouter un nouveau contenu pour une fiche
+ */
 document.getElementById('btnCtn').addEventListener('click', function() {
-    addContenue(getContenue());
-    ajtAttrRub(getRubrique(nbContenue));
-    ajtAtrrDes(getDescription(nbContenue));
+    addContenue(getContenue()); //Ajout du contenu à la div qui contient tous les contenus
+    ajtAttrRub(getRubrique(nbContenue));//Ajout des attributs sur la rubrique
+    ajtAtrrDes(getDescription(nbContenue));//Ajout des attributs sur la description
     ajtAttrDiv();
-    if(nbContenue>0){
+    if(nbContenue>0){ //Si le nombre de contenu est à 0 sur la page alors il est impossible de créer une fiche
         document.getElementById("btnFiche").removeAttribute("disabled");
         document.getElementById('spModal').removeAttribute("disabled");
     }
 });
 
+/**
+ * Cette fonction permet de retirer le dernier contenu ajouter de la page
+ */
 document.getElementById('btnSpCtn').addEventListener('click',function(){
     nbCon=document.getElementById("nbContenue")
     contenu=getContenue();
